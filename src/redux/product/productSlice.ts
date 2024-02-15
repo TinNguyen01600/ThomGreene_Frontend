@@ -1,6 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../../app/store";
+import { CategoryType } from "./categorySlice";
 
 export type ProductType = {
 	id: number;
@@ -8,10 +9,7 @@ export type ProductType = {
 	price: number;
 	description: string;
 	images: string[];
-	category: {
-		id: number;
-		name: string;
-	};
+	category: CategoryType;
 };
 
 interface ProductState {
@@ -53,7 +51,7 @@ const productSlice = createSlice({
                 state.loading = false;
 			}
 		});
-		builder.addCase(fetchAllProductsAsync.pending, (state, action) => {
+		builder.addCase(fetchAllProductsAsync.pending, (state) => {
 			state.loading = true;
 		});
         builder.addCase(fetchAllProductsAsync.rejected, (state, action) => {
