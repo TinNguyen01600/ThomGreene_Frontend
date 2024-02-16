@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
+import axios from "axios";
 
 export type UserRegister = {
 	name: string;
@@ -17,16 +18,21 @@ interface UserState {
 	user: UserType | null;
 }
 
-//************************************************ */
+//************************************************************ */
 
-let initialUser: UserType | null = null;
-const data = localStorage.getItem("userInfo");
-if (data) {
-	initialUser = JSON.parse(data);
-}
+export const getUserFromToken = async (dispatch: any, token: string) => {
+	const user = await axios("https://api.escuelajs.co/api/v1/auth/profile", {
+		headers: {
+			Authorization: `Bearer ${token}`,
+		},
+	});
+	dispatch(saveUserInfo(user.data));
+};
+
+//************************************************************ */
 
 const initialState: UserState = {
-	user: initialUser,
+	user: null,
 };
 
 const userSlice = createSlice({
@@ -41,6 +47,6 @@ const userSlice = createSlice({
 
 export const { saveUserInfo } = userSlice.actions;
 
-export const selectUsers = (state: RootState) => state.users.user
+export const selectUsers = (state: RootState) => state.users.user;
 
 export default userSlice.reducer;

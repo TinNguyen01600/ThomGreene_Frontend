@@ -14,7 +14,6 @@ const UserRegisterForm: React.FC = () => {
 	} = useForm<UserRegister>();
 
 	const onSubmit: SubmitHandler<UserRegister> = (data) => {
-		console.log(data);
 		axios
 			.post("https://api.escuelajs.co/api/v1/users/", data)
 			.then((response) => {
