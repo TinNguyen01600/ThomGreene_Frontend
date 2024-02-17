@@ -20,13 +20,19 @@ interface UserState {
 
 //************************************************************ */
 
-export const getUserFromToken = async (dispatch: any, token: string) => {
-	const user = await axios("https://api.escuelajs.co/api/v1/auth/profile", {
-		headers: {
-			Authorization: `Bearer ${token}`,
-		},
-	});
-	dispatch(saveUserInfo(user.data));
+export const getUserFromToken = async (dispatch: any) => {
+	const token1 = localStorage.getItem("token");
+	if (token1) {
+		const user = await axios(
+			"https://api.escuelajs.co/api/v1/auth/profile",
+			{
+				headers: {
+					Authorization: `Bearer ${token1}`,
+				},
+			}
+		);
+		dispatch(saveUserInfo(user.data));
+	}
 };
 
 //************************************************************ */

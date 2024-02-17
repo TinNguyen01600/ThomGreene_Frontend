@@ -23,7 +23,7 @@ const UserSignInForm: React.FC = () => {
 				if (response.status === 201) {
 					localStorage.setItem("token", response.data.access_token);
                     console.log("Sign In success, Token saved");
-                    getUserFromToken(dispatch, response.data.access_token)
+                    getUserFromToken(dispatch)
 				}
 			})
 			.catch((error) => console.log(error));
