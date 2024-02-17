@@ -1,6 +1,8 @@
 import axios from "axios";
+import { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { ProductType } from "./productSlice";
 
 export type CategoryType = {
 	id: number;
@@ -10,14 +12,20 @@ export type CategoryType = {
 
 interface CategoryState {
 	allCategories: CategoryType[];
+	selectedCategory: CategoryType;
+	selectedCategoryProducts: ProductType[];
 	loading: boolean;
 	error?: string;
 }
 
 const initialState: CategoryState = {
 	allCategories: [],
+	selectedCategory: Object.create(null),
+	selectedCategoryProducts: [],
 	loading: false,
 };
+
+/*************************************************************** */
 
 export const fetchAllCategoriesAsync = createAsyncThunk(
 	"fetchAllCategoriesAsync",
@@ -38,7 +46,17 @@ export const fetchAllCategoriesAsync = createAsyncThunk(
 const categorySlice = createSlice({
 	name: "categories",
 	initialState,
-	reducers: {},
+	reducers: {
+		setSelectedCategory: (state, action: PayloadAction<CategoryType>) => {
+			state.selectedCategory = action.payload;
+		},
+		setSelectedCategoryProducts: (
+			state,
+			action: PayloadAction<ProductType[]>
+		) => {
+			state.selectedCategoryProducts = action.payload;
+		},
+	},
 	extraReducers(builder) {
 		// fetch all categories
 		builder.addCase(fetchAllCategoriesAsync.fulfilled, (state, action) => {
@@ -59,8 +77,32 @@ const categorySlice = createSlice({
 	},
 });
 
-export const { } = categorySlice.actions
+/*************************************************************** */
 
-export const selectCategories = (state: RootState) => state.products.allProducts
+export const fetchSelectedCategory =
+	(categoryId: string | undefined) => async (dispatch: any) => {
+		const id = Number(categoryId);
+		const res = await axios(
+			`https://api.escuelajs.co/api/v1/categories/${id}`
+		);
+		dispatch(setSelectedCategory(res.data));
+	};
 
-export default categorySlice.reducer
+export const fetchSelectedCategoryProducts =
+	(categoryId: string | undefined) => async (dispatch: any) => {
+		const id = Number(categoryId);
+		const res = await axios(
+			`https://api.escuelajs.co/api/v1/categories/${id}/products`
+		);
+		dispatch(setSelectedCategoryProducts(res.data));
+	};
+
+/*************************************************************** */
+
+export const { setSelectedCategory, setSelectedCategoryProducts } =
+	categorySlice.actions;
+
+export const selectCategories = (state: RootState) =>
+	state.products.allProducts;
+
+export default categorySlice.reducer;

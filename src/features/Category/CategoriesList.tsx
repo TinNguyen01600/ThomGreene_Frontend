@@ -1,6 +1,7 @@
 import { useEffect } from "react"
 import { useAppDispatch, useAppSelector } from "../../app/hooks"
 import { fetchAllCategoriesAsync } from "../../redux/product/categorySlice"
+import { Link } from "react-router-dom"
 
 const CategoriesList: React.FC = () => {
     const dispatch = useAppDispatch()
@@ -13,7 +14,10 @@ const CategoriesList: React.FC = () => {
         <>
             {categories.map(category => (
                 <section>
-                    {category.name}
+                    {category.name} {category.id}
+                    <Link to={`/category/${category.id}`}>
+                        <button>Click me</button>
+                    </Link>
                 </section>
             ))}
         </>
