@@ -1,27 +1,35 @@
-import { useEffect } from "react"
-import { useAppDispatch, useAppSelector } from "../../app/hooks"
-import { fetchAllCategoriesAsync } from "../../redux/product/categorySlice"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import { fetchAllCategoriesAsync } from "../../redux/product/categorySlice";
+import { Link } from "react-router-dom";
+import { JsxElement } from "typescript";
 
 const CategoriesList: React.FC = () => {
-    const dispatch = useAppDispatch()
-    const categories = useAppSelector(state => state.categories.allCategories)
-    useEffect(() => {
-        dispatch(fetchAllCategoriesAsync())
-    }, [dispatch])
+	const dispatch = useAppDispatch();
+	const categories = useAppSelector(
+		(state) => state.categories.allCategories
+	);
 
-    return (
-        <>
-            {categories.map(category => (
-                <section>
-                    {category.name} {category.id}
-                    <Link to={`/category/${category.id}`}>
-                        <button>Click me</button>
-                    </Link>
-                </section>
-            ))}
-        </>
-    )
-}
+	useEffect(() => {
+		dispatch(fetchAllCategoriesAsync());
+	}, [dispatch]);
 
-export default CategoriesList
+	const categoriesGrid = [];
+	if (categories.length > 0) {
+		// get the first 5 categories, in case endpoint API polluted
+		for (let i = 0; i < 5; i++) {
+			categoriesGrid.push(
+				<article className={`cate${i}`}>{categories[i].name}</article>
+			);
+		}
+	}
+
+	return (
+		<section className="container">
+			<article className="all-products">All products</article>
+			{categoriesGrid.map((category) => category)}
+		</section>
+	);
+};
+
+export default CategoriesList;

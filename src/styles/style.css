@@ -1,0 +1,43 @@
+.all-products {
+  grid-area: all_products;
+}
+
+article {
+  border: 1px solid black;
+}
+
+.cate0 {
+  grid-area: cate0;
+}
+
+.cate1 {
+  grid-area: cate1;
+}
+
+.cate2 {
+  grid-area: cate2;
+}
+
+.cate3 {
+  grid-area: cate3;
+}
+
+.cate4 {
+  grid-area: cate4;
+}
+
+.container {
+  display: grid;
+  grid-template-rows: auto;
+  row-gap: 2vw;
+  -moz-column-gap: 2vw;
+       column-gap: 2vw;
+  grid-template-areas: "all_products all_products" "cate0 cate1" "cate2 cate2" "cate3 cate4";
+  margin: 0 2vw;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}/*# sourceMappingURL=style.css.map */
