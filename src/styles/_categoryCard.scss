@@ -1,0 +1,13 @@
+.card {
+	position: relative;
+	text-align: center;
+	img {
+		height: 95vh;
+		width: 100%;
+	}
+	figcaption {
+		position: absolute;
+		top: 8px;
+		left: 16px;
+	}
+}

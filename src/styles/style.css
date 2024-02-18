@@ -2,10 +2,6 @@
   grid-area: all_products;
 }
 
-article {
-  border: 1px solid black;
-}
-
 .cate0 {
   grid-area: cate0;
 }
@@ -30,10 +26,24 @@ article {
   display: grid;
   grid-template-rows: auto;
   row-gap: 2vw;
-  -moz-column-gap: 2vw;
-       column-gap: 2vw;
+  -moz-column-gap: 3vw;
+       column-gap: 3vw;
   grid-template-areas: "all_products all_products" "cate0 cate1" "cate2 cate2" "cate3 cate4";
-  margin: 0 2vw;
+  margin: 0 3vw;
+}
+
+.card {
+  position: relative;
+  text-align: center;
+}
+.card img {
+  height: 95vh;
+  width: 100%;
+}
+.card figcaption {
+  position: absolute;
+  top: 8px;
+  left: 16px;
 }
 
 * {

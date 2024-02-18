@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchAllCategoriesAsync } from "../../redux/product/categorySlice";
 import { Link } from "react-router-dom";
-import { JsxElement } from "typescript";
+import CategoryCard from "./CategoryCard";
 
 const CategoriesList: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -19,7 +19,9 @@ const CategoriesList: React.FC = () => {
 		// get the first 5 categories, in case endpoint API polluted
 		for (let i = 0; i < 5; i++) {
 			categoriesGrid.push(
-				<article className={`cate${i}`}>{categories[i].name}</article>
+				<article className={`cate${i}`}>
+					<CategoryCard category={categories[i]} />
+				</article>
 			);
 		}
 	}
