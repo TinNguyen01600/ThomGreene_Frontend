@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 .all-products {
   grid-area: all_products;
 }
@@ -41,6 +42,7 @@
   width: 100%;
 }
 .card figcaption {
+  color: #fff;
   position: absolute;
   top: 8px;
   left: 16px;
@@ -50,4 +52,8 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+}
+
+body {
+  font-family: "Open Sans";
 }/*# sourceMappingURL=style.css.map */

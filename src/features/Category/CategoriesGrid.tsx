@@ -1,10 +1,9 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchAllCategoriesAsync } from "../../redux/product/categorySlice";
-import { Link } from "react-router-dom";
 import CategoryCard from "./CategoryCard";
 
-const CategoriesList: React.FC = () => {
+const CategoriesGrid: React.FC = () => {
 	const dispatch = useAppDispatch();
 	const categories = useAppSelector(
 		(state) => state.categories.allCategories
@@ -34,4 +33,4 @@ const CategoriesList: React.FC = () => {
 	);
 };
 
-export default CategoriesList;
+export default CategoriesGrid;

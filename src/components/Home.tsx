@@ -1,10 +1,10 @@
-import CategoriesList from "../features/Category/CategoriesList"
+import CategoriesGrid from "../features/Category/CategoriesGrid"
 
 const Home: React.FC = () => {
     return (
         <>
             <p>Nav bar</p>
-            <CategoriesList />
+            <CategoriesGrid />
             <p>Footer</p>
         </>
     )

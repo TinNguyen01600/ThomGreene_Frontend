@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { CategoryType } from "../../redux/product/categorySlice";
 
 type Props = {
@@ -6,10 +7,12 @@ type Props = {
 
 const CategoryCard: React.FC<Props> = ({ category }) => {
 	return (
-		<figure className="card">
-			<img src={category.image} alt="" />
-			<figcaption>{category.name}</figcaption>
-		</figure>
+		<Link to={`/category/${category.id}`}>
+			<figure className="card">
+				<img src={category.image} alt="" />
+				<figcaption>{category.name}</figcaption>
+			</figure>
+		</Link>
 	);
 };
 
