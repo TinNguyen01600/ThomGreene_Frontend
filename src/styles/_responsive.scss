@@ -1,0 +1,28 @@
+$small-screen: 360px;
+$medium-screen: 660px;
+$large-screen: 740px;
+$xl-screen: 1000px;
+
+@mixin responsive-sm {
+	@media (min-width: $small-screen) {
+		@content;
+	}
+}
+
+@mixin responsive-md {
+	@media (min-width: $medium-screen) {
+		@content;
+	}
+}
+
+@mixin responsive-lg {
+	@media (min-width: $large-screen) {
+		@content;
+	}
+}
+
+@mixin responsive-xl {
+	@media (min-width: $xl-screen) {
+		@content;
+	}
+}

@@ -33,12 +33,43 @@
   margin: 0 3vw;
 }
 
+@media (min-width: 360px) {
+  .card img {
+    height: 25vh;
+  }
+  .card figcaption {
+    font-size: 3vh;
+  }
+}
+@media (min-width: 660px) {
+  .card img {
+    height: 80vh;
+  }
+  .card figcaption {
+    font-size: 5vh;
+  }
+}
+@media (min-width: 740px) {
+  .card img {
+    height: 35vh;
+  }
+  .card figcaption {
+    font-size: 4vh;
+  }
+}
+@media (min-width: 1000px) {
+  .card img {
+    height: 90vh;
+  }
+  .card figcaption {
+    font-size: 5vh;
+  }
+}
 .card {
   position: relative;
   text-align: center;
 }
 .card img {
-  height: 95vh;
   width: 100%;
 }
 .card figcaption {

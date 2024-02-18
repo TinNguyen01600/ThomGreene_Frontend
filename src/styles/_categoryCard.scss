@@ -1,12 +1,57 @@
+@use "./responsive";
+
+@include responsive.responsive-sm {
+	.card {
+		img {
+			height: 25vh;
+		}
+		figcaption {
+			font-size: 3vh;
+		}
+	}
+}
+
+@include responsive.responsive-md {
+    .card {
+		img {
+			height: 80vh;
+		}
+		figcaption {
+			font-size: 5vh;
+		}
+	}
+}
+
+@include responsive.responsive-lg {
+	.card {
+		img {
+			height: 35vh;
+		}
+		figcaption {
+			font-size: 4vh;
+		}
+	}
+}
+
+@include responsive.responsive-xl {
+	.card {
+		img {
+			height: 90vh;
+		}
+		figcaption {
+			font-size: 5vh;
+		}
+	}
+}
+
 .card {
 	position: relative;
 	text-align: center;
 	img {
-		height: 95vh;
 		width: 100%;
 	}
 	figcaption {
-        color: #fff;
+		color: #fff;
 		position: absolute;
 		top: 8px;
 		left: 16px;
