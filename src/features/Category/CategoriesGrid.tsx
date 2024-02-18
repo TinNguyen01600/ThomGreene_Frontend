@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchAllCategoriesAsync } from "../../redux/product/categorySlice";
+import { CategoryType, fetchAllCategoriesAsync } from "../../redux/product/categorySlice";
 import CategoryCard from "./CategoryCard";
 
 const CategoriesGrid: React.FC = () => {
@@ -25,9 +25,18 @@ const CategoriesGrid: React.FC = () => {
 		}
 	}
 
+    /********************************************************* */
+    const allProductsCategory: CategoryType = {
+        id: 0,
+        name: 'Fall 2024 Collection',
+        image: 'https://media4.giphy.com/media/tfezbVD2V13a0/200.webp?cid=ecf05e478rjmx6t45h99zn33mi5ja0i2oyk0ojdmt2h8uuf0&ep=v1_gifs_search&rid=200.webp&ct=g'
+    }
+
 	return (
 		<section className="container">
-			<article className="all-products">All products</article>
+			<article className="all-products">
+                <CategoryCard category={allProductsCategory} />
+            </article>
 			{categoriesGrid.map((category) => category)}
 		</section>
 	);

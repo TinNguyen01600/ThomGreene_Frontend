@@ -6,6 +6,7 @@ import UserProfile from "./features/User/UserProfile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import CategoryProducts from "./features/Category/CategoryProducts";
+import AllProducts from "./features/Product/AllProduct";
 
 export default function App() {
 	const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ export default function App() {
             <Routes>
                 <Route path="/" element={<Home />}/>
                 <Route path="/profile" element={<UserProfile />} />
+                <Route path="/allproducts" element={<AllProducts />} />
                 <Route path="/category/:categoryId" element={<CategoryProducts />} />
             </Routes>
 		</Router>
