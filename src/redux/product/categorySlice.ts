@@ -15,7 +15,7 @@ interface CategoryState {
 	selectedCategory: CategoryType;
 	selectedCategoryProducts: ProductType[];
 	loading: boolean;
-	error?: string;
+	error: string | null;
 }
 
 const initialState: CategoryState = {
@@ -23,13 +23,14 @@ const initialState: CategoryState = {
 	selectedCategory: Object.create(null),
 	selectedCategoryProducts: [],
 	loading: false,
+	error: null,
 };
 
 /*************************************************************** */
 
 export const fetchAllCategoriesAsync = createAsyncThunk(
 	"fetchAllCategoriesAsync",
-	async () => {
+	async (_, { rejectWithValue }) => {
 		try {
 			const res = await axios(
 				`https://api.escuelajs.co/api/v1/categories`
@@ -37,8 +38,7 @@ export const fetchAllCategoriesAsync = createAsyncThunk(
 			const data = res.data;
 			return data;
 		} catch (e) {
-			const error = e as Error;
-			return error;
+			return rejectWithValue(e);
 		}
 	}
 );
@@ -60,19 +60,15 @@ const categorySlice = createSlice({
 	extraReducers(builder) {
 		// fetch all categories
 		builder.addCase(fetchAllCategoriesAsync.fulfilled, (state, action) => {
-			if (!(action.payload instanceof Error)) {
-				state.allCategories = action.payload;
-				state.loading = false;
-			}
+			state.allCategories = action.payload;
+			state.loading = false;
 		});
 		builder.addCase(fetchAllCategoriesAsync.pending, (state) => {
 			state.loading = true;
 		});
 		builder.addCase(fetchAllCategoriesAsync.rejected, (state, action) => {
-			if (action.payload instanceof Error) {
-				state.loading = false;
-				state.error = action.payload.message;
-			}
+			state.loading = false;
+			state.error = action.error.message ?? "error";
 		});
 	},
 });

@@ -1,59 +1,48 @@
 import reducer, {
-	ProductType,
-	fetchAllProductsAsync,
-} from "../redux/product/productSlice";
+	CategoryType,
+	fetchAllCategoriesAsync,
+} from "../redux/product/categorySlice";
 
-describe("product reducer", () => {
-	// mock data
-	const mockProducts: ProductType[] = [
-		{
-			id: 1,
-			title: "product1",
-			price: 1,
-			description: "product1",
-			images: ["img1", "img2"],
-			category: {
-				id: 1,
-				name: "category 1",
-				image: "img1",
-			},
-		},
-		{
-			id: 2,
-			title: "product2",
-			price: 2,
-			description: "product2",
-			images: ["img1", "img2"],
-			category: {
-				id: 2,
-				name: "category 2",
-				image: "img2",
-			},
-		},
-	];
+describe("category reducer", () => {
 	// initial state
 	const initialState = {
-		allProducts: [],
+		allCategories: [],
+		selectedCategory: Object.create(null),
+		selectedCategoryProducts: [],
 		loading: false,
 		error: null,
 	};
+	const mockCategories: CategoryType[] = [
+		{
+			id: 1,
+			name: "category 1",
+			image: "img1",
+		},
+		{
+			id: 2,
+			name: "category 2",
+			image: "img2",
+		},
+	];
 	/*********************************************************************** */
 
 	// test initial state
 	test("should return initial state", () => {
-		const expected = initialState;
 		const received = reducer(undefined, { type: "" });
+		const expected = initialState;
 		expect(received).toEqual(expected);
 	});
 
 	// test fulfilled
-	test("should return a list of products", () => {
+	test("should return a list of categories", () => {
 		const received = reducer(
 			initialState,
-			fetchAllProductsAsync.fulfilled(mockProducts, "fulfilled")
+			fetchAllCategoriesAsync.fulfilled(mockCategories, "fulfilled")
 		);
 		const expected = {
-			allProducts: mockProducts,
+			allCategories: mockCategories,
+			selectedCategory: Object.create(null),
+			selectedCategoryProducts: [],
 			loading: false,
 			error: null,
 		};
@@ -64,10 +53,12 @@ describe("product reducer", () => {
 	test("should have loading truthy when fetch is pending", () => {
 		const received = reducer(
 			initialState,
-			fetchAllProductsAsync.pending("pending")
+			fetchAllCategoriesAsync.pending("pending")
 		);
 		const expected = {
-			allProducts: [],
+			allCategories: [],
+			selectedCategory: Object.create(null),
+			selectedCategoryProducts: [],
 			loading: true,
 			error: null,
 		};
@@ -79,10 +70,12 @@ describe("product reducer", () => {
 		const error = new Error("error");
 		const received = reducer(
 			initialState,
-			fetchAllProductsAsync.rejected(error, "error")
+			fetchAllCategoriesAsync.rejected(error, "error")
 		);
 		const expected = {
-			allProducts: [],
+			allCategories: [],
+			selectedCategory: Object.create(null),
+			selectedCategoryProducts: [],
 			loading: false,
 			error: error.message,
 		};
