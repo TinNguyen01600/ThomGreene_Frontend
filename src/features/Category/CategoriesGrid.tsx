@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { CategoryType, fetchAllCategoriesAsync } from "../../redux/product/categorySlice";
 import CategoryCard from "./CategoryCard";
+import image from '../../img/categories_grid_prop.jpg'
 
 const CategoriesGrid: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -18,7 +19,7 @@ const CategoriesGrid: React.FC = () => {
 		// get the first 5 categories, in case endpoint API polluted
 		for (let i = 0; i < 5; i++) {
 			categoriesGrid.push(
-				<article className={`cate${i}`}>
+				<article className={`cate${i}`} key={i}>
 					<CategoryCard category={categories[i]} />
 				</article>
 			);
@@ -29,7 +30,7 @@ const CategoriesGrid: React.FC = () => {
     const allProductsCategory: CategoryType = {
         id: 0,
         name: 'Fall 2024 Collection',
-        image: 'https://media4.giphy.com/media/tfezbVD2V13a0/200.webp?cid=ecf05e478rjmx6t45h99zn33mi5ja0i2oyk0ojdmt2h8uuf0&ep=v1_gifs_search&rid=200.webp&ct=g'
+        image: image
     }
 
 	return (

@@ -15,12 +15,13 @@ export type ProductType = {
 interface ProductState {
 	allProducts: ProductType[];
 	loading: boolean;
-	error?: string;
+	error: string | null;
 }
 
 const initialState: ProductState = {
 	allProducts: [],
 	loading: false,
+    error: null,
 };
 
 const url = "https://api.escuelajs.co/api/v1/products";

@@ -16,13 +16,18 @@ export default function App() {
 	}, [dispatch]);
 
 	return (
-		<Router>
-            <Routes>
-                <Route path="/" element={<Home />}/>
-                <Route path="/profile" element={<UserProfile />} />
-                <Route path="/allproducts" element={<AllProducts />} />
-                <Route path="/category/:categoryId" element={<CategoryProducts />} />
-            </Routes>
-		</Router>
+		<div className="App" data-testid='app'>
+			<Router>
+				<Routes>
+					<Route path="/" element={<Home />} />
+					<Route path="/profile" element={<UserProfile />} />
+					<Route path="/allproducts" element={<AllProducts />} />
+					<Route
+						path="/category/:categoryId"
+						element={<CategoryProducts />}
+					/>
+				</Routes>
+			</Router>
+		</div>
 	);
 }
