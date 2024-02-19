@@ -34,7 +34,7 @@ const CategoriesGrid: React.FC = () => {
     }
 
 	return (
-		<section className="container">
+		<section className="categories-container">
 			<article className="all-products">
                 <CategoryCard category={allProductsCategory} />
             </article>

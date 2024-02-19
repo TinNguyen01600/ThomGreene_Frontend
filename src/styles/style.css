@@ -23,7 +23,7 @@
   grid-area: cate4;
 }
 
-.container {
+.categories-container {
   display: grid;
   grid-template-rows: auto;
   row-gap: 2vw;
@@ -80,11 +80,17 @@
 }
 
 .all-products-container {
-  display: grid;
-  grid-template-columns: 50% 50%;
+  margin: 0 3vw;
 }
-.all-products-container img {
-  height: 30vh;
+.all-products-container .normal-layout-products {
+  display: grid;
+  grid-template-columns: repeat(4, 21vw);
+  row-gap: 2vw;
+  justify-content: space-between;
+}
+.all-products-container .normal-layout-products * {
+  width: 100%;
+  height: 55vh;
 }
 
 * {

@@ -1,8 +1,14 @@
 .all-products-container {
-    display: grid;
-    grid-template-columns: 50% 50%;
+	.normal-layout-products {
+		display: grid;
+		grid-template-columns: repeat(4, 21vw);
+		row-gap: 2vw;
+        justify-content: space-between;   
 
-    img {
-        height: 30vh;
-    }
+		* {
+			width: 100%;
+            height: 55vh;
+		}
+	}
+	margin: 0 3vw;
 }
