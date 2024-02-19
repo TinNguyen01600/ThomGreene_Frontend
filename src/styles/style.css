@@ -79,6 +79,14 @@
   left: 16px;
 }
 
+.all-products-container {
+  display: grid;
+  grid-template-columns: 50% 50%;
+}
+.all-products-container img {
+  height: 30vh;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
