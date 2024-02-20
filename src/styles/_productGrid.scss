@@ -1,14 +1,35 @@
+$row-gap: 5vh;
+$col-gap: 3vw;
+
 .all-products-container {
+	display: flex;
+	flex-direction: column;
+	gap: 3vh;
+	.special-layout-products {
+		@for $i from 0 through 9 {
+			.product#{$i} {
+				grid-area: product#{$i};
+			}
+		}
+		display: grid;
+		grid-template-rows: auto;
+		row-gap: $row-gap;
+		column-gap: $col-gap;
+		grid-template-areas:
+			"product0 product1 product4 product4"
+			"product2 product3 product4 product4"
+			"product5 product5 product6 product7"
+			"product5 product5 product8 product9";
+	}
+
+	/**************************************************************************/
+
 	.normal-layout-products {
 		display: grid;
 		grid-template-columns: repeat(4, 21vw);
-		row-gap: 2vw;
-        justify-content: space-between;   
-
-		* {
-			width: 100%;
-            height: 55vh;
-		}
+		row-gap: $row-gap;
+		column-gap: $col-gap;
+		justify-content: space-between;
 	}
 	margin: 0 3vw;
 }

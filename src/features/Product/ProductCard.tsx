@@ -1,16 +1,21 @@
-import { ProductType } from "../../redux/product/productSlice"
+import { ProductType } from "../../redux/product/productSlice";
 
 type Props = {
-    product: ProductType
-}
+	product: ProductType;
+};
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-    return (
-        <figure>
-            <img src={product.images[0]} alt="" />
-            <figcaption>{product.title}</figcaption>
-        </figure>
-    )
-}
+	return (
+		<article className="product-card">
+			<div className="product-card-inner">
+				<img src={product.images[0]} alt="" />
+			</div>
+			<div>
+				<p>{product.title}</p>
+				<p>{product.price * 100} €</p>
+			</div>
+		</article>
+	);
+};
 
-export default ProductCard
+export default ProductCard;

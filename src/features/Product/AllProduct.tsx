@@ -15,14 +15,14 @@ const AllProducts: React.FC = () => {
 	if (allProducts.length > 0) {
 		for (let i = 0; i < 10; i++) {
 			specialLayout.push(
-				<article key={i}>
+				<article className={`product${i}`} key={i}>
 					<ProductCard product={allProducts[i]} />
 				</article>
 			);
 		}
 		for (let i = 10; i < allProducts.length; i++) {
 			normalLayout.push(
-				<article key={i}>
+				<article className={`product${i}`} key={i}>
 					<ProductCard product={allProducts[i]} />
 				</article>
 			);
