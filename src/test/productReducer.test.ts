@@ -3,34 +3,35 @@ import reducer, {
 	fetchAllProductsAsync,
 } from "../redux/product/productSlice";
 
+// mock data
+export const mockProducts: ProductType[] = [
+    {
+        id: 1,
+        title: "product1",
+        price: 1,
+        description: "product1",
+        images: ["img1", "img2"],
+        category: {
+            id: 1,
+            name: "category 1",
+            image: "img1",
+        },
+    },
+    {
+        id: 2,
+        title: "product2",
+        price: 2,
+        description: "product2",
+        images: ["img1", "img2"],
+        category: {
+            id: 2,
+            name: "category 2",
+            image: "img2",
+        },
+    },
+];
+
 describe("product reducer", () => {
-	// mock data
-	const mockProducts: ProductType[] = [
-		{
-			id: 1,
-			title: "product1",
-			price: 1,
-			description: "product1",
-			images: ["img1", "img2"],
-			category: {
-				id: 1,
-				name: "category 1",
-				image: "img1",
-			},
-		},
-		{
-			id: 2,
-			title: "product2",
-			price: 2,
-			description: "product2",
-			images: ["img1", "img2"],
-			category: {
-				id: 2,
-				name: "category 2",
-				image: "img2",
-			},
-		},
-	];
 	// initial state
 	const initialState = {
 		allProducts: [],

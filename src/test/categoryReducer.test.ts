@@ -1,7 +1,10 @@
 import reducer, {
 	CategoryType,
 	fetchAllCategoriesAsync,
+	setSelectedCategory,
+	setSelectedCategoryProducts,
 } from "../redux/product/categorySlice";
+import { mockProducts } from "./productReducer.test";
 
 describe("category reducer", () => {
 	// initial state
@@ -24,6 +27,11 @@ describe("category reducer", () => {
 			image: "img2",
 		},
 	];
+	const mockSelectedCategory: CategoryType = {
+		id: 1,
+		name: "category 1",
+		image: "img1",
+	};
 	/*********************************************************************** */
 
 	// test initial state
@@ -79,6 +87,46 @@ describe("category reducer", () => {
 			loading: false,
 			error: error.message,
 		};
+		expect(received).toEqual(expected);
+	});
+
+	/*********************************************************************** */
+	// test selected category
+	test("should return the selected category", () => {
+		const expected = {
+			allCategories: mockCategories,
+			selectedCategory: mockSelectedCategory,
+			selectedCategoryProducts: [],
+			loading: false,
+			error: null,
+		};
+		const received = reducer(
+			reducer(initialState, setSelectedCategory(mockSelectedCategory)), // get selectedCategory
+			fetchAllCategoriesAsync.fulfilled(mockCategories, "fulfilled") // get allCategories
+		);
+		expect(received).toEqual(expected);
+	});
+
+	/*********************************************************************** */
+    // test selected-category products
+	test("should return a list of selected-category products", () => {
+		const expected = {
+			allCategories: mockCategories,
+			selectedCategory: mockSelectedCategory,
+			selectedCategoryProducts: mockProducts,
+			loading: false,
+			error: null,
+		};
+		const received = reducer(
+			reducer(
+				reducer(
+					initialState,
+					setSelectedCategoryProducts(mockProducts)   // get selectedCategory products
+				),
+				setSelectedCategory(mockSelectedCategory)       // get selectedCategory
+			),
+			fetchAllCategoriesAsync.fulfilled(mockCategories, "fulfilled")      // get allCategories
+		);
 		expect(received).toEqual(expected);
 	});
 });
