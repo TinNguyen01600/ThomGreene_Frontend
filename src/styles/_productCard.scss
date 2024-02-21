@@ -1,7 +1,39 @@
 article .product-card {
-    border: 2px solid black;
-    img {
-        width: 100%;
-        height: 100%;
-    }
+    display: flex;
+    flex-direction: column;
+	height: 50vh;
+	img {
+		width: 100%;
+	}
+}
+
+/*************************************************/
+
+// Flip card styles
+.product-card {
+    perspective: 1000px;
+}
+.product-card-inner {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	transition: transform 0.8s;
+	transform-style: preserve-3d;
+}
+
+.product-card:hover .product-card-inner {
+	transform: rotateY(180deg);
+}
+
+.product-card-front,
+.product-card-back {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.product-card-back {
+	transform: rotateY(180deg);
 }

@@ -9,7 +9,7 @@ type Props = {
 const CategoryCard: React.FC<Props> = ({ category }) => {
 	const card = (
 		<motion.figure
-			className="card"
+			className="category-card"
 			initial={{
 				filter: "grayscale(100%)",
 			}}

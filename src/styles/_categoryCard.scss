@@ -1,7 +1,7 @@
 @use "./responsive";
 
 @include responsive.responsive-sm {
-	.card {
+	.category-card {
 		img {
 			height: 25vh;
 		}
@@ -12,7 +12,7 @@
 }
 
 @include responsive.responsive-md {
-    .card {
+    .category-card {
 		img {
 			height: 80vh;
 		}
@@ -23,7 +23,7 @@
 }
 
 @include responsive.responsive-lg {
-	.card {
+	.category-card {
 		img {
 			height: 35vh;
 		}
@@ -34,7 +34,7 @@
 }
 
 @include responsive.responsive-xl {
-	.card {
+	.category-card {
 		img {
 			height: 90vh;
 		}
@@ -44,7 +44,7 @@
 	}
 }
 
-.card {
+.category-card {
 	position: relative;
 	text-align: center;
 	img {
