@@ -1,16 +1,7 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../../app/store";
-import { CategoryType } from "./categorySlice";
-
-export type ProductType = {
-	id: number;
-	title: string;
-	price: number;
-	description: string;
-	images: string[];
-	category: CategoryType;
-};
+import { ProductType } from "../../app/types";
 
 interface ProductState {
 	allProducts: ProductType[];
@@ -30,7 +21,7 @@ export const fetchAllProductsAsync = createAsyncThunk(
 	"fetchAllProductsAsync",
 	async (_, { rejectWithValue }) => {
 		try {
-			const res = await axios(url);
+			const res = await axios.get<ProductType[]>(url);
 			const data = res.data;
 			return data;
 		} catch (e) {
@@ -63,4 +54,6 @@ export const {} = productSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products.allProducts;
 
-export default productSlice.reducer;
+const productReducer = productSlice.reducer
+
+export default productReducer;

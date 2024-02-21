@@ -1,4 +1,4 @@
-import { ProductType } from "../../redux/product/productSlice";
+import { ProductType } from "../../app/types";
 
 type Props = {
 	product: ProductType;

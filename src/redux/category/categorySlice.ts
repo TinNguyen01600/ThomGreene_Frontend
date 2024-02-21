@@ -2,13 +2,8 @@ import axios from "axios";
 import { PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProductType } from "./productSlice";
-
-export type CategoryType = {
-	id: number;
-	name: string;
-	image: string;
-};
+import { ProductType } from "../../app/types";
+import { CategoryType } from "../../app/types";
 
 interface CategoryState {
 	allCategories: CategoryType[];
@@ -32,7 +27,7 @@ export const fetchAllCategoriesAsync = createAsyncThunk(
 	"fetchAllCategoriesAsync",
 	async (_, { rejectWithValue }) => {
 		try {
-			const res = await axios(
+			const res = await axios.get<CategoryType[]>(
 				`https://api.escuelajs.co/api/v1/categories`
 			);
 			const data = res.data;
@@ -78,7 +73,7 @@ const categorySlice = createSlice({
 export const fetchSelectedCategory =
 	(categoryId: string | undefined) => async (dispatch: any) => {
 		const id = Number(categoryId);
-		const res = await axios(
+		const res = await axios.get<CategoryType>(
 			`https://api.escuelajs.co/api/v1/categories/${id}`
 		);
 		dispatch(setSelectedCategory(res.data));
@@ -87,7 +82,7 @@ export const fetchSelectedCategory =
 export const fetchSelectedCategoryProducts =
 	(categoryId: string | undefined) => async (dispatch: any) => {
 		const id = Number(categoryId);
-		const res = await axios(
+		const res = await axios.get<ProductType[]>(
 			`https://api.escuelajs.co/api/v1/categories/${id}/products`
 		);
 		dispatch(setSelectedCategoryProducts(res.data));
@@ -101,4 +96,6 @@ export const { setSelectedCategory, setSelectedCategoryProducts } =
 export const selectCategories = (state: RootState) =>
 	state.products.allProducts;
 
-export default categorySlice.reducer;
+const categoryReducer = categorySlice.reducer
+
+export default categoryReducer;

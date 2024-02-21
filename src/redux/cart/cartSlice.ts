@@ -1,13 +1,10 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
-import { ProductType } from "../product/productSlice";
-
-export type ArticleType = ProductType & {
-	amount: number;
-};
+import { ProductType } from "../../app/types";
+import { CartItemType } from "../../app/types";
 
 interface CartState {
-	cart: ArticleType[];
+	cart: CartItemType[];
 }
 
 const initialState: CartState = {
@@ -20,18 +17,18 @@ const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		saveCart: (state, action: PayloadAction<any>) => {
-            state.cart = action.payload
+		saveCartFromStorage: (state, action: PayloadAction<any>) => {
+			state.cart = action.payload;
 		},
-		addArticle: (state, action: PayloadAction<ProductType>) => {
-			const newArticle = action.payload;
-			const exist = state.cart.find(
-				(article) => article.id === newArticle.id
+		addCartItem: (state, action: PayloadAction<ProductType>) => {
+			const newCartItem = action.payload;
+			const exist = state.cart.findIndex(
+				(cartItem) => cartItem.id === newCartItem.id
 			);
-			if (!exist) {
-				state.cart.push({ ...newArticle, amount: 1 });
+			if (exist < 0) {
+				state.cart.push({ ...newCartItem, quantity: 1 });
 			} else {
-				exist.amount += 1;
+				state.cart[exist].quantity += 1;
 			}
 			localStorage.setItem("cart", JSON.stringify(state.cart));
 		},
@@ -44,12 +41,14 @@ export const getCartFromStorage = (dispatch: any) => {
 	let cart = localStorage.getItem("cart");
 	if (cart) {
 		cart = JSON.parse(cart);
-		dispatch(saveCart(cart))
+		dispatch(saveCartFromStorage(cart));
 	}
 };
 
-export const { saveCart, addArticle } = cartSlice.actions;
+export const { saveCartFromStorage, addCartItem } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.cart;
 
-export default cartSlice.reducer;
+const cartReducer = cartSlice.reducer;
+
+export default cartReducer;

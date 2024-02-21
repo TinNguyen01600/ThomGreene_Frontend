@@ -1,18 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { RootState } from "../../app/store";
 import axios from "axios";
-
-export type UserRegister = {
-	name: string;
-	email: string;
-	password: string;
-	avatar: string;
-};
-
-export type UserType = UserRegister & {
-	role: "customer" | "admin";
-	id: number;
-};
+import { UserType } from "../../app/types";
 
 interface UserState {
 	user: UserType | null;
@@ -23,7 +12,7 @@ interface UserState {
 export const getUserFromToken = async (dispatch: any) => {
 	const token1 = localStorage.getItem("token");
 	if (token1) {
-		const user = await axios(
+		const user = await axios.get<UserType>(
 			"https://api.escuelajs.co/api/v1/auth/profile",
 			{
 				headers: {
@@ -55,4 +44,6 @@ export const { saveUserInfo } = userSlice.actions;
 
 export const selectUsers = (state: RootState) => state.users.user;
 
-export default userSlice.reducer;
+const userReducer = userSlice.reducer
+
+export default userReducer;

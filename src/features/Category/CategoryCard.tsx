@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CategoryType } from "../../redux/product/categorySlice";
+import { CategoryType } from "../../app/types";
 import { motion } from "framer-motion";
 
 type Props = {

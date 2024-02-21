@@ -1,4 +1,5 @@
-import reducer, { UserType, saveUserInfo } from "../redux/user/userSlice";
+import userReducer, { saveUserInfo } from "../redux/user/userSlice";
+import { UserType } from "../app/types";
 
 describe("user reducer", () => {
 	// initial state
@@ -19,7 +20,7 @@ describe("user reducer", () => {
 
 	// test initial state
 	test("should return initial state", () => {
-		const received = reducer(undefined, { type: "" });
+		const received = userReducer(undefined, { type: "" });
 		const expected = initialState;
 		expect(received).toEqual(expected);
 	});
@@ -29,7 +30,7 @@ describe("user reducer", () => {
 		const expected = {
 			user: mockUser,
 		};
-		const received = reducer(initialState, saveUserInfo(mockUser));
+		const received = userReducer(initialState, saveUserInfo(mockUser));
 		expect(received).toEqual(expected);
 	});
 });
