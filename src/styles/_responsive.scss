@@ -2,6 +2,7 @@ $small-screen: 360px;
 $medium-screen: 660px;
 $large-screen: 740px;
 $xl-screen: 1000px;
+$xxl-screen: 1200px;
 
 @mixin responsive-sm {
 	@media (min-width: $small-screen) {
@@ -23,6 +24,12 @@ $xl-screen: 1000px;
 
 @mixin responsive-xl {
 	@media (min-width: $xl-screen) {
+		@content;
+	}
+}
+
+@mixin responsive-xxl {
+	@media (min-width: $xxl-screen) {
 		@content;
 	}
 }

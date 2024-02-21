@@ -1,9 +1,86 @@
+@use "./responsive";
+
 article .product-card {
-    display: flex;
-    flex-direction: column;
-	height: 50vh;
 	img {
 		width: 100%;
+	}
+	figcaption {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		button {
+			cursor: pointer;
+		}
+		.product-detail {
+			background-color: #fff;
+			color: #424242;
+		}
+		.product-add {
+			background-color: #424242;
+			color: #fff;
+		}
+	}
+}
+
+/*************************************************/
+
+@include responsive.responsive-sm {
+	article .product-card {
+		height: 10vh;
+		figcaption {
+			gap: 0.4vh;
+			p, button {
+				font-size: 1.2vh;
+			}
+		}
+	}
+}
+
+@include responsive.responsive-md {
+	article .product-card {
+		height: 45vh;
+		figcaption {
+			gap: 2vh;
+            p, button {
+				font-size: 3.5vh;
+			}
+		}
+	}
+}
+
+@include responsive.responsive-lg {
+	article .product-card {
+		height: 15vh;
+		figcaption {
+			gap: 0.5vh;
+            p, button {
+				font-size: 1.7vh;
+			}
+		}
+	}
+}
+
+@include responsive.responsive-xl {
+	article .product-card {
+		height: 32vh;
+		figcaption {
+			gap: 1vh;
+            p, button {
+				font-size: 3vh;
+			}
+		}
+	}
+}
+
+@include responsive.responsive-xxl {
+	article .product-card {
+		height: 49vh;
+		figcaption {
+			gap: 2vh;
+            p, button {
+				font-size: 4vh;
+			}
+		}
 	}
 }
 
@@ -11,7 +88,7 @@ article .product-card {
 
 // Flip card styles
 .product-card {
-    perspective: 1000px;
+	perspective: 1000px;
 }
 .product-card-inner {
 	position: relative;

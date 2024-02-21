@@ -1,13 +1,13 @@
-$row-gap: 5vh;
-$col-gap: 3vw;
+$row-gap: 4vh;
+$col-gap: 2vw;
 
 .all-products-container {
 	display: flex;
 	flex-direction: column;
 	gap: $row-gap;
 
-    /**************************************************************************/
-    
+	/**************************************************************************/
+
 	.special-layout-products {
 		@for $i from 0 through 9 {
 			.product#{$i} {

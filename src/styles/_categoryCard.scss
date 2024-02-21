@@ -36,6 +36,17 @@
 @include responsive.responsive-xl {
 	.category-card {
 		img {
+			height: 65vh;
+		}
+		figcaption {
+			font-size: 5vh;
+		}
+	}
+}
+
+@include responsive.responsive-xxl {
+	.category-card {
+		img {
 			height: 90vh;
 		}
 		figcaption {
