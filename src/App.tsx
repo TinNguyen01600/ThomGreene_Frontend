@@ -10,15 +10,15 @@ import AllProducts from "./features/Product/AllProduct";
 import { fetchAllProductsAsync } from "./redux/product/productSlice";
 
 export default function App() {
-	const dispatch = useAppDispatch();
-	const allproducts = useAppSelector((state) => state.products.allProducts);
-	useEffect(() => {
-		dispatch(fetchAllProductsAsync());
-	}, [dispatch]);
+	// const dispatch = useAppDispatch();
+	// const allproducts = useAppSelector((state) => state.products.allProducts);
+	// useEffect(() => {
+	// 	dispatch(fetchAllProductsAsync());
+	// }, [dispatch]);
 
 	return (
 		<div className="App" data-testid="app">
-			{/* <Router>
+			<Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/profile" element={<UserProfile />} />
@@ -28,9 +28,9 @@ export default function App() {
 						element={<CategoryProducts />}
 					/>
 				</Routes>
-			</Router> */}
+			</Router>
 
-			{allproducts.map((prod) => (
+			{/* {allproducts.map((prod) => (
 				<div key={prod.id}>
 					{prod.title}
 					<button
@@ -41,7 +41,7 @@ export default function App() {
 						add to cart
 					</button>
 				</div>
-			))}
+			))} */}
 		</div>
 	);
 }

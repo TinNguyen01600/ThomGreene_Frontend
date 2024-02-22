@@ -38,20 +38,42 @@ export const fetchAllCategoriesAsync = createAsyncThunk(
 	}
 );
 
+export const fetchSelectedCategoryAsync = createAsyncThunk(
+	"fetchSelectedCategoryAsync",
+	async (categoryId: string | undefined, { rejectWithValue }) => {
+		try {
+			const id = Number(categoryId);
+			const res = await axios.get<CategoryType>(
+				`https://api.escuelajs.co/api/v1/categories/${id}`
+			);
+			return res.data;
+		} catch (e) {
+			return rejectWithValue(e);
+		}
+	}
+);
+
+export const fetchSelectedCategoryProductsAsync = createAsyncThunk(
+	"fetchSelectedCategoryProductsAsync",
+	async (categoryId: string | undefined, { rejectWithValue }) => {
+		try {
+			const id = Number(categoryId);
+			const res = await axios.get<ProductType[]>(
+				`https://api.escuelajs.co/api/v1/categories/${id}/products`
+			);
+			return res.data;
+		} catch (e) {
+			return rejectWithValue(e);
+		}
+	}
+);
+
+/*************************************************************** */
+
 const categorySlice = createSlice({
 	name: "categories",
 	initialState,
-	reducers: {
-		setSelectedCategory: (state, action: PayloadAction<CategoryType>) => {
-			state.selectedCategory = action.payload;
-		},
-		setSelectedCategoryProducts: (
-			state,
-			action: PayloadAction<ProductType[]>
-		) => {
-			state.selectedCategoryProducts = action.payload;
-		},
-	},
+	reducers: {},
 	extraReducers(builder) {
 		// fetch all categories
 		builder.addCase(fetchAllCategoriesAsync.fulfilled, (state, action) => {
@@ -65,37 +87,65 @@ const categorySlice = createSlice({
 			state.loading = false;
 			state.error = action.error.message ?? "error";
 		});
+
+		// fetch single category
+		builder.addCase(
+			fetchSelectedCategoryAsync.fulfilled,
+			(state, action) => {
+				state.selectedCategory = action.payload;
+				state.loading = false;
+			}
+		);
+		builder.addCase(fetchSelectedCategoryAsync.pending, (state) => {
+			state.loading = true;
+		});
+		builder.addCase(
+			fetchSelectedCategoryAsync.rejected,
+			(state, action) => {
+				state.loading = false;
+				state.error = action.error.message ?? "error";
+			}
+		);
+
+		// fetch single category products
+		builder.addCase(
+			fetchSelectedCategoryProductsAsync.fulfilled,
+			(state, action) => {
+				state.selectedCategoryProducts = action.payload;
+				state.loading = false;
+			}
+		);
+		builder.addCase(fetchSelectedCategoryProductsAsync.pending, (state) => {
+			state.loading = true;
+		});
+		builder.addCase(
+			fetchSelectedCategoryProductsAsync.rejected,
+			(state, action) => {
+				state.loading = false;
+				state.error = action.error.message ?? "error";
+			}
+		);
 	},
 });
 
 /*************************************************************** */
 
-export const fetchSelectedCategory =
-	(categoryId: string | undefined) => async (dispatch: any) => {
-		const id = Number(categoryId);
-		const res = await axios.get<CategoryType>(
-			`https://api.escuelajs.co/api/v1/categories/${id}`
-		);
-		dispatch(setSelectedCategory(res.data));
-	};
-
-export const fetchSelectedCategoryProducts =
-	(categoryId: string | undefined) => async (dispatch: any) => {
-		const id = Number(categoryId);
-		const res = await axios.get<ProductType[]>(
-			`https://api.escuelajs.co/api/v1/categories/${id}/products`
-		);
-		dispatch(setSelectedCategoryProducts(res.data));
-	};
+// export const fetchSelectedCategoryProducts =
+// 	(categoryId: string | undefined) => async (dispatch: any) => {
+// 		const id = Number(categoryId);
+// 		const res = await axios.get<ProductType[]>(
+// 			`https://api.escuelajs.co/api/v1/categories/${id}/products`
+// 		);
+// 		dispatch(setSelectedCategoryProducts(res.data));
+// 	};
 
 /*************************************************************** */
 
-export const { setSelectedCategory, setSelectedCategoryProducts } =
-	categorySlice.actions;
+export const {} = categorySlice.actions;
 
 export const selectCategories = (state: RootState) =>
 	state.products.allProducts;
 
-const categoryReducer = categorySlice.reducer
+const categoryReducer = categorySlice.reducer;
 
 export default categoryReducer;

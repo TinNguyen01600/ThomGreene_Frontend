@@ -1,7 +1,7 @@
 import categoryReducer, {
 	fetchAllCategoriesAsync,
-	setSelectedCategory,
-	setSelectedCategoryProducts,
+	fetchSelectedCategoryAsync,
+	fetchSelectedCategoryProductsAsync,
 } from "../redux/category/categorySlice";
 import { mockProducts } from "./productReducer.test";
 import { CategoryType } from "../app/types";
@@ -90,43 +90,54 @@ describe("category reducer", () => {
 		expect(received).toEqual(expected);
 	});
 
-	/*********************************************************************** */
-	// test selected category
-	test("should return the selected category", () => {
+	/************************************************************************* */
+
+	// test fetch single category
+	test("should return 1 single selected category", () => {
+		const received = categoryReducer(
+			initialState,
+			fetchSelectedCategoryAsync.fulfilled(
+				mockSelectedCategory,
+				"1",
+				"fulfilled"
+			)
+		);
 		const expected = {
-			allCategories: mockCategories,
+			allCategories: [],
 			selectedCategory: mockSelectedCategory,
 			selectedCategoryProducts: [],
 			loading: false,
 			error: null,
 		};
-		const received = categoryReducer(
-			categoryReducer(initialState, setSelectedCategory(mockSelectedCategory)), // get selectedCategory
-			fetchAllCategoriesAsync.fulfilled(mockCategories, "fulfilled") // get allCategories
-		);
 		expect(received).toEqual(expected);
 	});
 
-	/*********************************************************************** */
-	// test selected-category products
-	test("should return a list of selected-category products", () => {
+	/************************************************************************* */
+
+	// test fetch single category products
+	test("should return 1 single selected category", () => {
+		const received = categoryReducer(
+			categoryReducer(
+				initialState,
+				fetchSelectedCategoryAsync.fulfilled(
+					mockSelectedCategory,
+					"1",
+					"fulfilled"
+				)
+			),
+			fetchSelectedCategoryProductsAsync.fulfilled(
+				mockProducts,
+				"1",
+				"fulfilled"
+			)
+		);
 		const expected = {
-			allCategories: mockCategories,
+			allCategories: [],
 			selectedCategory: mockSelectedCategory,
 			selectedCategoryProducts: mockProducts,
 			loading: false,
 			error: null,
 		};
-		const received = categoryReducer(
-			categoryReducer(
-				categoryReducer(
-					initialState,
-					setSelectedCategoryProducts(mockProducts) // get selectedCategory products
-				),
-				setSelectedCategory(mockSelectedCategory) // get selectedCategory
-			),
-			fetchAllCategoriesAsync.fulfilled(mockCategories, "fulfilled") // get allCategories
-		);
 		expect(received).toEqual(expected);
 	});
 });

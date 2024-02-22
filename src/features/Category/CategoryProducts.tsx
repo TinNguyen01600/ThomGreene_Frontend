@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchSelectedCategory, fetchSelectedCategoryProducts } from "../../redux/category/categorySlice";
+import { fetchSelectedCategoryAsync, fetchSelectedCategoryProductsAsync } from "../../redux/category/categorySlice";
 
 const CategoryProducts: React.FC = () => {
 	const { categoryId } = useParams();
@@ -13,8 +13,8 @@ const CategoryProducts: React.FC = () => {
 
 	useEffect(() => {
 		setLoading(true);
-		dispatch(fetchSelectedCategory(categoryId));
-        dispatch(fetchSelectedCategoryProducts(categoryId))
+		dispatch(fetchSelectedCategoryAsync(categoryId));
+        dispatch(fetchSelectedCategoryProductsAsync(categoryId))
 		setLoading(false);
 	}, [dispatch]);
 	return (
