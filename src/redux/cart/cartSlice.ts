@@ -17,9 +17,6 @@ const cartSlice = createSlice({
 	name: "cart",
 	initialState,
 	reducers: {
-		saveCartFromStorage: (state, action: PayloadAction<any>) => {
-			state.cart = action.payload;
-		},
 		addCartItem: (state, action: PayloadAction<ProductType>) => {
 			const newCartItem = action.payload;
 			const exist = state.cart.findIndex(
@@ -30,22 +27,13 @@ const cartSlice = createSlice({
 			} else {
 				state.cart[exist].quantity += 1;
 			}
-			localStorage.setItem("cart", JSON.stringify(state.cart));
 		},
 	},
 });
 
 /****************************************************** */
 
-export const getCartFromStorage = (dispatch: any) => {
-	let cart = localStorage.getItem("cart");
-	if (cart) {
-		cart = JSON.parse(cart);
-		dispatch(saveCartFromStorage(cart));
-	}
-};
-
-export const { saveCartFromStorage, addCartItem } = cartSlice.actions;
+export const { addCartItem } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.cart;
 

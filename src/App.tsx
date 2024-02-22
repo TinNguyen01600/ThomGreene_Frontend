@@ -1,23 +1,24 @@
 import { useEffect } from "react";
-import { useAppDispatch } from "./app/hooks";
+import { useAppDispatch, useAppSelector } from "./app/hooks";
 import { getUserFromToken } from "./redux/user/userSlice";
-import { getCartFromStorage } from "./redux/cart/cartSlice";
+import { addCartItem } from "./redux/cart/cartSlice";
 import UserProfile from "./features/User/UserProfile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import CategoryProducts from "./features/Category/CategoryProducts";
 import AllProducts from "./features/Product/AllProduct";
+import { fetchAllProductsAsync } from "./redux/product/productSlice";
 
 export default function App() {
 	const dispatch = useAppDispatch();
+	const allproducts = useAppSelector((state) => state.products.allProducts);
 	useEffect(() => {
-		getCartFromStorage(dispatch);
-		getUserFromToken(dispatch);
+		dispatch(fetchAllProductsAsync());
 	}, [dispatch]);
 
 	return (
-		<div className="App" data-testid='app'>
-			<Router>
+		<div className="App" data-testid="app">
+			{/* <Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/profile" element={<UserProfile />} />
@@ -27,7 +28,20 @@ export default function App() {
 						element={<CategoryProducts />}
 					/>
 				</Routes>
-			</Router>
+			</Router> */}
+
+			{allproducts.map((prod) => (
+				<div key={prod.id}>
+					{prod.title}
+					<button
+						onClick={() => {
+							dispatch(addCartItem(prod));
+						}}
+					>
+						add to cart
+					</button>
+				</div>
+			))}
 		</div>
 	);
 }
