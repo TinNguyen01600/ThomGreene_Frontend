@@ -28,6 +28,14 @@ store.subscribe(() => {
 	localStorage.setItem("cart", JSON.stringify(cartState));
 });
 
+export const createNewStore = () => {
+    return configureStore({
+        reducer: {
+            products: productSlice
+        },
+    })
+}
+
 export type RootState = ReturnType<typeof store.getState>;
 
 export type AppDispatch = typeof store.dispatch;

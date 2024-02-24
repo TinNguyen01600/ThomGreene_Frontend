@@ -1,5 +1,9 @@
-import productReducer, { fetchAllProductsAsync } from "../redux/product/productSlice";
+import productReducer, {
+	fetchAllProductsAsync,
+} from "../redux/product/productSlice";
 import { ProductType } from "../app/types";
+import { createNewStore } from "../app/store";
+import { productServer } from "./share/productServer";
 
 // mock data
 export const mockProducts: ProductType[] = [
@@ -28,6 +32,21 @@ export const mockProducts: ProductType[] = [
 		},
 	},
 ];
+
+let store = createNewStore()
+
+beforeAll(() => {
+	productServer.listen();
+});
+
+afterAll(() => {
+	productServer.close();
+});
+
+beforeEach(() => {
+    store = createNewStore()
+})
+/*********************************************************************** */
 
 describe("product reducer", () => {
 	// initial state
@@ -86,5 +105,14 @@ describe("product reducer", () => {
 			error: error.message,
 		};
 		expect(received).toEqual(expected);
+	});
+
+	/*********************************************************************** */
+
+	// test fetching asyncthunk with store dispatch
+	test("should fetch all products from api", async () => {
+		await store.dispatch(fetchAllProductsAsync());
+		expect(store.getState().products.allProducts.length).toBe(2);
+		expect(store.getState().products.error).toBeNull();
 	});
 });
