@@ -28,12 +28,22 @@ const cartSlice = createSlice({
 				state.cart[exist].quantity += 1;
 			}
 		},
+        removeCartItem: (state, action: PayloadAction<CartItemType>) => {
+            const remove = action.payload
+            const exist = state.cart.findIndex(
+				(cartItem) => cartItem.id === remove.id
+			);
+            state.cart[exist].quantity -= 1;
+            if (state.cart[exist].quantity === 0) {
+                state.cart.splice(exist, 1)
+            }
+        }
 	},
 });
 
 /****************************************************** */
 
-export const { addCartItem } = cartSlice.actions;
+export const { addCartItem, removeCartItem } = cartSlice.actions;
 
 export const selectCart = (state: RootState) => state.cart.cart;
 

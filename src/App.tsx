@@ -8,17 +8,20 @@ import Home from "./components/Home";
 import CategoryProducts from "./features/Category/CategoryProducts";
 import AllProducts from "./features/Product/AllProduct";
 import { fetchAllProductsAsync } from "./redux/product/productSlice";
+import CartPage from "./features/Cart/CartPage";
+import { ProductType } from "./app/types";
 
 export default function App() {
-	// const dispatch = useAppDispatch();
-	// const allproducts = useAppSelector((state) => state.products.allProducts);
-	// useEffect(() => {
-	// 	dispatch(fetchAllProductsAsync());
-	// }, [dispatch]);
+	const dispatch = useAppDispatch();
+	const allproducts = useAppSelector((state) => state.products.allProducts);
+	useEffect(() => {
+		dispatch(fetchAllProductsAsync());
+	}, [dispatch]);
 
+	
 	return (
 		<div className="App" data-testid="app">
-			<Router>
+			{/* <Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/profile" element={<UserProfile />} />
@@ -27,10 +30,11 @@ export default function App() {
 						path="/category/:categoryId"
 						element={<CategoryProducts />}
 					/>
+                    <Route path="/cart" element={<CartPage />} />
 				</Routes>
-			</Router>
+			</Router> */}
 
-			{/* {allproducts.map((prod) => (
+			{allproducts.map((prod) => (
 				<div key={prod.id}>
 					{prod.title}
 					<button
@@ -41,7 +45,9 @@ export default function App() {
 						add to cart
 					</button>
 				</div>
-			))} */}
+			))}
+			
+            <CartPage />
 		</div>
 	);
 }
