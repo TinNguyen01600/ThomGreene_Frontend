@@ -10,18 +10,12 @@ import AllProducts from "./features/Product/AllProduct";
 import { fetchAllProductsAsync } from "./redux/product/productSlice";
 import CartPage from "./features/Cart/CartPage";
 import { ProductType } from "./app/types";
+import CreateProduct from "./features/Product/CreateProduct";
 
 export default function App() {
-	const dispatch = useAppDispatch();
-	const allproducts = useAppSelector((state) => state.products.allProducts);
-	useEffect(() => {
-		dispatch(fetchAllProductsAsync());
-	}, [dispatch]);
-
-	
 	return (
 		<div className="App" data-testid="app">
-			{/* <Router>
+			<Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/profile" element={<UserProfile />} />
@@ -31,23 +25,9 @@ export default function App() {
 						element={<CategoryProducts />}
 					/>
                     <Route path="/cart" element={<CartPage />} />
+                    <Route path='create-product' element={<CreateProduct />} />
 				</Routes>
-			</Router> */}
-
-			{allproducts.map((prod) => (
-				<div key={prod.id}>
-					{prod.title}
-					<button
-						onClick={() => {
-							dispatch(addCartItem(prod));
-						}}
-					>
-						add to cart
-					</button>
-				</div>
-			))}
-			
-            <CartPage />
+			</Router>
 		</div>
 	);
 }

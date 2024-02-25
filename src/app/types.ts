@@ -17,6 +17,10 @@ export type ProductType = {
 	category: CategoryType;
 };
 
+export type ProductCreateType = Omit<ProductType, 'id' | 'category'> & {
+    categoryId: number
+}
+
 export type UserRegister = {
 	name: string;
 	email: string;
