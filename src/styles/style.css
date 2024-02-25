@@ -247,6 +247,42 @@ article .product-card figcaption .product-add {
   transform: rotateY(180deg);
 }
 
+.home-page {
+  display: flex;
+  flex-direction: column;
+}
+.home-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+}
+.home-page .main {
+  margin-top: 12vh;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 12vh;
+  padding: 0 3vw;
+}
+nav .navbar-left {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  font-size: 8px;
+}
+nav .navbar-right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1vw;
+  font-size: 8px;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
