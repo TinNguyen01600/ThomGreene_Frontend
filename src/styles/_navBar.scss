@@ -1,15 +1,17 @@
-@use './mixins';
+@use "./mixins";
+
+$fontSize: 1.5vh;
 
 @mixin navbarStyles {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 1vw;
-    font-size: 1.5vh;
-    span {
-        text-transform: uppercase;
-        color: black;
-    }
+	font-size: $fontSize;
+	span {
+		text-transform: uppercase;
+		color: black;
+	}
 }
 
 nav {
@@ -21,10 +23,25 @@ nav {
 
 	.navbar-left {
 		@include navbarStyles;
-        @include mixins.underline('span')
+		@include mixins.underline("span");
+		.navbar-category {
+			height: 14vh;
+			padding-top: 6vh;
+			cursor: auto;
+		}
 	}
 	.navbar-right {
 		@include navbarStyles;
-		@include mixins.underline('span')
+		@include mixins.underline("span");
+	}
+}
+
+.drop-down {
+	border-top: 1px solid #c0c0c0;
+	table {
+		width: 100%;
+		font-size: $fontSize;
+		text-transform: uppercase;
+        padding: 3vh 0 5px 0;
 	}
 }

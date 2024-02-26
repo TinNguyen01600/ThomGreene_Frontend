@@ -295,6 +295,11 @@ nav .navbar-left span::after {
 nav .navbar-left span:hover::after {
   width: 100%;
 }
+nav .navbar-left .navbar-category {
+  height: 14vh;
+  padding-top: 6vh;
+  cursor: auto;
+}
 nav .navbar-right {
   display: flex;
   align-items: center;
@@ -321,6 +326,16 @@ nav .navbar-right span::after {
 }
 nav .navbar-right span:hover::after {
   width: 100%;
+}
+
+.drop-down {
+  border-top: 1px solid #c0c0c0;
+}
+.drop-down table {
+  width: 100%;
+  font-size: 1.5vh;
+  text-transform: uppercase;
+  padding: 3vh 0 5px 0;
 }
 
 * {
