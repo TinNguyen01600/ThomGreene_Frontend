@@ -1,22 +1,30 @@
-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    height: 12vh;
-    padding: 0 3vw;
-    
-	.navbar-left {
-		display: flex;
-		align-items: center;
-        justify-content: center;
-		gap: 1vw;
-		font-size: 8px;
-	}
-    .navbar-right {
-        display: flex;
-		align-items: center;
-        justify-content: center;
-		gap: 1vw;
-		font-size: 8px;
+@use './mixins';
+
+@mixin navbarStyles {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1vw;
+    font-size: 1.5vh;
+    span {
+        text-transform: uppercase;
+        color: black;
     }
+}
+
+nav {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: 12vh;
+	padding: 0 3vw;
+
+	.navbar-left {
+		@include navbarStyles;
+        @include mixins.underline('span')
+	}
+	.navbar-right {
+		@include navbarStyles;
+		@include mixins.underline('span')
+	}
 }

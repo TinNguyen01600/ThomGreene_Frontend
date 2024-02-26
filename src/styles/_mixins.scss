@@ -1,0 +1,20 @@
+@mixin underline($tag) {
+    #{$tag} {
+        text-decoration: none;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+    #{$tag}::after {
+        content: "";
+        width: 0;
+        height: 0.5px;
+        background-color: #121212d6;
+        display: block;
+        transition: width 0.5s;
+    }
+
+    #{$tag}:hover::after {
+        width: 100%;
+    }
+}

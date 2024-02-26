@@ -273,14 +273,54 @@ nav .navbar-left {
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  font-size: 8px;
+  font-size: 1.5vh;
+}
+nav .navbar-left span {
+  text-transform: uppercase;
+  color: black;
+}
+nav .navbar-left span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+nav .navbar-left span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+nav .navbar-left span:hover::after {
+  width: 100%;
 }
 nav .navbar-right {
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  font-size: 8px;
+  font-size: 1.5vh;
+}
+nav .navbar-right span {
+  text-transform: uppercase;
+  color: black;
+}
+nav .navbar-right span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+nav .navbar-right span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+nav .navbar-right span:hover::after {
+  width: 100%;
 }
 
 * {
