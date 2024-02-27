@@ -1,13 +1,11 @@
 @use "./mixins";
-
-$fontSize: 2vh;
+@use "./responsive";
 
 @mixin navbarStyles {
 	display: flex;
 	align-items: center;
 	justify-content: center;
 	gap: 1vw;
-	font-size: $fontSize;
 	span {
 		text-transform: uppercase;
 		color: black;
@@ -37,9 +35,9 @@ nav {
 	.navbar-center {
 		h3,
 		h5 {
-            font-weight: 300;
+			font-weight: 300;
 			text-align: center;
-            padding-top: 0;
+			padding-top: 0;
 		}
 		img {
 			height: 2vh;
@@ -53,7 +51,6 @@ nav {
 	border-top: 1px solid #c0c0c0;
 	table {
 		width: 100%;
-		font-size: $fontSize;
 		text-transform: uppercase;
 		padding: 3vh 0 5px 0;
 		th {
@@ -66,4 +63,43 @@ nav {
 			border-right: 1px solid #ddd;
 		}
 	}
+}
+
+/************************************************************************/
+
+@mixin res($size) {
+	nav {
+		.navbar-left,
+		.navbar-right {
+			font-size: $size;
+		}
+		.navbar-center {
+			font-size: $size + 0.5vh;
+		}
+	}
+	.drop-down {
+		table {
+			font-size: $size;
+		}
+	}
+}
+
+@include responsive.responsive-sm {
+	@include res(1vh);
+}
+
+@include responsive.responsive-md {
+	@include res(2vh);
+}
+
+@include responsive.responsive-lg {
+	@include res(1.3vh);
+}
+
+@include responsive.responsive-xl {
+	@include res(2vh);
+}
+
+@include responsive.responsive-xxl {
+	@include res(2.2vh);
 }

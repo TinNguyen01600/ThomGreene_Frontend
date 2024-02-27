@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import { fetchAllProductsAsync } from "../../redux/product/productSlice";
 import ProductCard from "./ProductCard";
+import NavBar from "../../components/NavBar";
+import Footer from "../../components/Footer";
 
 const AllProducts: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -30,14 +32,22 @@ const AllProducts: React.FC = () => {
 	}
 
 	return (
-		<section className="all-products-container">
-			<section className="special-layout-products">
-				{specialLayout.map((product) => product)}
-			</section>
-			<section className="normal-layout-products">
-				{normalLayout.map((product) => product)}
-			</section>
-		</section>
+		<div className="all-products-page">
+			<div className="navbar">
+				<NavBar />
+			</div>
+			<div className="main">
+				<section className="all-products-container">
+					<section className="special-layout-products">
+						{specialLayout.map((product) => product)}
+					</section>
+					<section className="normal-layout-products">
+						{normalLayout.map((product) => product)}
+					</section>
+				</section>
+			</div>
+			<Footer />
+		</div>
 	);
 };
 
