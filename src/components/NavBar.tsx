@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { fetchAllCategoriesAsync } from "../redux/category/categorySlice";
+import logo from '../img/logo.png'
 
 const NavBar: React.FC = () => {
 	const [dropDown, setDropDown] = useState("");
@@ -161,7 +162,11 @@ const NavBar: React.FC = () => {
 				<section className="navbar-left">
 					{categoriesShort.map((category) => category)}
 				</section>
-				<section className="navbar-center">E-commerce</section>
+				<section className="navbar-center">
+                    <h3>Thom Greene</h3>
+                    <h5>Finland</h5>
+                    <img src={logo} alt="" />
+                </section>
 				<section className="navbar-right">
 					<span>Stores</span>
 					<span>About</span>

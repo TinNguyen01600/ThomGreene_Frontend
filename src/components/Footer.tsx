@@ -5,7 +5,6 @@ const Footer: React.FC = () => {
                 <section className="Thom Greene">
                     <h6>Thom Greene</h6>
                     <p>Stores</p>
-                    <p>Exclusive Services</p>
                     <p>Careers</p>
                     <p>About</p>
                     <p>Journal</p>
@@ -14,7 +13,6 @@ const Footer: React.FC = () => {
                     <h6>Support</h6>
                     <p>Track orders</p>
                     <p>Make a return</p>
-                    <p>Shipping services</p>
                     <p>FAQ</p>
                     <p>Product Care</p>
                     <p>Contact us</p>
@@ -22,7 +20,6 @@ const Footer: React.FC = () => {
                 <section className="Legal">
                     <h6>Legal</h6>
                     <p>Terms & Conditions</p>
-                    <p>Data Protection</p>
                     <p>Return policy</p>
                     <p>Shipping policy</p>
                 </section>
@@ -35,7 +32,7 @@ const Footer: React.FC = () => {
                 </section>
             </footer>
             <div className="copyright">
-            &copy;
+            &copy;2024 Tin Nguyen, INC
             </div>
 		</>
 	);

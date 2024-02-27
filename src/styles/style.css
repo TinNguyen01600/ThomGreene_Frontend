@@ -273,7 +273,7 @@ nav .navbar-left {
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  font-size: 1.5vh;
+  font-size: 2vh;
 }
 nav .navbar-left span {
   text-transform: uppercase;
@@ -305,7 +305,7 @@ nav .navbar-right {
   align-items: center;
   justify-content: center;
   gap: 1vw;
-  font-size: 1.5vh;
+  font-size: 2vh;
 }
 nav .navbar-right span {
   text-transform: uppercase;
@@ -327,13 +327,24 @@ nav .navbar-right span::after {
 nav .navbar-right span:hover::after {
   width: 100%;
 }
+nav .navbar-center h3,
+nav .navbar-center h5 {
+  font-weight: 300;
+  text-align: center;
+  padding-top: 0;
+}
+nav .navbar-center img {
+  height: 2vh;
+  display: block;
+  margin: 0.7vh auto 0 auto;
+}
 
 .drop-down {
   border-top: 1px solid #c0c0c0;
 }
 .drop-down table {
   width: 100%;
-  font-size: 1.5vh;
+  font-size: 2vh;
   text-transform: uppercase;
   padding: 3vh 0 5px 0;
 }
@@ -356,21 +367,99 @@ footer {
 footer section {
   display: flex;
   flex-direction: column;
-  gap: 1.5vh;
-  width: 13.5vw;
 }
 footer section h6 {
   border-bottom: 1px solid black;
   font-weight: 500;
 }
 footer section p {
-  font-size: 1.6vh;
+  font-size: 2vh;
 }
 footer section p:hover {
   font-weight: 700;
   cursor: pointer;
 }
 
+.copyright {
+  text-align: center;
+  font-size: 2vh;
+  margin-top: 15vh;
+  margin-bottom: 3vh;
+}
+
+/******************************************************************************/
+@media (min-width: 360px) {
+  footer {
+    background-color: lightcoral;
+  }
+  footer section {
+    gap: 1.1vh;
+    width: 18vw;
+  }
+  footer section h6 {
+    font-size: 1.5vh;
+  }
+  footer section p {
+    font-size: 1.35vh;
+  }
+}
+@media (min-width: 660px) {
+  footer {
+    background-color: aqua;
+  }
+  footer section {
+    gap: 1.5vh;
+    width: 14vw;
+  }
+  footer section h6 {
+    font-size: 2.8vh;
+  }
+  footer section p {
+    font-size: 2.5vh;
+  }
+}
+@media (min-width: 740px) {
+  footer section {
+    gap: 1.4vh;
+    width: 19vw;
+  }
+  footer section h6 {
+    font-size: 2.4vh;
+  }
+  footer section p {
+    font-size: 2vh;
+  }
+}
+@media (min-width: 1000px) {
+  footer {
+    background-color: antiquewhite;
+  }
+  footer section {
+    gap: 2vh;
+    width: 13.5vw;
+  }
+  footer section h6 {
+    font-size: 2.3vh;
+  }
+  footer section p {
+    font-size: 2vh;
+  }
+}
+@media (min-width: 1200px) {
+  footer {
+    background-color: lightgreen;
+  }
+  footer section {
+    gap: 2vh;
+    width: 13.5vw;
+  }
+  footer section h6 {
+    font-size: 2.5vh;
+  }
+  footer section p {
+    font-size: 2.2vh;
+  }
+}
 * {
   box-sizing: border-box;
   margin: 0;

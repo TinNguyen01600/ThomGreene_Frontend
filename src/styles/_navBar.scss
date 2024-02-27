@@ -1,6 +1,6 @@
 @use "./mixins";
 
-$fontSize: 1.5vh;
+$fontSize: 2vh;
 
 @mixin navbarStyles {
 	display: flex;
@@ -34,6 +34,19 @@ nav {
 		@include navbarStyles;
 		@include mixins.underline("span");
 	}
+	.navbar-center {
+		h3,
+		h5 {
+            font-weight: 300;
+			text-align: center;
+            padding-top: 0;
+		}
+		img {
+			height: 2vh;
+			display: block;
+			margin: 0.7vh auto 0 auto;
+		}
+	}
 }
 
 .drop-down {
@@ -48,9 +61,9 @@ nav {
 		}
 		th,
 		td {
-            padding: 0.5vh 0 1.2vh 3vw;
+			padding: 0.5vh 0 1.2vh 3vw;
 			border-bottom: 1px solid #ddd;
-            border-right: 1px solid #ddd;
+			border-right: 1px solid #ddd;
 		}
 	}
 }

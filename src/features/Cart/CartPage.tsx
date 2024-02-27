@@ -1,4 +1,6 @@
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
+import Footer from "../../components/Footer";
+import NavBar from "../../components/NavBar";
 import { removeCartItem } from "../../redux/cart/cartSlice";
 
 const CartPage: React.FC = () => {
@@ -25,7 +27,13 @@ const CartPage: React.FC = () => {
 
 	return (
 		<>
-            {allCartItems.map(item => item)}
+			<NavBar />
+			{cart.length === 0 ? (
+				<div style={{textAlign: 'center', margin: '10vh'}}>THERE ARE NO ITEMS IN YOUR SHOPPING BAG.</div>
+			) : (
+				allCartItems.map((item) => item)
+			)}
+			<Footer />
 		</>
 	);
 };
