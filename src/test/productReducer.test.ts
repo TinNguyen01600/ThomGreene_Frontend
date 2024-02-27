@@ -3,6 +3,7 @@ import productReducer, {
 } from "../redux/product/productSlice";
 import { ProductType } from "../app/types";
 import { createNewStore } from "../app/store";
+// import { store } from "../app/store";
 import { productServer } from "./share/productServer";
 
 // mock data
@@ -33,7 +34,7 @@ export const mockProducts: ProductType[] = [
 	},
 ];
 
-let store = createNewStore()
+let store = createNewStore();
 
 beforeAll(() => {
 	productServer.listen();
@@ -44,7 +45,7 @@ afterAll(() => {
 });
 
 beforeEach(() => {
-    store = createNewStore()
+    store = createNewStore();
 })
 /*********************************************************************** */
 
