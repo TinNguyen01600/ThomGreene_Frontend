@@ -347,6 +347,30 @@ nav .navbar-right span:hover::after {
   border-right: 1px solid #ddd;
 }
 
+footer {
+  margin: 8vh 0;
+  display: flex;
+  justify-content: center;
+  gap: 5vw;
+}
+footer section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5vh;
+  width: 13.5vw;
+}
+footer section h6 {
+  border-bottom: 1px solid black;
+  font-weight: 500;
+}
+footer section p {
+  font-size: 1.6vh;
+}
+footer section p:hover {
+  font-weight: 700;
+  cursor: pointer;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

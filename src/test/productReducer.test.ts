@@ -36,6 +36,10 @@ export const mockProducts: ProductType[] = [
 
 let store = createNewStore();
 
+beforeEach(() => {
+    store = createNewStore();
+})
+
 beforeAll(() => {
 	productServer.listen();
 });
@@ -44,9 +48,6 @@ afterAll(() => {
 	productServer.close();
 });
 
-beforeEach(() => {
-    store = createNewStore();
-})
 /*********************************************************************** */
 
 describe("product reducer", () => {
@@ -113,6 +114,7 @@ describe("product reducer", () => {
 	// test fetching asyncthunk with store dispatch
 	test("should fetch all products from api", async () => {
 		await store.dispatch(fetchAllProductsAsync());
+        console.log(store.getState().products.allProducts)
 		expect(store.getState().products.allProducts.length).toBe(2);
 		expect(store.getState().products.error).toBeNull();
 	});

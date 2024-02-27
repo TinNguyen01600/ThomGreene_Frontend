@@ -1,4 +1,5 @@
 import CategoriesGrid from "../features/Category/CategoriesGrid";
+import Footer from "./Footer";
 import NavBar from "./NavBar";
 
 const Home: React.FC = () => {
@@ -11,7 +12,7 @@ const Home: React.FC = () => {
 				<CategoriesGrid />
 			</div>
 			<div className="footer">
-				<p>Footer</p>
+                <Footer />
 			</div>
 		</div>
 	);
