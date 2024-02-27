@@ -11,7 +11,7 @@ const CartPage: React.FC = () => {
 	cart.forEach((item) => {
 		for (let i = 0; i < item.quantity; i++) {
 			allCartItems.push(
-				<li>
+				<li key={i}>
 					<span>{item.title}</span>
 					<button
 						onClick={() => {
@@ -26,15 +26,41 @@ const CartPage: React.FC = () => {
 	});
 
 	return (
-		<>
-			<NavBar />
-			{cart.length === 0 ? (
-				<div style={{textAlign: 'center', margin: '10vh'}}>THERE ARE NO ITEMS IN YOUR SHOPPING BAG.</div>
-			) : (
-				allCartItems.map((item) => item)
-			)}
+		<div className="cart-page">
+			<div className="navbar">
+				<NavBar />
+			</div>
+			<div className="main">
+				{cart.length === 0 ? (
+					<div style={{ textAlign: "center", margin: "10vh" }}>
+						THERE ARE NO ITEMS IN YOUR SHOPPING BAG.
+					</div>
+				) : (
+					<>
+						<article className="shoppping-bag">
+							{allCartItems.map((item) => item)}
+						</article>
+						<table className="order-summary">
+							<tbody>
+								<tr>
+									<th>Order summary</th>
+								</tr>
+								<tr>
+									<td>Subtotal</td>
+								</tr>
+								<tr>
+									<td className="checkout-btn">
+                                        <span>Proceed to checkout</span>
+                                        <p>	&gt;</p>
+                                    </td>
+								</tr>
+							</tbody>
+						</table>
+					</>
+				)}
+			</div>
 			<Footer />
-		</>
+		</div>
 	);
 };
 

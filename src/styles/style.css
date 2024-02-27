@@ -340,6 +340,9 @@ nav .navbar-right span::after {
 nav .navbar-right span:hover::after {
   width: 100%;
 }
+nav .navbar-center {
+  cursor: pointer;
+}
 nav .navbar-center h3,
 nav .navbar-center h5 {
   font-weight: 300;
@@ -521,6 +524,64 @@ footer section p:hover {
     font-size: 2.2vh;
   }
 }
+.cart-page {
+  display: flex;
+  flex-direction: column;
+}
+.cart-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: #fff;
+}
+.cart-page .main {
+  margin-top: 12vh;
+  display: flex;
+  justify-content: center;
+  gap: 3vw;
+}
+.cart-page .main .shoppping-bag {
+  border: 1px solid #ddd;
+  width: 55vw;
+}
+.cart-page .main .order-summary {
+  width: 25vw;
+}
+.cart-page .main .order-summary table,
+.cart-page .main .order-summary td,
+.cart-page .main .order-summary th {
+  border: 1px solid #ddd;
+  text-align: left;
+}
+.cart-page .main .order-summary th,
+.cart-page .main .order-summary td {
+  padding: 1.5vh 2vw;
+  font-size: 2.5vh;
+}
+.cart-page .main .order-summary .checkout-btn {
+  display: flex;
+  justify-content: space-between;
+  background-color: #525252;
+  color: #fff;
+  cursor: pointer;
+}
+.cart-page .main .order-summary .checkout-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.cart-page .main .order-summary .checkout-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.cart-page .main .order-summary .checkout-btn span:hover::after {
+  width: 100%;
+}
+
 * {
   box-sizing: border-box;
   margin: 0;

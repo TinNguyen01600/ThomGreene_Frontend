@@ -1,4 +1,4 @@
-@mixin underline($tag) {
+@mixin underline($tag, $color) {
     #{$tag} {
         text-decoration: none;
         display: inline-block;
@@ -9,7 +9,7 @@
         content: "";
         width: 0;
         height: 0.5px;
-        background-color: #121212d6;
+        background-color: $color;
         display: block;
         transition: width 0.5s;
     }

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { fetchAllCategoriesAsync } from "../redux/category/categorySlice";
@@ -11,6 +11,7 @@ const NavBar: React.FC = () => {
 		(state) => state.categories.allCategories
 	);
 	const dispatch = useAppDispatch();
+    const navigate = useNavigate()
 	useEffect(() => {
 		dispatch(fetchAllCategoriesAsync());
 	});
@@ -162,7 +163,7 @@ const NavBar: React.FC = () => {
 				<section className="navbar-left">
 					{categoriesShort.map((category) => category)}
 				</section>
-				<section className="navbar-center">
+				<section className="navbar-center" onClick={() => navigate('/')}>
                     <h3>Thom Greene</h3>
                     <h5>Finland</h5>
                     <img src={logo} alt="" />
@@ -171,7 +172,7 @@ const NavBar: React.FC = () => {
 					<span>Stores</span>
 					<span>About</span>
 					<span>Log in</span>
-					<Link to={"./cart"}>
+					<Link to={"/cart"}>
 						<span>Cart</span>
 					</Link>
 				</section>

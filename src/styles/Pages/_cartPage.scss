@@ -1,0 +1,46 @@
+@use "../mixins";
+
+.cart-page {
+	display: flex;
+	flex-direction: column;
+	.navbar {
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		background-color: #fff;
+	}
+	.main {
+		margin-top: 12vh;
+		display: flex;
+		justify-content: center;
+		gap: 3vw;
+		.shoppping-bag {
+			border: 1px solid #ddd;
+            width: 55vw;
+		}
+		.order-summary {
+			width: 25vw;
+			table,
+			td,
+			th {
+				border: 1px solid #ddd;
+				text-align: left;
+			}
+
+			th,
+			td {
+				padding: 1.5vh 2vw;
+                font-size: 2.5vh;
+			}
+
+            .checkout-btn {
+                display: flex;
+                justify-content: space-between;
+                background-color: #525252;
+                color: #fff;
+                cursor: pointer;
+                @include mixins.underline("span", #fff);
+            }
+		}
+	}
+}

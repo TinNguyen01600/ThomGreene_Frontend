@@ -21,7 +21,7 @@ nav {
 
 	.navbar-left {
 		@include navbarStyles;
-		@include mixins.underline("span");
+		@include mixins.underline("span", #121212d6);
 		.navbar-category {
 			height: 14vh;
 			padding-top: 6vh;
@@ -30,9 +30,10 @@ nav {
 	}
 	.navbar-right {
 		@include navbarStyles;
-		@include mixins.underline("span");
+		@include mixins.underline("span", #121212d6);
 	}
 	.navbar-center {
+        cursor: pointer;
 		h3,
 		h5 {
 			font-weight: 300;
