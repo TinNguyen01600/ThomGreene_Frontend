@@ -337,6 +337,15 @@ nav .navbar-right span:hover::after {
   text-transform: uppercase;
   padding: 3vh 0 5px 0;
 }
+.drop-down table th {
+  text-align: left;
+}
+.drop-down table th,
+.drop-down table td {
+  padding: 0.5vh 0 1.2vh 3vw;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
 
 * {
   box-sizing: border-box;
