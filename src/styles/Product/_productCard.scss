@@ -62,7 +62,7 @@ article .product-card {
 
 @include responsive.responsive-xl {
 	article .product-card {
-		height: 32vh;
+		height: 49vh;
 		figcaption {
 			gap: 1vh;
             p, button {
@@ -74,7 +74,7 @@ article .product-card {
 
 @include responsive.responsive-xxl {
 	article .product-card {
-		height: 49vh;
+		height: 47vh;
 		figcaption {
 			gap: 2vh;
             p, button {

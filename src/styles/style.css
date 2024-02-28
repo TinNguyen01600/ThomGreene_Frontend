@@ -59,7 +59,7 @@
 }
 @media (min-width: 1000px) {
   .category-card img {
-    height: 65vh;
+    height: 90vh;
   }
   .category-card figcaption {
     font-size: 5vh;
@@ -213,7 +213,7 @@ article .product-card figcaption .product-add {
 }
 @media (min-width: 1000px) {
   article .product-card {
-    height: 32vh;
+    height: 49vh;
   }
   article .product-card figcaption {
     gap: 1vh;
@@ -224,7 +224,7 @@ article .product-card figcaption .product-add {
 }
 @media (min-width: 1200px) {
   article .product-card {
-    height: 49vh;
+    height: 47vh;
   }
   article .product-card figcaption {
     gap: 2vh;
@@ -340,6 +340,11 @@ nav .navbar-right span::after {
 nav .navbar-right span:hover::after {
   width: 100%;
 }
+nav .navbar-right .navbar-cart {
+  height: 14vh;
+  padding-top: 5.5vh;
+  cursor: auto;
+}
 nav .navbar-center {
   cursor: pointer;
 }
@@ -355,10 +360,8 @@ nav .navbar-center img {
   margin: 0.7vh auto 0 auto;
 }
 
-.drop-down {
-  border-top: 1px solid #c0c0c0;
-}
 .drop-down table {
+  border-top: 1px solid #c0c0c0;
   width: 100%;
   text-transform: uppercase;
   padding: 3vh 0 5px 0;
