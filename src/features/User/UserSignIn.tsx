@@ -9,7 +9,7 @@ type UserSignInType = {
 };
 
 const UserSignInForm: React.FC = () => {
-    const dispatch = useAppDispatch()
+	const dispatch = useAppDispatch();
 	const {
 		register,
 		setValue,
@@ -22,35 +22,32 @@ const UserSignInForm: React.FC = () => {
 			.then((response) => {
 				if (response.status === 201) {
 					localStorage.setItem("token", response.data.access_token);
-                    console.log("Sign In success, Token saved");
-                    getUserFromToken(dispatch)
+					console.log("Sign In success, Token saved");
+					getUserFromToken(dispatch);
 				}
 			})
 			.catch((error) => console.log(error));
 	};
 
 	return (
-		<>
-			<h1>User Sign In</h1>
-			<main className="form">
-				<form onSubmit={handleSubmit(onSubmit)}>
-					<input
-						type="email"
-						placeholder="email"
-						{...register("email")}
-						required
-					/>
-					<input
-						type="password"
-						placeholder="password"
-						{...register("password")}
-						required
-					/>
+		<main className="form">
+			<form onSubmit={handleSubmit(onSubmit)}>
+				<input
+					type="email"
+					placeholder="email"
+					{...register("email")}
+					required
+				/>
+				<input
+					type="password"
+					placeholder="password"
+					{...register("password")}
+					required
+				/>
 
-					<input type="submit" />
-				</form>
-			</main>
-		</>
+				<input type="submit" value="Sign In" />
+			</form>
+		</main>
 	);
 };
 

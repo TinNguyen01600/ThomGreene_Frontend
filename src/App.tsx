@@ -11,6 +11,7 @@ import { fetchAllProductsAsync } from "./redux/product/productSlice";
 import CartPage from "./features/Cart/CartPage";
 import { ProductType } from "./app/types";
 import CreateProduct from "./features/Product/CreateProduct";
+import LoginPage from "./features/User/LoginPage";
 
 export default function App() {
 	return (
@@ -19,6 +20,7 @@ export default function App() {
 				<Routes>
 					<Route path="/" element={<Home />} />
 					<Route path="/profile" element={<UserProfile />} />
+                    <Route path="/login" element={<LoginPage />}/>
 					<Route path="/allproducts" element={<AllProducts />} />
 					<Route
 						path="/category/:categoryId"
