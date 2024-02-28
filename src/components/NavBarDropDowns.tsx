@@ -1,11 +1,70 @@
 import React from "react";
+import { Link } from "react-router-dom";
+
+import { useAppDispatch, useAppSelector } from "../app/hooks";
+import { removeCartItem } from "../redux/cart/cartSlice";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;
 };
 
 export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
-	return <></>;
+	const cart = useAppSelector((state) => state.cart.cart);
+	const dispatch = useAppDispatch();
+
+	const allCartItems: any[] = [];
+	cart.forEach((item) => {
+		for (let i = 0; i < item.quantity; i++) {
+			allCartItems.push(item);
+		}
+	});
+	return (
+		<table
+			className="navbar-cart-dropdown"
+			onMouseOver={() => setDropDown("Cart")}
+			onMouseLeave={() => setDropDown("")}
+		>
+			<tbody>
+				{cart.length === 0 ? (
+					<tr>
+						<td
+							style={{
+								padding: "0 2vw 3vh 2vw",
+							}}
+						>
+							There are no items in your shopping cart.
+						</td>
+					</tr>
+				) : (
+					allCartItems.map((item) => (
+						<tr>
+							<td>Hello</td>
+						</tr>
+					))
+				)}
+				<tr>
+					<Link
+						to={"/cart"}
+						style={{
+							color: "black",
+							textDecoration: "none",
+						}}
+					>
+						<td
+							style={{
+								display: "flex",
+								justifyContent: "space-between",
+								padding: "1.5vh 2vw 1.5vh 2vw",
+							}}
+						>
+							<span>VIEW CART</span>
+							<p> &gt;</p>
+						</td>
+					</Link>
+				</tr>
+			</tbody>
+		</table>
+	);
 };
 
 export const DropDownClothes: React.FC<Props> = ({ setDropDown }) => {

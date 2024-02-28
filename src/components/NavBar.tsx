@@ -4,7 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { fetchAllCategoriesAsync } from "../redux/category/categorySlice";
 import logo from "../img/logo.png";
-import { DropDownCart, DropDownClothes, DropDownElectronics, DropDownFurniture, DropDownShoes } from "./NavBarDropDowns";
+import {
+	DropDownCart,
+	DropDownClothes,
+	DropDownElectronics,
+	DropDownFurniture,
+	DropDownShoes,
+} from "./NavBarDropDowns";
 
 const NavBar: React.FC = () => {
 	const [dropDown, setDropDown] = useState("");
@@ -69,15 +75,17 @@ const NavBar: React.FC = () => {
 				</section>
 			</nav>
 			<section className="drop-down">
-				{dropDown === "Clothes"
-					? <DropDownClothes setDropDown={setDropDown} />
-					: dropDown === "Electronics"
-					? <DropDownElectronics setDropDown={setDropDown} />
-					: dropDown === "Furniture"
-					? <DropDownFurniture setDropDown={setDropDown} />
-					: dropDown === "Shoes"
-					? <DropDownShoes setDropDown={setDropDown} />
-					: null}
+				{dropDown === "Clothes" ? (
+					<DropDownClothes setDropDown={setDropDown} />
+				) : dropDown === "Electronics" ? (
+					<DropDownElectronics setDropDown={setDropDown} />
+				) : dropDown === "Furniture" ? (
+					<DropDownFurniture setDropDown={setDropDown} />
+				) : dropDown === "Shoes" ? (
+					<DropDownShoes setDropDown={setDropDown} />
+				) : dropDown === "Cart" ? (
+					<DropDownCart setDropDown={setDropDown} />
+				) : null}
 			</section>
 		</>
 	);

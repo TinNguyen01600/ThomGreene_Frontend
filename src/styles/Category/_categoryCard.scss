@@ -1,4 +1,4 @@
-@use "./responsive";
+@use "../responsive";
 
 @include responsive.responsive-sm {
 	.category-card {

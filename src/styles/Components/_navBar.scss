@@ -1,5 +1,5 @@
-@use "./mixins";
-@use "./responsive";
+@use "../mixins";
+@use "../responsive";
 
 @mixin navbarStyles {
 	display: flex;
@@ -18,6 +18,7 @@ nav {
 	align-items: center;
 	height: 12vh;
 	padding: 0 3vw;
+	background-color: #fff;
 
 	.navbar-left {
 		@include navbarStyles;
@@ -31,14 +32,14 @@ nav {
 	.navbar-right {
 		@include navbarStyles;
 		@include mixins.underline("span", #121212d6);
-        .navbar-cart {
-            height: 14vh;
+		.navbar-cart {
+			height: 14vh;
 			padding-top: 5.5vh;
 			cursor: auto;
-        }
+		}
 	}
 	.navbar-center {
-        cursor: pointer;
+		cursor: pointer;
 		h3,
 		h5 {
 			font-weight: 300;
@@ -55,7 +56,8 @@ nav {
 
 .drop-down {
 	table {
-        border-top: 1px solid #c0c0c0;
+		background-color: #fff;
+		border-top: 1px solid #c0c0c0;
 		width: 100%;
 		text-transform: uppercase;
 		padding: 3vh 0 5px 0;
@@ -67,6 +69,17 @@ nav {
 			padding: 0.5vh 0 1.2vh 3vw;
 			border-bottom: 1px solid #ddd;
 			border-right: 1px solid #ddd;
+		}
+	}
+	.navbar-cart-dropdown {
+		text-transform: none;
+		width: 55vh;
+		margin-left: auto;
+		margin-right: 0;
+		td {
+			@include mixins.underline("span", #121212d6);
+            border-left: 1px solid #ddd;
+            padding-left: 2vw;
 		}
 	}
 }
