@@ -5,12 +5,14 @@ import { ProductType } from "../../app/types";
 
 interface ProductState {
 	allProducts: ProductType[];
+	searchedProducts: ProductType[];
 	loading: boolean;
 	error: string | null;
 }
 
 const initialState: ProductState = {
 	allProducts: [],
+	searchedProducts: [],
 	loading: false,
 	error: null,
 };
@@ -33,7 +35,19 @@ export const fetchAllProductsAsync = createAsyncThunk(
 const productSlice = createSlice({
 	name: "products",
 	initialState,
-	reducers: {},
+	reducers: {
+		searchForProduct: (state, action) => {
+			const query = action.payload.toLowerCase();
+			if (!query) state.searchedProducts = [];
+			else {
+				state.searchedProducts = state.allProducts.filter((item) =>
+					item.title
+						.split(" ")
+						.some((word) => word.toLowerCase().startsWith(query))
+				);
+			}
+		},
+	},
 	extraReducers(builder) {
 		// fetch all products
 		builder.addCase(fetchAllProductsAsync.fulfilled, (state, action) => {
@@ -50,10 +64,10 @@ const productSlice = createSlice({
 	},
 });
 
-export const {} = productSlice.actions;
+export const { searchForProduct } = productSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products.allProducts;
 
-const productReducer = productSlice.reducer
+const productReducer = productSlice.reducer;
 
 export default productReducer;

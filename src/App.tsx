@@ -6,7 +6,7 @@ import UserProfile from "./features/User/UserProfile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./components/Home";
 import CategoryProducts from "./features/Category/CategoryProducts";
-import AllProducts from "./features/Product/AllProduct";
+import AllProducts from "./features/Product/AllProducts";
 import { fetchAllProductsAsync } from "./redux/product/productSlice";
 import CartPage from "./features/Cart/CartPage";
 import { ProductType } from "./app/types";

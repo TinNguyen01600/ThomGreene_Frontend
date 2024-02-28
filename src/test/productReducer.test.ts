@@ -54,6 +54,7 @@ describe("product reducer", () => {
 	// initial state
 	const initialState = {
 		allProducts: [],
+        searchedProducts: [],
 		loading: false,
 		error: null,
 	};
@@ -74,6 +75,7 @@ describe("product reducer", () => {
 		);
 		const expected = {
 			allProducts: mockProducts,
+            searchedProducts: [],
 			loading: false,
 			error: null,
 		};
@@ -88,6 +90,7 @@ describe("product reducer", () => {
 		);
 		const expected = {
 			allProducts: [],
+            searchedProducts: [],
 			loading: true,
 			error: null,
 		};
@@ -103,6 +106,7 @@ describe("product reducer", () => {
 		);
 		const expected = {
 			allProducts: [],
+            searchedProducts: [],
 			loading: false,
 			error: error.message,
 		};

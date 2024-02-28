@@ -71,11 +71,12 @@ nav {
 			border-right: 1px solid #ddd;
 		}
 	}
-	.navbar-cart-dropdown {
+	.navbar-cart-dropdown, .navbar-search-dropdown {
 		text-transform: none;
 		width: 55vh;
 		margin-left: auto;
 		margin-right: 0;
+        background-color: #fff;
 		td {
 			@include mixins.underline("span", #121212d6);
             border-left: 1px solid #ddd;

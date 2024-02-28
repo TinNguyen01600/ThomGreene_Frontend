@@ -4,11 +4,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { fetchAllCategoriesAsync } from "../redux/category/categorySlice";
 import logo from "../img/logo.png";
+import search_icon from "../img/search_icon.svg";
 import {
 	DropDownCart,
 	DropDownClothes,
 	DropDownElectronics,
 	DropDownFurniture,
+	DropDownSearch,
 	DropDownShoes,
 } from "./NavBarDropDowns";
 
@@ -60,6 +62,13 @@ const NavBar: React.FC = () => {
 					<img src={logo} alt="" />
 				</section>
 				<section className="navbar-right">
+					<span onClick={() => setDropDown("Search")}>
+						<img
+							src={search_icon}
+							alt=""
+							style={{ height: "3vh" }}
+						/>
+					</span>
 					<span>Stores</span>
 					<span>About</span>
 					<span>Log in</span>
@@ -85,6 +94,8 @@ const NavBar: React.FC = () => {
 					<DropDownShoes setDropDown={setDropDown} />
 				) : dropDown === "Cart" ? (
 					<DropDownCart setDropDown={setDropDown} />
+				) : dropDown === "Search" ? (
+					<DropDownSearch setDropDown={setDropDown} />
 				) : null}
 			</section>
 		</>

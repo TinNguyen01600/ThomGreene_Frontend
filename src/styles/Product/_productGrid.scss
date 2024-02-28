@@ -1,20 +1,6 @@
 $row-gap: 4vh;
 $col-gap: 2vw;
 
-.all-products-page{
-    display: flex;
-    flex-direction: column;
-    .navbar {
-        position: fixed;
-        width: 100%;
-        z-index: 1;
-        background-color: #fff;
-    }
-    .main {
-        margin-top: 12vh;
-    }
-}
-
 .all-products-container {
     margin-top: 12vh;
 	display: flex;

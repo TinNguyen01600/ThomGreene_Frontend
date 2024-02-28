@@ -1,70 +1,15 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { removeCartItem } from "../redux/cart/cartSlice";
+import {
+	fetchAllProductsAsync,
+	searchForProduct,
+} from "../redux/product/productSlice";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;
-};
-
-export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
-	const cart = useAppSelector((state) => state.cart.cart);
-	const dispatch = useAppDispatch();
-
-	const allCartItems: any[] = [];
-	cart.forEach((item) => {
-		for (let i = 0; i < item.quantity; i++) {
-			allCartItems.push(item);
-		}
-	});
-	return (
-		<table
-			className="navbar-cart-dropdown"
-			onMouseOver={() => setDropDown("Cart")}
-			onMouseLeave={() => setDropDown("")}
-		>
-			<tbody>
-				{cart.length === 0 ? (
-					<tr>
-						<td
-							style={{
-								padding: "0 2vw 3vh 2vw",
-							}}
-						>
-							There are no items in your shopping cart.
-						</td>
-					</tr>
-				) : (
-					allCartItems.map((item) => (
-						<tr>
-							<td>Hello</td>
-						</tr>
-					))
-				)}
-				<tr>
-					<Link
-						to={"/cart"}
-						style={{
-							color: "black",
-							textDecoration: "none",
-						}}
-					>
-						<td
-							style={{
-								display: "flex",
-								justifyContent: "space-between",
-								padding: "1.5vh 2vw 1.5vh 2vw",
-							}}
-						>
-							<span>VIEW CART</span>
-							<p> &gt;</p>
-						</td>
-					</Link>
-				</tr>
-			</tbody>
-		</table>
-	);
 };
 
 export const DropDownClothes: React.FC<Props> = ({ setDropDown }) => {
@@ -192,5 +137,107 @@ export const DropDownShoes: React.FC<Props> = ({ setDropDown }) => {
 				</tr>
 			</tbody>
 		</table>
+	);
+};
+
+/************************************************************************************** */
+
+export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
+	const cart = useAppSelector((state) => state.cart.cart);
+	const dispatch = useAppDispatch();
+
+	const allCartItems: any[] = [];
+	cart.forEach((item) => {
+		for (let i = 0; i < item.quantity; i++) {
+			allCartItems.push(item);
+		}
+	});
+	return (
+		<table
+			className="navbar-cart-dropdown"
+			onMouseOver={() => setDropDown("Cart")}
+			onMouseLeave={() => setDropDown("")}
+		>
+			<tbody>
+				{cart.length === 0 ? (
+					<tr>
+						<td
+							style={{
+								padding: "0 2vw 3vh 2vw",
+							}}
+						>
+							There are no items in your shopping cart.
+						</td>
+					</tr>
+				) : (
+					allCartItems.map((item) => (
+						<tr>
+							<td>Hello</td>
+						</tr>
+					))
+				)}
+				<tr>
+					<Link
+						to={"/cart"}
+						style={{
+							color: "black",
+							textDecoration: "none",
+						}}
+					>
+						<td
+							style={{
+								display: "flex",
+								justifyContent: "space-between",
+								padding: "1.5vh 2vw 1.5vh 2vw",
+							}}
+						>
+							<span>VIEW CART</span>
+							<p> &gt;</p>
+						</td>
+					</Link>
+				</tr>
+			</tbody>
+		</table>
+	);
+};
+
+export const DropDownSearch: React.FC<Props> = ({ setDropDown }) => {
+	const [query, setQuery] = useState("");
+	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
+	useEffect(() => {
+		dispatch(fetchAllProductsAsync());
+	}, []);
+	const searchedProduct = useAppSelector(
+		(state) => state.products.searchedProducts
+	);
+	const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+		setQuery(e.target.value);
+		dispatch(searchForProduct(e.target.value));
+	};
+
+	return (
+		<div className="navbar-search-dropdown">
+			<section>
+				<form action="" onSubmit={() => navigate("/cart")}>
+					<input
+						type="text"
+						className="form-control"
+						placeholder="Enter Search"
+						value={query}
+						onChange={handleQueryChange}
+						autoFocus
+					/>
+				</form>
+			</section>
+			{searchedProduct.length > 0 && (
+				<section>
+					{searchedProduct.map((product) => (
+						<>{product.title}</>
+					))}
+				</section>
+			)}
+			<button onClick={() => setDropDown("")}>Close</button>
+		</div>
 	);
 };
