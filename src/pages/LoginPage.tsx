@@ -1,9 +1,9 @@
-import NavBar from "../../components/NavBar";
-import UserRegisterForm from "./UserRegister";
-import UserSignInForm from "./UserSignIn";
+import NavBar from "../components/NavBar";
+import UserRegisterForm from "../components/User/UserRegister";
+import UserSignInForm from "../components/User/UserSignIn";
 import withUserAuthentication, {
 	WrappedComponentProp,
-} from "../../hoc/withUserAuthenticate";
+} from "../hoc/withUserAuthenticate";
 import UserProfile from "./UserProfile";
 
 function LoginPage({ isUserAuthenticated }: WrappedComponentProp) {

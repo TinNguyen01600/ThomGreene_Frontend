@@ -1,9 +1,9 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchAllProductsAsync } from "../../redux/product/productSlice";
-import ProductCard from "./ProductCard";
-import NavBar from "../../components/NavBar";
-import Footer from "../../components/Footer";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { fetchAllProductsAsync } from "../redux/slices/productSlice";
+import ProductCard from "../components/Product/ProductCard";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
 
 const AllProducts: React.FC = () => {
 	const dispatch = useAppDispatch();

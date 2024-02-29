@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import { fetchAllCategoriesAsync } from "../../redux/category/categorySlice";
-import { CategoryType } from "../../app/types";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { fetchAllCategoriesAsync } from "../../redux/slices/categorySlice";
+import { CategoryType } from "../../misc/types";
 import CategoryCard from "./CategoryCard";
 import image from '../../img/categories_grid_prop.jpg'
 

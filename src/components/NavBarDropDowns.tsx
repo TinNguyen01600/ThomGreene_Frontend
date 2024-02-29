@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { removeCartItem } from "../redux/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { removeCartItem } from "../redux/slices/cartSlice";
 import {
 	fetchAllProductsAsync,
 	searchForProduct,
-} from "../redux/product/productSlice";
+} from "../redux/slices/productSlice";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;

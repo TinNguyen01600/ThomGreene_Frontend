@@ -1,9 +1,9 @@
 import axios from "axios";
 import { PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../store";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { ProductType } from "../../app/types";
-import { CategoryType } from "../../app/types";
+import { ProductType } from "../../misc/types";
+import { CategoryType } from "../../misc/types";
 
 interface CategoryState {
 	allCategories: CategoryType[];

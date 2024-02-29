@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productSlice from "../redux/product/productSlice";
-import categorySlice from "../redux/category/categorySlice";
-import userSlice from "../redux/user/userSlice";
-import cartSlice from "../redux/cart/cartSlice";
-import { CartItemType } from "./types";
+import productSlice from "./slices/productSlice";
+import categorySlice from "./slices/categorySlice";
+import userSlice from "./slices/userSlice";
+import cartSlice from "./slices/cartSlice";
+import { CartItemType } from "../misc/types";
 
 const preCartReducer: CartItemType[] = JSON.parse(
 	localStorage.getItem("cart") || "[]"

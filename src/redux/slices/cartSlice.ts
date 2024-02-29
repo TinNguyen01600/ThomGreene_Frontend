@@ -1,7 +1,7 @@
 import { PayloadAction, createSlice } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
-import { ProductType } from "../../app/types";
-import { CartItemType } from "../../app/types";
+import { RootState } from "../store";
+import { ProductType } from "../../misc/types";
+import { CartItemType } from "../../misc/types";
 
 interface CartState {
 	cart: CartItemType[];

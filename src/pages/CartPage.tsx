@@ -1,7 +1,7 @@
-import { useAppDispatch, useAppSelector } from "../../app/hooks";
-import Footer from "../../components/Footer";
-import NavBar from "../../components/NavBar";
-import { removeCartItem } from "../../redux/cart/cartSlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
+import { removeCartItem } from "../redux/slices/cartSlice";
 
 const CartPage: React.FC = () => {
 	const cart = useAppSelector((state) => state.cart.cart);

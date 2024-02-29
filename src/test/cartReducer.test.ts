@@ -1,4 +1,4 @@
-import cartReducer, { addCartItem } from "../redux/cart/cartSlice";
+import cartReducer, { addCartItem } from "../redux/slices/cartSlice";
 import { mockProducts } from "./productReducer.test";
 
 describe("cart reducer", () => {

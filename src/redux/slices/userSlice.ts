@@ -1,7 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../../app/store";
+import { RootState } from "../store";
 import axios from "axios";
-import { UserType } from "../../app/types";
+import { UserType } from "../../misc/types";
 
 interface UserState {
 	user: UserType | null;

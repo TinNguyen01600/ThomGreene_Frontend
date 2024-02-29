@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-import { useAppDispatch, useAppSelector } from "../app/hooks";
-import { fetchAllCategoriesAsync } from "../redux/category/categorySlice";
+import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { fetchAllCategoriesAsync } from "../redux/slices/categorySlice";
 import logo from "../img/logo.png";
 import search_icon from "../img/search_icon.svg";
 import {

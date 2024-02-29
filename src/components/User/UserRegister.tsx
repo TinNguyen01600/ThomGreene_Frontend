@@ -1,8 +1,8 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import { useAppDispatch } from "../../app/hooks";
-import { saveUserInfo } from "../../redux/user/userSlice";
-import { UserRegister } from "../../app/types";
+import { useAppDispatch } from "../../redux/hooks";
+import { saveUserInfo } from "../../redux/slices/userSlice";
+import { UserRegister } from "../../misc/types";
 
 const UserRegisterForm: React.FC = () => {
 	const dispatch = useAppDispatch();

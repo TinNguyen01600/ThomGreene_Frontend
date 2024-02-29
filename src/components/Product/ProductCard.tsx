@@ -1,6 +1,6 @@
-import { useAppDispatch } from "../../app/hooks";
-import { ProductType } from "../../app/types";
-import { addCartItem } from "../../redux/cart/cartSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import { ProductType } from "../../misc/types";
+import { addCartItem } from "../../redux/slices/cartSlice";
 
 type Props = {
 	product: ProductType;

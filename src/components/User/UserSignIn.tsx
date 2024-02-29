@@ -1,7 +1,7 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import { saveUserInfo, getUserFromToken } from "../../redux/user/userSlice";
-import { useAppDispatch } from "../../app/hooks";
+import { saveUserInfo, getUserFromToken } from "../../redux/slices/userSlice";
+import { useAppDispatch } from "../../redux/hooks";
 
 type UserSignInType = {
 	email: string;

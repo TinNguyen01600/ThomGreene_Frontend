@@ -1,17 +1,17 @@
 import { useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "./app/hooks";
-import { getUserFromToken } from "./redux/user/userSlice";
-import { addCartItem } from "./redux/cart/cartSlice";
-import UserProfile from "./features/User/UserProfile";
+import { useAppDispatch, useAppSelector } from "./redux/hooks";
+import { getUserFromToken } from "./redux/slices/userSlice";
+import { addCartItem } from "./redux/slices/cartSlice";
+import UserProfile from "./pages/UserProfile";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Home from "./components/Home";
-import CategoryProducts from "./features/Category/CategoryProducts";
-import AllProducts from "./features/Product/AllProducts";
-import { fetchAllProductsAsync } from "./redux/product/productSlice";
-import CartPage from "./features/Cart/CartPage";
-import { ProductType } from "./app/types";
-import CreateProduct from "./features/Product/CreateProduct";
-import LoginPage from "./features/User/LoginPage";
+import Home from "./pages/Home";
+import CategoryProducts from "./components/Category/CategoryProducts";
+import AllProducts from "./pages/AllProducts";
+import { fetchAllProductsAsync } from "./redux/slices/productSlice";
+import CartPage from "./pages/CartPage";
+import { ProductType } from "./misc/types";
+import CreateProduct from "./components/Product/CreateProduct";
+import LoginPage from "./pages/LoginPage";
 
 export default function App() {
 	return (

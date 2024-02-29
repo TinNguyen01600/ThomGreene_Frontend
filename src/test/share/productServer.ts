@@ -1,7 +1,7 @@
 import { HttpResponse, http } from "msw";
 import { setupServer } from "msw/node";
 
-import { ProductType } from "../../app/types";
+import { ProductType } from "../../misc/types";
 
 export const mockProducts: ProductType[] = [
 	{

@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import { ProductCreateType } from "../../app/types";
+import { ProductCreateType } from "../../misc/types";
 import { error } from "console";
 import { stringify } from "querystring";
 import { useEffect } from "react";

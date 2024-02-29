@@ -1,8 +1,8 @@
 import productReducer, {
 	fetchAllProductsAsync,
-} from "../redux/product/productSlice";
-import { ProductType } from "../app/types";
-import { createNewStore } from "../app/store";
+} from "../redux/slices/productSlice";
+import { ProductType } from "../misc/types";
+import { createNewStore } from "../redux/store";
 // import { store } from "../app/store";
 import { productServer } from "./share/productServer";
 

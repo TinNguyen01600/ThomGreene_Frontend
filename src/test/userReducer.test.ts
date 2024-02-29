@@ -1,5 +1,5 @@
-import userReducer, { saveUserInfo } from "../redux/user/userSlice";
-import { UserType } from "../app/types";
+import userReducer, { saveUserInfo } from "../redux/slices/userSlice";
+import { UserType } from "../misc/types";
 
 describe("user reducer", () => {
 	// initial state

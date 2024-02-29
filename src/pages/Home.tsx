@@ -1,6 +1,6 @@
-import CategoriesGrid from "../features/Category/CategoriesGrid";
-import Footer from "./Footer";
-import NavBar from "./NavBar";
+import CategoriesGrid from "../components/Category/CategoriesGrid";
+import Footer from "../components/Footer";
+import NavBar from "../components/NavBar";
 
 const Home: React.FC = () => {
 	return (

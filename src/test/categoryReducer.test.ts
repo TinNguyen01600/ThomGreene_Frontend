@@ -2,9 +2,9 @@ import categoryReducer, {
 	fetchAllCategoriesAsync,
 	fetchSelectedCategoryAsync,
 	fetchSelectedCategoryProductsAsync,
-} from "../redux/category/categorySlice";
+} from "../redux/slices/categorySlice";
 import { mockProducts } from "./productReducer.test";
-import { CategoryType } from "../app/types";
+import { CategoryType } from "../misc/types";
 
 describe("category reducer", () => {
 	// initial state
