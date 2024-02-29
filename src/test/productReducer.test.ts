@@ -3,7 +3,6 @@ import productReducer, {
 } from "../redux/slices/productSlice";
 import { ProductType } from "../misc/types";
 import { createNewStore } from "../redux/store";
-// import { store } from "../app/store";
 import { productServer } from "./share/productServer";
 
 // mock data
@@ -37,8 +36,8 @@ export const mockProducts: ProductType[] = [
 let store = createNewStore();
 
 beforeEach(() => {
-    store = createNewStore();
-})
+	store = createNewStore();
+});
 
 beforeAll(() => {
 	productServer.listen();
@@ -54,7 +53,9 @@ describe("product reducer", () => {
 	// initial state
 	const initialState = {
 		allProducts: [],
-        searchedProducts: [],
+		searchedProducts: [],
+		sortedProducts: [],
+		filteredProducts: [],
 		loading: false,
 		error: null,
 	};
@@ -75,7 +76,9 @@ describe("product reducer", () => {
 		);
 		const expected = {
 			allProducts: mockProducts,
-            searchedProducts: [],
+			searchedProducts: [],
+			sortedProducts: [],
+			filteredProducts: [],
 			loading: false,
 			error: null,
 		};
@@ -90,7 +93,9 @@ describe("product reducer", () => {
 		);
 		const expected = {
 			allProducts: [],
-            searchedProducts: [],
+			searchedProducts: [],
+			sortedProducts: [],
+			filteredProducts: [],
 			loading: true,
 			error: null,
 		};
@@ -106,7 +111,9 @@ describe("product reducer", () => {
 		);
 		const expected = {
 			allProducts: [],
-            searchedProducts: [],
+			searchedProducts: [],
+			sortedProducts: [],
+			filteredProducts: [],
 			loading: false,
 			error: error.message,
 		};
@@ -118,7 +125,7 @@ describe("product reducer", () => {
 	// test fetching asyncthunk with store dispatch
 	test("should fetch all products from api", async () => {
 		await store.dispatch(fetchAllProductsAsync());
-        console.log(store.getState().products.allProducts)
+		console.log(store.getState().products.allProducts);
 		expect(store.getState().products.allProducts.length).toBe(2);
 		expect(store.getState().products.error).toBeNull();
 	});

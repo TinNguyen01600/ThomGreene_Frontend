@@ -6,6 +6,8 @@ import { ProductType } from "../../misc/types";
 interface ProductState {
 	allProducts: ProductType[];
 	searchedProducts: ProductType[];
+	sortedProducts: ProductType[];
+	filteredProducts: ProductType[];
 	loading: boolean;
 	error: string | null;
 }
@@ -13,6 +15,8 @@ interface ProductState {
 const initialState: ProductState = {
 	allProducts: [],
 	searchedProducts: [],
+	sortedProducts: [],
+	filteredProducts: [],
 	loading: false,
 	error: null,
 };
@@ -26,6 +30,20 @@ export const fetchAllProductsAsync = createAsyncThunk(
 			const res = await axios.get<ProductType[]>(url);
 			const data = res.data;
 			return data;
+		} catch (e) {
+			return rejectWithValue(e);
+		}
+	}
+);
+
+export const fetchFilteredProductsAsync = createAsyncThunk(
+	"fetchFilteredProductsAsync",
+	async (range: number[], { rejectWithValue }) => {
+		try {
+			const res = await axios.get<ProductType[]>(
+				`https://api.escuelajs.co/api/v1/products/?price_min=${range[0]}&price_max=${range[1]}`
+			);
+			return res.data;
 		} catch (e) {
 			return rejectWithValue(e);
 		}
@@ -72,6 +90,25 @@ const productSlice = createSlice({
 			state.loading = false;
 			state.error = action.error.message ?? "error";
 		});
+
+		// fetch filtered products
+		builder.addCase(
+			fetchFilteredProductsAsync.fulfilled,
+			(state, action) => {
+				state.filteredProducts = action.payload;
+				state.loading = false;
+			}
+		);
+		builder.addCase(fetchFilteredProductsAsync.pending, (state) => {
+			state.loading = true;
+		});
+		builder.addCase(
+			fetchFilteredProductsAsync.rejected,
+			(state, action) => {
+				state.loading = false;
+				state.error = action.error.message ?? "error";
+			}
+		);
 	},
 });
 
