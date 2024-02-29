@@ -1,0 +1,20 @@
+@mixin filterSortStyles {
+    border: 1px solid black;
+	width: 10vw;
+	text-align: end;
+}
+
+.filter-and-sort {
+	border: 1px solid black;
+
+	background-color: #fff;
+	margin: 0 3vw;
+	display: flex;
+	justify-content: flex-end;
+	.filter {
+		@include filterSortStyles()
+	}
+	.sort {
+		@include filterSortStyles()
+	}
+}

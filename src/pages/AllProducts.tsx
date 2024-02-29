@@ -4,6 +4,7 @@ import { fetchAllProductsAsync } from "../redux/slices/productSlice";
 import ProductCard from "../components/Product/ProductCard";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
+import FilterAndSort from "../components/Filter_&_Sort/FilterAndSort";
 
 const AllProducts: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -36,6 +37,9 @@ const AllProducts: React.FC = () => {
 			<div className="navbar">
 				<NavBar />
 			</div>
+            <div className="filter-sort">
+                <FilterAndSort />
+            </div>
 			<div className="main">
 				<section className="all-products-container">
 					<section className="special-layout-products">

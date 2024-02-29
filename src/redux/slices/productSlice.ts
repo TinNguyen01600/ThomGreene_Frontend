@@ -47,6 +47,17 @@ const productSlice = createSlice({
 				);
 			}
 		},
+		sortProducts: (state, action) => {
+			let results = state.allProducts;
+			if (action.payload === "ascending") {
+				results = results.sort((a, b) => (a.price > b.price ? 1 : -1));
+			} else if (action.payload === "descending") {
+				results = results.sort((a, b) => (a.price < b.price ? 1 : -1));
+			} else {
+				results = results.sort((a, b) => (a.id > b.id ? 1 : -1));
+			}
+			state.allProducts = results;
+		},
 	},
 	extraReducers(builder) {
 		// fetch all products
@@ -64,7 +75,7 @@ const productSlice = createSlice({
 	},
 });
 
-export const { searchForProduct } = productSlice.actions;
+export const { searchForProduct, sortProducts } = productSlice.actions;
 
 export const selectProducts = (state: RootState) => state.products.allProducts;
 
