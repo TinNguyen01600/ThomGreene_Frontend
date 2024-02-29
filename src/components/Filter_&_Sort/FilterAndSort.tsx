@@ -39,9 +39,9 @@ const FilterAndSort: React.FC<Props> = ({ setDisplay }) => {
 			</div>
 			<div className="dropdown-filter-sort">
 				{dropDown === "Sort" ? (
-					<DropDownSort setDropDown={setDropDown} />
+					<DropDownSort setDropDown={setDropDown} setDisplay={setDisplay}/>
 				) : dropDown === "Filter" ? (
-					<DropDownFilter setDropDown={setDropDown} />
+					<DropDownFilter setDropDown={setDropDown} setDisplay={setDisplay}/>
 				) : null}
 			</div>
 		</>

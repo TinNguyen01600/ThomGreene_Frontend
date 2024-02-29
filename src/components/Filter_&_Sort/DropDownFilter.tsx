@@ -1,15 +1,17 @@
 import { useCallback, useState } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
+
 import { useAppDispatch } from "../../redux/hooks";
 import { fetchFilteredProductsAsync } from "../../redux/slices/productSlice";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;
+	setDisplay: (display: string) => void;
 };
 
-const DropDownFilter: React.FC<Props> = ({ setDropDown }) => {
-	const [range, setRange] = useState<number[]>([20, 37]);
+const DropDownFilter: React.FC<Props> = ({ setDropDown, setDisplay }) => {
+	const [range, setRange] = useState<number[]>([0, 100]);
 	const dispatch = useAppDispatch();
 
 	const handleChange = (event: Event, newRange: number | number[]) => {
@@ -19,7 +21,6 @@ const DropDownFilter: React.FC<Props> = ({ setDropDown }) => {
 	/***************************************************************************** */
 	const _ = require("lodash");
 	const fetchProductsByPriceRange = (range: number[]) => {
-		console.log(range);
 		dispatch(fetchFilteredProductsAsync(range));
 	};
 	const filterPriceRange = (range: number[]) => {
@@ -30,6 +31,10 @@ const DropDownFilter: React.FC<Props> = ({ setDropDown }) => {
 		[]
 	);
 	/***************************************************************************** */
+	const resetFilter = () => {
+        setRange([0, 100])
+		setDisplay("All");
+	};
 
 	return (
 		<div className="dropdown-filter">
@@ -42,6 +47,7 @@ const DropDownFilter: React.FC<Props> = ({ setDropDown }) => {
 				/>
 			</Box>
 			<button onClick={() => setDropDown("")}>Close</button>
+			<button onClick={resetFilter}>Reset</button>
 		</div>
 	);
 };

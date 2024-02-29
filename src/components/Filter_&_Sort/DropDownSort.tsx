@@ -1,18 +1,18 @@
-import * as React from "react";
 import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import FormControl from "@mui/material/FormControl";
-import FormLabel from "@mui/material/FormLabel";
 import { useState } from "react";
+
 import { useAppDispatch } from "../../redux/hooks";
 import { sortProducts } from "../../redux/slices/productSlice";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;
+	setDisplay: (display: string) => void;
 };
 
-const DropDownSort: React.FC<Props> = ({ setDropDown }) => {
+const DropDownSort: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 	const [value, setValue] = useState("");
 	const dispatch = useAppDispatch();
 
@@ -22,7 +22,7 @@ const DropDownSort: React.FC<Props> = ({ setDropDown }) => {
 	};
 	const resetSort = () => {
 		setValue("");
-		dispatch(sortProducts(""));
+        setDisplay("All")
 	};
 	return (
 		<div className="dropdown-sort">
