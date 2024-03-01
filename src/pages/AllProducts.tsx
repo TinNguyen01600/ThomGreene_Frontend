@@ -35,19 +35,29 @@ const AllProducts: React.FC = () => {
 	const specialLayout = [],
 		normalLayout = [];
 	if (displayProducts.length > 0) {
-		for (let i = 0; i < 10; i++) {
-			specialLayout.push(
-				<article className={`product${i}`} key={i}>
-					<ProductCard product={displayProducts[i]} />
-				</article>
-			);
-		}
-		for (let i = 10; i < displayProducts.length; i++) {
-			normalLayout.push(
-				<article className={`product${i}`} key={i}>
-					<ProductCard product={displayProducts[i]} />
-				</article>
-			);
+		if (displayProducts.length >= 10) {
+			for (let i = 0; i < 10; i++) {
+				specialLayout.push(
+					<article className={`product${i}`} key={i}>
+						<ProductCard product={displayProducts[i]} />
+					</article>
+				);
+			}
+			for (let i = 10; i < displayProducts.length; i++) {
+				normalLayout.push(
+					<article className={`product${i}`} key={i}>
+						<ProductCard product={displayProducts[i]} />
+					</article>
+				);
+			}
+		} else {
+			for (let i = 0; i < displayProducts.length; i++) {
+				normalLayout.push(
+					<article className={`product${i}`} key={i}>
+						<ProductCard product={displayProducts[i]} />
+					</article>
+				);
+			}
 		}
 	}
 

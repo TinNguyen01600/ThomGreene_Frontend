@@ -7,22 +7,6 @@ interface UserState {
 	user: UserType | null;
 }
 
-//************************************************************ */
-
-export const getUserFromToken = async (dispatch: any) => {
-	const token1 = localStorage.getItem("token");
-	if (token1) {
-		const user = await axios.get<UserType>(
-			"https://api.escuelajs.co/api/v1/auth/profile",
-			{
-				headers: {
-					Authorization: `Bearer ${token1}`,
-				},
-			}
-		);
-		dispatch(saveUserInfo(user.data));
-	}
-};
 
 //************************************************************ */
 
@@ -34,7 +18,7 @@ const userSlice = createSlice({
 	name: "users",
 	initialState,
 	reducers: {
-		saveUserInfo: (state, action: PayloadAction<UserType>) => {
+		saveUserInfo: (state, action: PayloadAction<UserType | null>) => {
 			state.user = action.payload;
 		},
 	},

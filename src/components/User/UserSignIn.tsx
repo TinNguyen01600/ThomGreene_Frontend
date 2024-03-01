@@ -1,6 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import { saveUserInfo, getUserFromToken } from "../../redux/slices/userSlice";
 import { useAppDispatch } from "../../redux/hooks";
 
 type UserSignInType = {
@@ -23,7 +22,7 @@ const UserSignInForm: React.FC = () => {
 				if (response.status === 201) {
 					localStorage.setItem("token", response.data.access_token);
 					console.log("Sign In success, Token saved");
-					getUserFromToken(dispatch);
+                    window.location.reload();
 				}
 			})
 			.catch((error) => console.log(error));

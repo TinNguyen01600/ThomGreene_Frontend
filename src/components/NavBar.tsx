@@ -13,8 +13,10 @@ import {
 	DropDownSearch,
 	DropDownShoes,
 } from "./NavBarDropDowns";
+import { WrappedComponentProp } from "../hoc/withUserAuthenticate";
+import withUserAuthentication from "../hoc/withUserAuthenticate";
 
-const NavBar: React.FC = () => {
+function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 	const [dropDown, setDropDown] = useState("");
 	const categories = useAppSelector(
 		(state) => state.categories.allCategories
@@ -71,7 +73,13 @@ const NavBar: React.FC = () => {
 					</span>
 					<span>Stores</span>
 					<span>About</span>
-					<span>Log in</span>
+					<Link to={"/login"}>
+						{isUserAuthenticated ? (
+							<span>Profile</span>
+						) : (
+							<span>Log in</span>
+						)}
+					</Link>
 					<Link to={"/cart"}>
 						<div
 							className="navbar-cart"
@@ -100,6 +108,6 @@ const NavBar: React.FC = () => {
 			</section>
 		</>
 	);
-};
+}
 
-export default NavBar;
+export default withUserAuthentication(NavBar);
