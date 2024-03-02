@@ -73,13 +73,17 @@ function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 					</span>
 					<span>Stores</span>
 					<span>About</span>
-					<Link to={"/login"}>
-						{isUserAuthenticated ? (
+
+					{isUserAuthenticated ? (
+						<Link to={"/profile"}>
 							<span>Profile</span>
-						) : (
+						</Link>
+					) : (
+						<Link to={"/login"}>
 							<span>Log in</span>
-						)}
-					</Link>
+						</Link>
+					)}
+
 					<Link to={"/cart"}>
 						<div
 							className="navbar-cart"

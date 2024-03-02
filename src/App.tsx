@@ -1,19 +1,19 @@
-import { useEffect } from "react";
-import { useAppDispatch } from "./redux/hooks";
-import { saveUserInfo } from "./redux/slices/userSlice";
-import UserProfile from "./pages/UserProfile";
+import UserProfilePage from "./pages/UserProfilePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
 import CategoryProducts from "./components/Category/CategoryProducts";
 import AllProducts from "./pages/AllProducts";
 import CartPage from "./pages/CartPage";
-import { UserType } from "./misc/types";
-import CreateProduct from "./components/Product/CreateProduct";
 import LoginPage from "./pages/LoginPage";
+import CreateProductPage from "./pages/CreateProductPage";
+import { useAppDispatch } from "./redux/hooks";
+import { useEffect } from "react";
 import axios from "axios";
+import { UserType } from "./misc/types";
+import { saveUserInfo } from "./redux/slices/userSlice";
 
 export default function App() {
-	const dispatch = useAppDispatch();
+    const dispatch = useAppDispatch();
 	useEffect(() => {
 		const getUserFromToken = async () => {
 			const token1 = localStorage.getItem("token");
@@ -28,6 +28,9 @@ export default function App() {
 				);
 				dispatch(saveUserInfo(user.data));
 			}
+            else {
+                dispatch(saveUserInfo(null));
+            }
 		};
 		getUserFromToken();
 	}, [dispatch]);
@@ -36,7 +39,7 @@ export default function App() {
 			<Router>
 				<Routes>
 					<Route path="/" element={<Home />} />
-					<Route path="/profile" element={<UserProfile />} />
+					<Route path="/profile" element={<UserProfilePage />} />
 					<Route path="/login" element={<LoginPage />} />
 					<Route path="/allproducts" element={<AllProducts />} />
 					<Route
@@ -44,7 +47,7 @@ export default function App() {
 						element={<CategoryProducts />}
 					/>
 					<Route path="/cart" element={<CartPage />} />
-					<Route path="create-product" element={<CreateProduct />} />
+					<Route path="/create-product" element={<CreateProductPage />} />
 				</Routes>
 			</Router>
 		</div>

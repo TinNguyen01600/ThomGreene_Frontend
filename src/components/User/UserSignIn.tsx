@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import { useAppDispatch } from "../../redux/hooks";
+import { useNavigate } from "react-router-dom";
 
 type UserSignInType = {
 	email: string;
@@ -8,7 +8,7 @@ type UserSignInType = {
 };
 
 const UserSignInForm: React.FC = () => {
-	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 	const {
 		register,
 		setValue,
@@ -22,7 +22,7 @@ const UserSignInForm: React.FC = () => {
 				if (response.status === 201) {
 					localStorage.setItem("token", response.data.access_token);
 					console.log("Sign In success, Token saved");
-                    window.location.reload();
+					navigate("/");
 				}
 			})
 			.catch((error) => console.log(error));
