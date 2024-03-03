@@ -11,6 +11,7 @@ import { useEffect } from "react";
 import axios from "axios";
 import { UserType } from "./misc/types";
 import { saveUserInfo } from "./redux/slices/userSlice";
+import UpdateProductPage from "./pages/UpdateProductPage";
 
 export default function App() {
     const dispatch = useAppDispatch();
@@ -48,6 +49,7 @@ export default function App() {
 					/>
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/create-product" element={<CreateProductPage />} />
+                    <Route path="/update-product" element={<UpdateProductPage />} />
 				</Routes>
 			</Router>
 		</div>

@@ -50,16 +50,25 @@ function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 										e.currentTarget.src = `https://robohash.org/${user?.name}`;
 									}}
 								/>
+								<button
+									onClick={() => navigate("/create-product")}
+								>
+									Create new product
+								</button>
+								<button onClick={() => setUpdate(!update)}>
+									Edit
+								</button>
 							</>
 						) : (
-							<UserUpdate />
+							<>
+								<UserUpdate />
+								<button onClick={() => setUpdate(!update)}>
+									Cancel
+								</button>
+							</>
 						)}
 
 						<button onClick={logout}>Log out</button>
-						<button onClick={() => navigate("/create-product")}>
-							Create new product
-						</button>
-						<button onClick={() => setUpdate(!update)}>Edit</button>
 					</>
 				) : (
 					<>
