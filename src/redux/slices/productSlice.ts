@@ -1,13 +1,14 @@
 import { PayloadAction, createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import axios from "axios";
 import { RootState } from "../store";
-import { ProductType } from "../../misc/types";
+import { ProductCreateType, ProductType } from "../../misc/types";
 
 interface ProductState {
 	allProducts: ProductType[];
 	searchedProducts: ProductType[];
 	sortedProducts: ProductType[];
 	filteredProducts: ProductType[];
+	singleProduct: ProductType | null;
 	loading: boolean;
 	error: string | null;
 }
@@ -17,6 +18,7 @@ const initialState: ProductState = {
 	searchedProducts: [],
 	sortedProducts: [],
 	filteredProducts: [],
+	singleProduct: null,
 	loading: false,
 	error: null,
 };
@@ -42,6 +44,18 @@ export const fetchFilteredProductsAsync = createAsyncThunk(
 			const res = await axios.get<ProductType[]>(
 				`https://api.escuelajs.co/api/v1/products/?price_min=${range[0]}&price_max=${range[1]}`
 			);
+			return res.data;
+		} catch (e) {
+			return rejectWithValue(e);
+		}
+	}
+);
+
+export const fetchSingleProductAsync = createAsyncThunk(
+	"fetchSingleProductAsync",
+	async (productId: number, { rejectWithValue }) => {
+		try {
+			const res = await axios.get<ProductType>(url + `/${productId}`);
 			return res.data;
 		} catch (e) {
 			return rejectWithValue(e);
@@ -110,6 +124,19 @@ const productSlice = createSlice({
 				state.error = action.error.message ?? "error";
 			}
 		);
+
+		// fetch single product
+		builder.addCase(fetchSingleProductAsync.fulfilled, (state, action) => {
+			state.singleProduct = action.payload;
+			state.loading = false;
+		});
+		builder.addCase(fetchSingleProductAsync.pending, (state) => {
+			state.loading = true;
+		});
+		builder.addCase(fetchSingleProductAsync.rejected, (state, action) => {
+			state.loading = false;
+			state.error = action.error.message ?? "error";
+		});
 	},
 });
 

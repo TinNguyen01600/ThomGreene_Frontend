@@ -56,6 +56,7 @@ describe("product reducer", () => {
 		searchedProducts: [],
 		sortedProducts: [],
 		filteredProducts: [],
+        singleProduct: null,
 		loading: false,
 		error: null,
 	};
@@ -79,6 +80,7 @@ describe("product reducer", () => {
 			searchedProducts: [],
 			sortedProducts: [],
 			filteredProducts: [],
+            singleProduct: null,
 			loading: false,
 			error: null,
 		};
@@ -96,6 +98,7 @@ describe("product reducer", () => {
 			searchedProducts: [],
 			sortedProducts: [],
 			filteredProducts: [],
+            singleProduct: null,
 			loading: true,
 			error: null,
 		};
@@ -114,6 +117,7 @@ describe("product reducer", () => {
 			searchedProducts: [],
 			sortedProducts: [],
 			filteredProducts: [],
+            singleProduct: null,
 			loading: false,
 			error: error.message,
 		};

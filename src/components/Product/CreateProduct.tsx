@@ -1,12 +1,10 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { ProductCreateType } from "../../misc/types";
-import { error } from "console";
-import { stringify } from "querystring";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-type InputType = {
+export type InputType = {
 	title: string;
 	price: number;
 	description: string;

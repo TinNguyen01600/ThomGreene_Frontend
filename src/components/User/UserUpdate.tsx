@@ -23,7 +23,6 @@ export default function UserUpdate() {
 		axios
 			.put(`https://api.escuelajs.co/api/v1/users/${user?.id}`, data)
 			.then((response) => {
-                console.log(response)
 				if (response.status === 200) {
 					console.log("update success");
                     window.location.reload()

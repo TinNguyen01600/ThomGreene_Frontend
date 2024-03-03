@@ -12,6 +12,7 @@ import axios from "axios";
 import { UserType } from "./misc/types";
 import { saveUserInfo } from "./redux/slices/userSlice";
 import UpdateProductPage from "./pages/UpdateProductPage";
+import SingleProductPage from "./pages/SingleProductPage";
 
 export default function App() {
     const dispatch = useAppDispatch();
@@ -47,9 +48,10 @@ export default function App() {
 						path="/category/:categoryId"
 						element={<CategoryProducts />}
 					/>
+                    <Route path="/product/:productId" element={<SingleProductPage />} />
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/create-product" element={<CreateProductPage />} />
-                    <Route path="/update-product" element={<UpdateProductPage />} />
+                    <Route path="/product/:productId/update-product" element={<UpdateProductPage />} />
 				</Routes>
 			</Router>
 		</div>
