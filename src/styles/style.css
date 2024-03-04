@@ -92,6 +92,43 @@
   margin-top: 17vh;
 }
 
+.checkout-page {
+  display: flex;
+  flex-direction: column;
+}
+.checkout-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background-color: transparent;
+}
+.checkout-page .main {
+  margin-top: 12vh;
+  height: 30vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.create-product-page {
+  display: flex;
+  flex-direction: column;
+}
+.create-product-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 2;
+  background-color: transparent;
+}
+.create-product-page .main {
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .all-products {
   grid-area: all_products;
 }
@@ -461,21 +498,99 @@ nav .navbar-center img {
   }
 }
 .filter-and-sort {
-  border: 1px solid black;
   background-color: #fff;
   margin: 0 3vw;
   display: flex;
   justify-content: flex-end;
 }
 .filter-and-sort .filter {
-  border: 1px solid black;
   width: 10vw;
   text-align: end;
+  cursor: pointer;
+}
+.filter-and-sort .filter div {
+  display: flex;
 }
 .filter-and-sort .sort {
-  border: 1px solid black;
   width: 10vw;
   text-align: end;
+  cursor: pointer;
+}
+.filter-and-sort .sort div {
+  display: flex;
+}
+
+.dropdown-filter-sort .dropdown-sort {
+  border-top: 1px solid black;
+  padding-top: 1vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group {
+  margin: 3vh 0;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2vw;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group button {
+  width: 45%;
+  background: transparent;
+  border: 1px black solid;
+  cursor: pointer;
+  padding: 1.5vh;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group button span:hover::after {
+  width: 100%;
+}
+.dropdown-filter-sort .dropdown-filter {
+  border-top: 1px solid black;
+  padding-top: 1vh;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group {
+  margin: 3vh 0;
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2vw;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group button {
+  width: 45%;
+  background: transparent;
+  border: 1px black solid;
+  cursor: pointer;
+  padding: 1.5vh;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group button span:hover::after {
+  width: 100%;
 }
 
 .navbar-search-dropdown {
@@ -688,6 +803,50 @@ article .product-card figcaption .product-add {
   -moz-column-gap: 2vw;
        column-gap: 2vw;
   justify-content: space-between;
+}
+
+.create-product {
+  display: flex;
+  flex-direction: column;
+  gap: 5vh;
+  align-items: center;
+}
+.create-product form {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  width: 30vw;
+}
+.create-product form * {
+  padding: 1vh;
+}
+.create-product form .create-btn {
+  color: #fff;
+  background-color: #525252;
+  cursor: pointer;
+}
+.create-product button {
+  width: 100%;
+  color: #525252;
+  background-color: #fff;
+  padding: 1vh;
+  cursor: pointer;
+}
+.create-product button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.create-product button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+.create-product button span:hover::after {
+  width: 100%;
 }
 
 * {

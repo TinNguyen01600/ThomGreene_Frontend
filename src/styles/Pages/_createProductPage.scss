@@ -1,0 +1,17 @@
+.create-product-page {
+	display: flex;
+	flex-direction: column;
+	.navbar {
+		position: fixed;
+		width: 100%;
+		z-index: 2;
+		background-color: transparent;
+	}
+	.main {
+		margin-top: 12vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+	}
+}

@@ -1,0 +1,31 @@
+@use "../mixins";
+
+.create-product {
+	display: flex;
+	flex-direction: column;
+	gap: 5vh;
+    align-items: center;
+	form {
+		// border: 1px solid black;
+		display: flex;
+		flex-direction: column;
+		gap: 3vh;
+		width: 30vw;
+		* {
+			padding: 1vh;
+		}
+		.create-btn {
+			color: #fff;
+			background-color: #525252;
+			cursor: pointer;
+		}
+	}
+	button {
+        width: 100%;
+		color: #525252;
+		background-color: #fff;
+        padding: 1vh;
+		cursor: pointer;
+		@include mixins.underline("span", #121212d6);
+	}
+}

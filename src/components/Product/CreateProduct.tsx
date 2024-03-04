@@ -16,11 +16,12 @@ const CreateProduct: React.FC = () => {
 	const {
 		register,
 		setValue,
-        reset,
+		reset,
 		handleSubmit,
-        formState,
+		formState,
 		formState: { isSubmitSuccessful },
 	} = useForm<InputType>();
+	const navigate = useNavigate();
 
 	const onSubmit: SubmitHandler<InputType> = (data) => {
 		const newCreatedProduct: ProductCreateType = {
@@ -38,27 +39,26 @@ const CreateProduct: React.FC = () => {
 			.then((response) => {
 				if (response.status === 201) {
 					console.log("create success");
+					navigate("/");
 				}
 			})
 			.catch((error) => console.log(error));
 	};
 
-    useEffect(() => {
-        if (formState.isSubmitSuccessful) {
-            reset({
-                title: '',
-                price: 0,
-                description: '',
-                images: '',
-                categoryId: 0
-            })
-        }
-    })
-
-    const navigate = useNavigate()
+	useEffect(() => {
+		if (formState.isSubmitSuccessful) {
+			reset({
+				title: "",
+				price: 0,
+				description: "",
+				images: "",
+				categoryId: 0,
+			});
+		}
+	});
 
 	return (
-		<>
+		<div className="create-product">
 			<h1>Create new product</h1>
 			<main className="form">
 				<form onSubmit={handleSubmit(onSubmit)}>
@@ -92,11 +92,17 @@ const CreateProduct: React.FC = () => {
 						{...register("images")}
 						required
 					/>
-					<input type="submit" />
+					<input
+						type="submit"
+						className="create-btn"
+						value="Create"
+					/>
 				</form>
 			</main>
-            <button onClick={() => navigate('/')}>Continue shopping</button>
-		</>
+			<button onClick={() => navigate("/")}>
+				<span>Continue shopping</span>
+			</button>
+		</div>
 	);
 };
 

@@ -13,6 +13,7 @@ import { UserType } from "./misc/types";
 import { saveUserInfo } from "./redux/slices/userSlice";
 import UpdateProductPage from "./pages/UpdateProductPage";
 import SingleProductPage from "./pages/SingleProductPage";
+import CheckoutPage from "./pages/CheckoutPage";
 
 export default function App() {
     const dispatch = useAppDispatch();
@@ -52,6 +53,7 @@ export default function App() {
 					<Route path="/cart" element={<CartPage />} />
 					<Route path="/create-product" element={<CreateProductPage />} />
                     <Route path="/product/:productId/update-product" element={<UpdateProductPage />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
 				</Routes>
 			</Router>
 		</div>

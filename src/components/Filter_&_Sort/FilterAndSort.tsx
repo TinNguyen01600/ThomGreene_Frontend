@@ -2,6 +2,8 @@ import { useState } from "react";
 
 import DropDownSort from "./DropDownSort";
 import DropDownFilter from "./DropDownFilter";
+import chevron_down from "../../img/chevron-down.svg";
+import chevron_up from "../../img/chevron-up.svg"
 
 type Props = {
 	setDisplay: (display: string) => void;
@@ -22,6 +24,11 @@ const FilterAndSort: React.FC<Props> = ({ setDisplay }) => {
 						}}
 					>
 						Filter
+						<img
+							src={dropDown === "Filter" ? chevron_up : chevron_down}
+							alt=""
+							style={{ height: "2vh", marginLeft: "1vw" }}
+						/>
 					</h3>
 				</section>
 				<section className="sort">
@@ -34,14 +41,25 @@ const FilterAndSort: React.FC<Props> = ({ setDisplay }) => {
 						}}
 					>
 						Sort
+						<img
+							src={dropDown === "Sort" ? chevron_up : chevron_down}
+							alt=""
+							style={{ height: "2vh", marginLeft: "1vw" }}
+						/>
 					</h3>
 				</section>
 			</div>
 			<div className="dropdown-filter-sort">
 				{dropDown === "Sort" ? (
-					<DropDownSort setDropDown={setDropDown} setDisplay={setDisplay}/>
+					<DropDownSort
+						setDropDown={setDropDown}
+						setDisplay={setDisplay}
+					/>
 				) : dropDown === "Filter" ? (
-					<DropDownFilter setDropDown={setDropDown} setDisplay={setDisplay}/>
+					<DropDownFilter
+						setDropDown={setDropDown}
+						setDisplay={setDisplay}
+					/>
 				) : null}
 			</div>
 		</>

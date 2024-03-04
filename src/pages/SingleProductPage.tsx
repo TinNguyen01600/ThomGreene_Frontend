@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { useEffect } from "react";
 import { fetchSingleProductAsync } from "../redux/slices/productSlice";
 import NavBar from "../components/NavBar";
+import { addCartItem } from "../redux/slices/cartSlice";
 
 function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	const product = useAppSelector((state) => state.products.singleProduct);
@@ -40,6 +41,13 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 							"https://safesendsoftware.com/wp-content/uploads/2016/06/Human-Error.jpg";
 					}}
 				/>
+				<button
+					onClick={() => {
+						if (product) dispatch(addCartItem(product));
+					}}
+				>
+					Add to cart
+				</button>
 			</div>
 		</div>
 	);

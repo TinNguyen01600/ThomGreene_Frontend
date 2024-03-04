@@ -1,20 +1,68 @@
+@use "../mixins";
+
 @mixin filterSortStyles {
-    border: 1px solid black;
 	width: 10vw;
 	text-align: end;
+	cursor: pointer;
+	div {
+		display: flex;
+	}
 }
 
 .filter-and-sort {
-	border: 1px solid black;
-
 	background-color: #fff;
 	margin: 0 3vw;
 	display: flex;
 	justify-content: flex-end;
 	.filter {
-		@include filterSortStyles()
+		@include filterSortStyles();
 	}
 	.sort {
-		@include filterSortStyles()
+		@include filterSortStyles();
+	}
+}
+
+.dropdown-filter-sort {
+	.dropdown-sort {
+		border-top: 1px solid black;
+		padding-top: 1vh;
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		.btn-group {
+			margin: 3vh 0;
+			display: flex;
+			justify-content: space-evenly;
+			gap: 2vw;
+			button {
+				width: 45%;
+				background: transparent;
+				border: 1px black solid;
+				cursor: pointer;
+				padding: 1.5vh;
+				@include mixins.underline("span", #121212d6);
+			}
+		}
+	}
+	.dropdown-filter {
+		border-top: 1px solid black;
+		padding-top: 1vh;
+		background-color: #fff;
+		display: flex;
+		flex-direction: column;
+		.btn-group {
+			margin: 3vh 0;
+			display: flex;
+			justify-content: space-evenly;
+			gap: 2vw;
+			button {
+				width: 45%;
+				background: transparent;
+				border: 1px black solid;
+				cursor: pointer;
+				padding: 1.5vh;
+				@include mixins.underline("span", #121212d6);
+			}
+		}
 	}
 }

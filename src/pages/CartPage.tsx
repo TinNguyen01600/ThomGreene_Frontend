@@ -2,13 +2,17 @@ import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { removeCartItem } from "../redux/slices/cartSlice";
+import { useNavigate } from "react-router-dom";
 
 const CartPage: React.FC = () => {
 	const cart = useAppSelector((state) => state.cart.cart);
 	const dispatch = useAppDispatch();
+	const navigate = useNavigate();
 
 	const allCartItems: any[] = [];
+	let subTotal = 0;
 	cart.forEach((item) => {
+		subTotal += item.price * item.quantity;
 		for (let i = 0; i < item.quantity; i++) {
 			allCartItems.push(
 				<li key={i}>
@@ -46,13 +50,24 @@ const CartPage: React.FC = () => {
 									<th>Order summary</th>
 								</tr>
 								<tr>
-									<td>Subtotal</td>
+									<td
+										style={{
+											display: "flex",
+											justifyContent: "space-between",
+										}}
+									>
+										<p>Subtotal</p>
+										<p>{subTotal}</p>
+									</td>
 								</tr>
 								<tr>
-									<td className="checkout-btn">
-                                        <span>Proceed to checkout</span>
-                                        <p>	&gt;</p>
-                                    </td>
+									<td
+										className="checkout-btn"
+										onClick={() => navigate("/checkout")}
+									>
+										<span>Proceed to checkout</span>
+										<p> &gt;</p>
+									</td>
 								</tr>
 							</tbody>
 						</table>

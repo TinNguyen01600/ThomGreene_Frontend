@@ -32,22 +32,28 @@ const DropDownFilter: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 	);
 	/***************************************************************************** */
 	const resetFilter = () => {
-        setRange([0, 100])
+        setRange([0, 100]);
 		setDisplay("All");
 	};
 
 	return (
 		<div className="dropdown-filter">
-			<Box sx={{ width: 300 }}>
+			<Box sx={{ width: 600, margin: "0 3vw", color: "grey" }}>
+				<p>Price range</p>
 				<Slider
-					getAriaLabel={() => "Temperature range"}
 					value={range}
 					onChange={handleChange}
 					valueLabelDisplay="auto"
 				/>
 			</Box>
-			<button onClick={() => setDropDown("")}>Close</button>
-			<button onClick={resetFilter}>Reset</button>
+			<div className="btn-group">
+				<button onClick={() => setDropDown("")}>
+					<span>Close</span>
+				</button>
+				<button onClick={resetFilter}>
+					<span>Reset</span>
+				</button>
+			</div>
 		</div>
 	);
 };

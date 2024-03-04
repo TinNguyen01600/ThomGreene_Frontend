@@ -22,11 +22,11 @@ const DropDownSort: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 	};
 	const resetSort = () => {
 		setValue("");
-        setDisplay("All")
+		setDisplay("All");
 	};
 	return (
 		<div className="dropdown-sort">
-			<FormControl>
+			<FormControl sx={{margin: "0 2.5vw"}}>
 				<RadioGroup
 					aria-labelledby="demo-radio-buttons-group-label"
 					name="radio-buttons-group"
@@ -45,8 +45,14 @@ const DropDownSort: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 					/>
 				</RadioGroup>
 			</FormControl>
-			<button onClick={resetSort}>Clear all</button>
-			<button onClick={() => setDropDown("")}>Close</button>
+			<section className="btn-group">
+				<button onClick={resetSort}>
+					<span>Clear all</span>
+				</button>
+				<button onClick={() => setDropDown("")}>
+					<span>Close</span>
+				</button>
+			</section>
 		</div>
 	);
 };

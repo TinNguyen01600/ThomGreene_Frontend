@@ -1,3 +1,4 @@
+import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import CreateProduct from "../components/Product/CreateProduct";
 import withUserAuthentication, {
@@ -11,8 +12,13 @@ function CreateProductPage({ isUserAuthenticated }: WrappedComponentProp) {
 				<NavBar />
 			</div>
 			<div className="main">
-				<CreateProduct />
+				{isUserAuthenticated ? (
+					<CreateProduct />
+				) : (
+					<h3>You are not authenticated to create new product</h3>
+				)}
 			</div>
+			<Footer />
 		</div>
 	);
 }

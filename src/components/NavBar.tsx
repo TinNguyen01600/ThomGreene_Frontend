@@ -71,7 +71,9 @@ function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 							style={{ height: "3vh" }}
 						/>
 					</span>
-					<span>Stores</span>
+					<Link to={"/create-product"}>
+						<span>Create</span>
+					</Link>
 					<span>About</span>
 
 					{isUserAuthenticated ? (
@@ -107,7 +109,7 @@ function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 				) : dropDown === "Cart" ? (
 					<DropDownCart setDropDown={setDropDown} />
 				) : dropDown === "Search" ? (
-                    <Search setDropDown={setDropDown} />
+					<Search setDropDown={setDropDown} />
 				) : null}
 			</section>
 		</>
