@@ -1,0 +1,87 @@
+@use "../mixins";
+
+.user-profile-page {
+	display: flex;
+	flex-direction: column;
+	.navbar {
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		background-color: transparent;
+	}
+	.main {
+		margin: 15vh 0;
+		article.already-signin {
+			display: flex;
+			justify-content: center;
+			justify-content: space-evenly;
+			menu {
+				border: 1px solid black;
+				width: 20%;
+                height: 50%;
+				padding: 4vh;
+				display: flex;
+				flex-direction: column;
+				align-items: flex-start;
+				gap: 2vh;
+				button {
+					border: none;
+					background: transparent;
+					cursor: pointer;
+					@include mixins.underline("span", #525252);
+					span {
+						text-transform: uppercase;
+					}
+				}
+			}
+			section.info {
+				border: 1px solid black;
+				width: 60%;
+				padding: 4vh 2vw;
+				display: flex;
+				justify-content: space-between;
+
+				table {
+					p {
+						text-transform: uppercase;
+						margin-bottom: 5vh;
+					}
+					tr {
+						td {
+							padding: 0 5vw 2px 0;
+						}
+					}
+					.btn-group {
+						display: flex;
+						gap: 2vw;
+						margin-top: 5vh;
+						button.edit-btn {
+							@include mixins.buttonType1(#525252, #fff);
+						}
+						button.create-btn {
+							@include mixins.buttonType1(#fff, #525252);
+						}
+					}
+				}
+				img {
+					border-radius: 50%;
+				}
+                .cancel-update-btn {
+                    @include mixins.buttonType1(#525252, #fff);
+                    width: 100%;
+                }
+			}
+		}
+		article.not-signin {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			align-items: center;
+			gap: 8vh;
+			button {
+				@include mixins.buttonType1(#525252, #fff);
+				width: 20vw;
+			}
+		}
+	}
+}

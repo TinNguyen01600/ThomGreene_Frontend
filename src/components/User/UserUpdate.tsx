@@ -5,7 +5,6 @@ import { useState } from "react";
 import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
 
-
 export default function UserUpdate() {
 	const user = useAppSelector((state) => state.users.user);
 	const [name, setName] = useState(user?.name);
@@ -25,15 +24,17 @@ export default function UserUpdate() {
 			.then((response) => {
 				if (response.status === 200) {
 					console.log("update success");
-                    window.location.reload()
+					window.location.reload();
 				}
 			})
 			.catch((error) => console.log(error));
 	};
 
 	return (
-		<main className="form">
+		<main className="user-update-form">
+			<p>Personal Info</p>
 			<form action="" onSubmit={handleSubmit(onSubmit)}>
+				<label htmlFor="name">Name</label>
 				<input
 					type="text"
 					value={name}
@@ -41,6 +42,8 @@ export default function UserUpdate() {
 					{...register("name")}
 					onChange={(e) => setName(e.target.value)}
 				/>
+
+				<label htmlFor="email">Email</label>
 				<input
 					type="email"
 					value={email}
@@ -48,6 +51,8 @@ export default function UserUpdate() {
 					{...register("email")}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
+
+				<label htmlFor="password">Password</label>
 				<input
 					type="password"
 					value={passwd}
@@ -55,6 +60,8 @@ export default function UserUpdate() {
 					{...register("password")}
 					onChange={(e) => setPasswd(e.target.value)}
 				/>
+
+				<label htmlFor="avatar">Avatar</label>
 				<input
 					type="avatar"
 					value={avatar}
@@ -69,7 +76,7 @@ export default function UserUpdate() {
 					<option value="admin">Admin</option>
 				</select>
 
-				<input type="submit" value="Update" />
+				<input type="submit" value="Update" className="update-btn"/>
 			</form>
 		</main>
 	);

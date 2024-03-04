@@ -25,26 +25,34 @@ const UserRegisterForm: React.FC = () => {
 	};
 
 	return (
-		<main className="form">
+		<main className="register-form">
+			<p>New Customer</p>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<label htmlFor="name">Name*</label>
 				<input
 					type="text"
 					placeholder="Name"
 					{...register("name")}
 					required
 				/>
+
+				<label htmlFor="email">Email*</label>
 				<input
 					type="email"
 					placeholder="Email"
 					{...register("email")}
 					required
 				/>
+
+				<label htmlFor="password">Password*</label>
 				<input
 					type="password"
 					placeholder="Password"
 					{...register("password")}
 					required
 				/>
+
+				<label htmlFor="avatar">Avatar*</label>
 				<input
 					type="avatar"
 					placeholder="Avatar"
@@ -52,7 +60,7 @@ const UserRegisterForm: React.FC = () => {
 					required
 				/>
 
-				<input type="submit" value="Register" />
+				<input type="submit" value="Register" className="submit-btn"/>
 			</form>
 		</main>
 	);

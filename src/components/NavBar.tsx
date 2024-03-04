@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Badge } from "@mui/material";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
 import { fetchAllCategoriesAsync } from "../redux/slices/categorySlice";
@@ -46,6 +47,8 @@ function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 			);
 		}
 	}
+	/*********************************************************************************************** */
+    const cart = useAppSelector(state => state.cart.cart)
 
 	/*********************************************************************************************** */
 
@@ -92,7 +95,9 @@ function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 							onMouseOver={() => setDropDown("Cart")}
 							onMouseLeave={() => setDropDown("")}
 						>
-							<span>Cart</span>
+							<Badge badgeContent={cart.length}>
+								<span>Cart</span>
+							</Badge>
 						</div>
 					</Link>
 				</section>

@@ -1,20 +1,29 @@
 @mixin underline($tag, $color) {
-    #{$tag} {
-        text-decoration: none;
-        display: inline-block;
-        cursor: pointer;
-    }
+	#{$tag} {
+		text-decoration: none;
+		display: inline-block;
+		cursor: pointer;
+	}
 
-    #{$tag}::after {
-        content: "";
-        width: 0;
-        height: 0.5px;
-        background-color: $color;
-        display: block;
-        transition: width 0.5s;
-    }
+	#{$tag}::after {
+		content: "";
+		width: 0;
+		height: 0.5px;
+		background-color: $color;
+		display: block;
+		transition: width 0.5s;
+	}
 
-    #{$tag}:hover::after {
-        width: 100%;
-    }
+	#{$tag}:hover::after {
+		width: 100%;
+	}
+}
+
+@mixin buttonType1($textColor, $bgColor) {
+	color: $textColor;
+	border: 1px solid $textColor;
+	background: $bgColor;
+	cursor: pointer;
+	padding: 2vh;
+	@include underline("span", $textColor);
 }

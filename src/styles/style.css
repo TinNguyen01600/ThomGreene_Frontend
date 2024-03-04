@@ -129,6 +129,327 @@
   align-items: center;
 }
 
+.single-product-page {
+  display: flex;
+  flex-direction: column;
+}
+.single-product-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+.single-product-page .main {
+  margin-top: 12vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.single-product-page .main figure {
+  display: flex;
+  justify-content: space-evenly;
+  width: 90%;
+}
+.single-product-page .main figure img {
+  height: 80vh;
+}
+.single-product-page .main figure figcaption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 2vh;
+  width: 30%;
+}
+.single-product-page .main figure figcaption button {
+  border: none;
+  background: transparent;
+  padding: 1.5vh;
+  color: #fff;
+  background-color: #525252;
+}
+.single-product-page .main figure figcaption button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.single-product-page .main figure figcaption button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.single-product-page .main figure figcaption button span:hover::after {
+  width: 100%;
+}
+.single-product-page .main figure figcaption button.edit-btn {
+  border: 1px solid #525252;
+  background: transparent;
+  padding: 1.5vh;
+  color: #525252;
+}
+.single-product-page .main figure figcaption button.edit-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.single-product-page .main figure figcaption button.edit-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.single-product-page .main figure figcaption button.edit-btn span:hover::after {
+  width: 100%;
+}
+.single-product-page .main .other-imgs img {
+  height: 20vh;
+}
+
+.login-page {
+  display: flex;
+  flex-direction: column;
+}
+.login-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+.login-page .main {
+  margin-top: 15vh;
+}
+.login-page .main .forms {
+  display: flex;
+  justify-content: space-evenly;
+}
+.login-page .main .forms .signin-form {
+  border: 1px solid black;
+  width: 40%;
+  padding: 1.5vh 2vw;
+  font-size: 2vh;
+}
+.login-page .main .forms .signin-form p {
+  text-transform: uppercase;
+}
+.login-page .main .forms .signin-form form {
+  margin: 5vh 0;
+  display: flex;
+  flex-direction: column;
+}
+.login-page .main .forms .signin-form form label {
+  margin: 2vh 0 0.5vh 0;
+}
+.login-page .main .forms .signin-form form input {
+  padding: 0.5vw;
+}
+.login-page .main .forms .signin-form form .submit-btn {
+  margin-top: 8vh;
+}
+.login-page .main .forms .register-form {
+  border: 1px solid black;
+  width: 40%;
+  padding: 1.5vh 2vw;
+  font-size: 2vh;
+}
+.login-page .main .forms .register-form p {
+  text-transform: uppercase;
+}
+.login-page .main .forms .register-form form {
+  margin: 5vh 0;
+  display: flex;
+  flex-direction: column;
+}
+.login-page .main .forms .register-form form label {
+  margin: 2vh 0 0.5vh 0;
+}
+.login-page .main .forms .register-form form input {
+  padding: 0.5vw;
+}
+.login-page .main .forms .register-form form .submit-btn {
+  margin-top: 8vh;
+}
+
+.user-profile-page {
+  display: flex;
+  flex-direction: column;
+}
+.user-profile-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+.user-profile-page .main {
+  margin: 15vh 0;
+}
+.user-profile-page .main article.already-signin {
+  display: flex;
+  justify-content: center;
+  justify-content: space-evenly;
+}
+.user-profile-page .main article.already-signin menu {
+  border: 1px solid black;
+  width: 20%;
+  height: 50%;
+  padding: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2vh;
+}
+.user-profile-page .main article.already-signin menu button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+.user-profile-page .main article.already-signin menu button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-profile-page .main article.already-signin menu button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.user-profile-page .main article.already-signin menu button span:hover::after {
+  width: 100%;
+}
+.user-profile-page .main article.already-signin menu button span {
+  text-transform: uppercase;
+}
+.user-profile-page .main article.already-signin section.info {
+  border: 1px solid black;
+  width: 60%;
+  padding: 4vh 2vw;
+  display: flex;
+  justify-content: space-between;
+}
+.user-profile-page .main article.already-signin section.info table p {
+  text-transform: uppercase;
+  margin-bottom: 5vh;
+}
+.user-profile-page .main article.already-signin section.info table tr td {
+  padding: 0 5vw 2px 0;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group {
+  display: flex;
+  gap: 2vw;
+  margin-top: 5vh;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn span:hover::after {
+  width: 100%;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn {
+  color: #fff;
+  border: 1px solid #fff;
+  background: #525252;
+  cursor: pointer;
+  padding: 2vh;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn span:hover::after {
+  width: 100%;
+}
+.user-profile-page .main article.already-signin section.info img {
+  border-radius: 50%;
+}
+.user-profile-page .main article.already-signin section.info .cancel-update-btn {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+  width: 100%;
+}
+.user-profile-page .main article.already-signin section.info .cancel-update-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-profile-page .main article.already-signin section.info .cancel-update-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.user-profile-page .main article.already-signin section.info .cancel-update-btn span:hover::after {
+  width: 100%;
+}
+.user-profile-page .main article.not-signin {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 8vh;
+}
+.user-profile-page .main article.not-signin button {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+  width: 20vw;
+}
+.user-profile-page .main article.not-signin button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-profile-page .main article.not-signin button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.user-profile-page .main article.not-signin button span:hover::after {
+  width: 100%;
+}
+
 .all-products {
   grid-area: all_products;
 }
@@ -392,50 +713,6 @@ nav .navbar-center img {
   margin: 0.7vh auto 0 auto;
 }
 
-.drop-down table {
-  background-color: #fff;
-  border-top: 1px solid #c0c0c0;
-  width: 100%;
-  text-transform: uppercase;
-  padding: 3vh 0 5px 0;
-}
-.drop-down table th {
-  text-align: left;
-}
-.drop-down table th,
-.drop-down table td {
-  padding: 0.5vh 0 1.2vh 3vw;
-  border-bottom: 1px solid #ddd;
-  border-right: 1px solid #ddd;
-}
-.drop-down .navbar-cart-dropdown, .drop-down .navbar-search-dropdown {
-  text-transform: none;
-  width: 55vh;
-  margin-left: auto;
-  margin-right: 0;
-  background-color: #fff;
-}
-.drop-down .navbar-cart-dropdown td, .drop-down .navbar-search-dropdown td {
-  border-left: 1px solid #ddd;
-  padding-left: 2vw;
-}
-.drop-down .navbar-cart-dropdown td span, .drop-down .navbar-search-dropdown td span {
-  text-decoration: none;
-  display: inline-block;
-  cursor: pointer;
-}
-.drop-down .navbar-cart-dropdown td span::after, .drop-down .navbar-search-dropdown td span::after {
-  content: "";
-  width: 0;
-  height: 0.5px;
-  background-color: rgba(18, 18, 18, 0.8392156863);
-  display: block;
-  transition: width 0.5s;
-}
-.drop-down .navbar-cart-dropdown td span:hover::after, .drop-down .navbar-search-dropdown td span:hover::after {
-  width: 100%;
-}
-
 /************************************************************************/
 @media (min-width: 360px) {
   nav .navbar-left,
@@ -498,7 +775,9 @@ nav .navbar-center img {
   }
 }
 .filter-and-sort {
+  border-top: 1px solid #525252;
   background-color: #fff;
+  padding: 1vh 0;
   margin: 0 3vw;
   display: flex;
   justify-content: flex-end;
@@ -522,6 +801,7 @@ nav .navbar-center img {
 
 .dropdown-filter-sort .dropdown-sort {
   border-top: 1px solid black;
+  margin: 0 3vw;
   padding-top: 1vh;
   background-color: #fff;
   display: flex;
@@ -535,7 +815,7 @@ nav .navbar-center img {
 }
 .dropdown-filter-sort .dropdown-sort .btn-group button {
   width: 45%;
-  background: transparent;
+  background: #fff;
   border: 1px black solid;
   cursor: pointer;
   padding: 1.5vh;
@@ -556,8 +836,29 @@ nav .navbar-center img {
 .dropdown-filter-sort .dropdown-sort .btn-group button span:hover::after {
   width: 100%;
 }
+.dropdown-filter-sort .dropdown-sort .btn-group .close-btn {
+  color: #fff;
+  background: #525252;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group .close-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group .close-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.dropdown-filter-sort .dropdown-sort .btn-group .close-btn span:hover::after {
+  width: 100%;
+}
 .dropdown-filter-sort .dropdown-filter {
   border-top: 1px solid black;
+  margin: 0 3vw;
   padding-top: 1vh;
   background-color: #fff;
   display: flex;
@@ -571,7 +872,7 @@ nav .navbar-center img {
 }
 .dropdown-filter-sort .dropdown-filter .btn-group button {
   width: 45%;
-  background: transparent;
+  background: #fff;
   border: 1px black solid;
   cursor: pointer;
   padding: 1.5vh;
@@ -590,6 +891,26 @@ nav .navbar-center img {
   transition: width 0.5s;
 }
 .dropdown-filter-sort .dropdown-filter .btn-group button span:hover::after {
+  width: 100%;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group .close-btn {
+  color: #fff;
+  background: #525252;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group .close-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group .close-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.dropdown-filter-sort .dropdown-filter .btn-group .close-btn span:hover::after {
   width: 100%;
 }
 
@@ -642,6 +963,103 @@ nav .navbar-center img {
 }
 .navbar-search-dropdown button span:hover::after {
   width: 100%;
+}
+
+.drop-down table {
+  background-color: #fff;
+  border-top: 1px solid #c0c0c0;
+  width: 100%;
+  text-transform: uppercase;
+  padding: 3vh 0 5px 0;
+}
+.drop-down table th {
+  text-align: left;
+}
+.drop-down table th,
+.drop-down table td {
+  padding: 0.5vh 0 1.2vh 3vw;
+  border-bottom: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+}
+.drop-down .navbar-cart-dropdown,
+.drop-down .navbar-search-dropdown {
+  text-transform: none;
+  width: 55vh;
+  margin-left: auto;
+  margin-right: 0;
+  background-color: #fff;
+}
+.drop-down .navbar-cart-dropdown td,
+.drop-down .navbar-search-dropdown td {
+  border-left: 1px solid #ddd;
+  padding-left: 2vw;
+}
+.drop-down .navbar-cart-dropdown td span,
+.drop-down .navbar-search-dropdown td span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.drop-down .navbar-cart-dropdown td span::after,
+.drop-down .navbar-search-dropdown td span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+.drop-down .navbar-cart-dropdown td span:hover::after,
+.drop-down .navbar-search-dropdown td span:hover::after {
+  width: 100%;
+}
+.drop-down .navbar-cart-dropdown tbody tr td {
+  padding: 1vh 2vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.drop-down .navbar-cart-dropdown tbody tr td figure {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+.drop-down .navbar-cart-dropdown tbody tr td figure img {
+  height: 10vh;
+}
+.drop-down .navbar-cart-dropdown tbody tr td figure figcaption {
+  font-size: 1.5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.drop-down .navbar-cart-dropdown tbody tr td figure figcaption button {
+  text-align: left;
+  border: none;
+  background: transparent;
+}
+
+.user-update-form p {
+  text-transform: uppercase;
+}
+.user-update-form form {
+  display: flex;
+  flex-direction: column;
+  margin: 5vh 0;
+}
+.user-update-form form label {
+  margin: 2vh 0 0.5vh 0;
+}
+.user-update-form form input,
+.user-update-form form select {
+  padding: 0.7vw;
+  width: 40vw;
+}
+.user-update-form form .update-btn {
+  margin-top: 8vh;
+  color: #fff;
+  background-color: #525252;
+  cursor: pointer;
 }
 
 article .product-card img {

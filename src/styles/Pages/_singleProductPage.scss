@@ -1,0 +1,55 @@
+@use "../mixins";
+
+.single-product-page {
+	display: flex;
+	flex-direction: column;
+	.navbar {
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		background-color: transparent;
+	}
+	.main {
+		margin-top: 12vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		figure {
+			display: flex;
+			justify-content: space-evenly;
+			width: 90%;
+			img {
+				height: 80vh;
+			}
+			figcaption {
+				display: flex;
+				flex-direction: column;
+				justify-content: center;
+				gap: 2vh;
+				width: 30%;
+				button {
+					border: none;
+					background: transparent;
+                    padding: 1.5vh;
+					color: #fff;
+					background-color: #525252;
+					@include mixins.underline("span", #fff);
+				}
+                button.edit-btn {
+                    border: 1px solid #525252;
+					background: transparent;
+                    padding: 1.5vh;
+					color: #525252;
+					// background-color: #525252;
+					@include mixins.underline("span", #525252);
+                }
+			}
+		}
+		.other-imgs {
+			img {
+				height: 20vh;
+			}
+		}
+	}
+}

@@ -3,6 +3,9 @@
 @import "./Pages/allProductsPage";
 @import "./Pages/checkoutPage";
 @import "./Pages/createProductPage";
+@import "./Pages/singleProductPage";
+@import "./Pages/LoginPage";
+@import "./Pages/userProfilePage";
 
 @import "./Category/categoriesGrid";
 @import "./Category/categoryCard";
@@ -11,6 +14,8 @@
 @import "./Components/navBar";
 @import "./Components/FilterAndSort";
 @import "./Components/Search";
+@import "./Components/navbarDropdown";
+@import "./Components/userUpdate";
 
 @import "./Product/productCard";
 @import "./Product/productGrid";

@@ -1,0 +1,49 @@
+@mixin formStyles {
+	border: 1px solid black;
+	width: 40%;
+	padding: 1.5vh 2vw;
+	font-size: 2vh;
+
+	p {
+		text-transform: uppercase;
+	}
+
+	form {
+		margin: 5vh 0;
+		display: flex;
+		flex-direction: column;
+		label {
+			margin: 2vh 0 0.5vh 0;
+		}
+		input {
+			padding: 0.5vw;
+		}
+		.submit-btn {
+			margin-top: 8vh;
+		}
+	}
+}
+
+.login-page {
+	display: flex;
+	flex-direction: column;
+	.navbar {
+		position: fixed;
+		width: 100%;
+		z-index: 1;
+		background-color: transparent;
+	}
+	.main {
+		margin-top: 15vh;
+		.forms {
+			display: flex;
+			justify-content: space-evenly;
+			.signin-form {
+				@include formStyles();
+			}
+			.register-form {
+				@include formStyles();
+			}
+		}
+	}
+}

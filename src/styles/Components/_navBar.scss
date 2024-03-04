@@ -54,37 +54,6 @@ nav {
 	}
 }
 
-.drop-down {
-	table {
-		background-color: #fff;
-		border-top: 1px solid #c0c0c0;
-		width: 100%;
-		text-transform: uppercase;
-		padding: 3vh 0 5px 0;
-		th {
-			text-align: left;
-		}
-		th,
-		td {
-			padding: 0.5vh 0 1.2vh 3vw;
-			border-bottom: 1px solid #ddd;
-			border-right: 1px solid #ddd;
-		}
-	}
-	.navbar-cart-dropdown, .navbar-search-dropdown {
-		text-transform: none;
-		width: 55vh;
-		margin-left: auto;
-		margin-right: 0;
-        background-color: #fff;
-		td {
-			@include mixins.underline("span", #121212d6);
-            border-left: 1px solid #ddd;
-            padding-left: 2vw;
-		}
-	}
-}
-
 /************************************************************************/
 
 @mixin res($size) {

@@ -29,14 +29,18 @@ const UserSignInForm: React.FC = () => {
 	};
 
 	return (
-		<main className="form">
+		<main className="signin-form">
+			<p>Returning Customer</p>
 			<form onSubmit={handleSubmit(onSubmit)}>
+				<label htmlFor="email">Email*</label>
 				<input
 					type="email"
 					placeholder="email"
 					{...register("email")}
 					required
 				/>
+
+				<label htmlFor="password">Password*</label>
 				<input
 					type="password"
 					placeholder="password"
@@ -44,7 +48,7 @@ const UserSignInForm: React.FC = () => {
 					required
 				/>
 
-				<input type="submit" value="Sign In" />
+				<input type="submit" value="Sign In" className="submit-btn"/>
 			</form>
 		</main>
 	);

@@ -9,8 +9,38 @@
 	}
 }
 
-.filter-and-sort {
+@mixin dropdownFilterSortStyles {
+	border-top: 1px solid black;
+    margin: 0 3vw;
+	padding-top: 1vh;
 	background-color: #fff;
+	display: flex;
+	flex-direction: column;
+	.btn-group {
+		margin: 3vh 0;
+		display: flex;
+		justify-content: space-evenly;
+		gap: 2vw;
+		button {
+			width: 45%;
+			background: #fff;
+			border: 1px black solid;
+			cursor: pointer;
+			padding: 1.5vh;
+			@include mixins.underline("span", #121212d6);
+		}
+		.close-btn {
+			color: #fff;
+			background: #525252;
+			@include mixins.underline("span", #fff);
+		}
+	}
+}
+
+.filter-and-sort {
+    border-top: 1px solid #525252;
+	background-color: #fff;
+    padding: 1vh 0;
 	margin: 0 3vw;
 	display: flex;
 	justify-content: flex-end;
@@ -24,45 +54,9 @@
 
 .dropdown-filter-sort {
 	.dropdown-sort {
-		border-top: 1px solid black;
-		padding-top: 1vh;
-		background-color: #fff;
-		display: flex;
-		flex-direction: column;
-		.btn-group {
-			margin: 3vh 0;
-			display: flex;
-			justify-content: space-evenly;
-			gap: 2vw;
-			button {
-				width: 45%;
-				background: transparent;
-				border: 1px black solid;
-				cursor: pointer;
-				padding: 1.5vh;
-				@include mixins.underline("span", #121212d6);
-			}
-		}
+		@include dropdownFilterSortStyles();
 	}
 	.dropdown-filter {
-		border-top: 1px solid black;
-		padding-top: 1vh;
-		background-color: #fff;
-		display: flex;
-		flex-direction: column;
-		.btn-group {
-			margin: 3vh 0;
-			display: flex;
-			justify-content: space-evenly;
-			gap: 2vw;
-			button {
-				width: 45%;
-				background: transparent;
-				border: 1px black solid;
-				cursor: pointer;
-				padding: 1.5vh;
-				@include mixins.underline("span", #121212d6);
-			}
-		}
+		@include dropdownFilterSortStyles();
 	}
 }

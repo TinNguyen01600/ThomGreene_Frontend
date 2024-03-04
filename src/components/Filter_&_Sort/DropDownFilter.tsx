@@ -47,11 +47,11 @@ const DropDownFilter: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 				/>
 			</Box>
 			<div className="btn-group">
-				<button onClick={() => setDropDown("")}>
-					<span>Close</span>
-				</button>
 				<button onClick={resetFilter}>
 					<span>Reset</span>
+				</button>
+                <button onClick={() => setDropDown("")} className="close-btn">
+					<span>Close</span>
 				</button>
 			</div>
 		</div>

@@ -49,7 +49,7 @@ const DropDownSort: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 				<button onClick={resetSort}>
 					<span>Clear all</span>
 				</button>
-				<button onClick={() => setDropDown("")}>
+				<button onClick={() => setDropDown("")} className="close-btn">
 					<span>Close</span>
 				</button>
 			</section>

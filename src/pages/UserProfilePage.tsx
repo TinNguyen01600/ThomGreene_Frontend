@@ -6,6 +6,7 @@ import NavBar from "../components/NavBar";
 import withUserAuthentication, {
 	WrappedComponentProp,
 } from "../hoc/withUserAuthenticate";
+import Footer from "../components/Footer";
 
 function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 	const user = useAppSelector((state) => state.users.user);
@@ -23,62 +24,88 @@ function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 			</div>
 			<div className="main">
 				{isUserAuthenticated ? (
-					<>
-						<h1>Personal Info</h1>
-						{!update ? (
-							<>
-								<table>
-									<tbody>
-										<tr>
-											<td>Name</td>
-											<td>{user?.name}</td>
-										</tr>
-										<tr>
-											<td>Email address</td>
-											<td>{user?.email}</td>
-										</tr>
-										<tr>
-											<td>Role</td>
-											<td>{user?.role}</td>
-										</tr>
-									</tbody>
-								</table>
-								<img
-									src={user?.avatar}
-									alt=""
-									onError={(e) => {
-										e.currentTarget.src = `https://robohash.org/${user?.name}`;
-									}}
-								/>
-								<button
-									onClick={() => navigate("/create-product")}
-								>
-									Create new product
-								</button>
-								<button onClick={() => setUpdate(!update)}>
-									Edit
-								</button>
-							</>
-						) : (
-							<>
-								<UserUpdate />
-								<button onClick={() => setUpdate(!update)}>
-									Cancel
-								</button>
-							</>
-						)}
+					<article className="already-signin">
+						<menu>
+							<button>
+								<span>Email Preferences</span>
+							</button>
+							<button>
+								<span>Address Book</span>
+							</button>
+							<button onClick={logout}>
+								<span>Log out</span>
+							</button>
+						</menu>
 
-						<button onClick={logout}>Log out</button>
-					</>
+						<section className="info">
+							{!update ? (
+								<>
+									<table>
+										<p>Personal Info</p>
+										<tbody>
+											<tr>
+												<td>Name</td>
+												<td>{user?.name}</td>
+											</tr>
+											<tr>
+												<td>Email address</td>
+												<td>{user?.email}</td>
+											</tr>
+											<tr>
+												<td>Role</td>
+												<td>{user?.role}</td>
+											</tr>
+										</tbody>
+										<div className="btn-group">
+											<button
+												className="edit-btn"
+												onClick={() =>
+													setUpdate(!update)
+												}
+											>
+												<span>Edit</span>
+											</button>
+											<button
+												className="create-btn"
+												onClick={() =>
+													navigate("/create-product")
+												}
+											>
+												<span>Create new product</span>
+											</button>
+										</div>
+									</table>
+									<img
+										src={user?.avatar}
+										alt=""
+										onError={(e) => {
+											e.currentTarget.src = `https://robohash.org/${user?.name}`;
+										}}
+									/>
+								</>
+							) : (
+								<div>
+									<UserUpdate />
+									<button
+										onClick={() => setUpdate(!update)}
+										className="cancel-update-btn"
+									>
+										<span>Cancel</span>
+									</button>
+								</div>
+							)}
+						</section>
+					</article>
 				) : (
-					<>
+					<article className="not-signin">
 						<h3>You have not signed in yet.</h3>
 						<button onClick={() => navigate("/login")}>
-							Sign in
+							<span>Sign in</span>
 						</button>
-					</>
+					</article>
 				)}
 			</div>
+			<Footer />
 		</div>
 	);
 }

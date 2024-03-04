@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
 
 import { useAppDispatch, useAppSelector } from "../redux/hooks";
-
+import { CartItemType } from "../misc/types";
+import { removeCartItem } from "../redux/slices/cartSlice";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;
@@ -142,11 +143,14 @@ export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
 	const dispatch = useAppDispatch();
 
 	const allCartItems: any[] = [];
-	cart.forEach((item) => {
+	cart.forEach((item: CartItemType) => {
 		for (let i = 0; i < item.quantity; i++) {
 			allCartItems.push(item);
 		}
 	});
+
+	/*********************************************************************************************** */
+
 	return (
 		<table
 			className="navbar-cart-dropdown"
@@ -167,7 +171,30 @@ export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
 				) : (
 					allCartItems.map((item) => (
 						<tr>
-							<td>Hello</td>
+							<td>
+								<figure>
+									<img
+										src={item.images[0]}
+										alt=""
+										onError={(e) => {
+											e.currentTarget.src =
+												"https://safesendsoftware.com/wp-content/uploads/2016/06/Human-Error.jpg";
+										}}
+									/>
+									<figcaption>
+										<p>{item.title}</p>
+										<p>Qty: 1</p>
+										<button
+											onClick={() =>
+												dispatch(removeCartItem(item))
+											}
+										>
+											<span>Remove</span>
+										</button>
+									</figcaption>
+								</figure>
+								<p>{item.price} €</p>
+							</td>
 						</tr>
 					))
 				)}

@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { fetchSingleProductAsync } from "../redux/slices/productSlice";
 import NavBar from "../components/NavBar";
 import { addCartItem } from "../redux/slices/cartSlice";
+import Footer from "../components/Footer";
 
 function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	const product = useAppSelector((state) => state.products.singleProduct);
@@ -16,39 +17,69 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	useEffect(() => {
 		if (productId) dispatch(fetchSingleProductAsync(parseInt(productId)));
 	});
-
-	return (
-		<div className="single-product-page">
-			<div className="nav">
-				<NavBar />
-			</div>
-			<div className="main">
-				{product?.title}
-				{isAdminAuthenticated && (
-					<button
-						onClick={() =>
-							navigate(`/product/${product?.id}/update-product`)
-						}
-					>
-						Edit
-					</button>
-				)}
+	const otherImgs: any = [];
+	if (product?.images.length && product?.images.length > 1) {
+		product?.images.forEach((img) =>
+			otherImgs.push(
 				<img
-					src={product?.images[0]}
+					src={img}
 					alt=""
 					onError={(e) => {
 						e.currentTarget.src =
 							"https://safesendsoftware.com/wp-content/uploads/2016/06/Human-Error.jpg";
 					}}
 				/>
-				<button
-					onClick={() => {
-						if (product) dispatch(addCartItem(product));
-					}}
-				>
-					Add to cart
-				</button>
+			)
+		);
+	}
+
+	/******************************************************************************************** */
+
+	return (
+		<div className="single-product-page">
+			<div className="navbar">
+				<NavBar />
 			</div>
+			<div className="main">
+				<figure>
+					<img
+						src={product?.images[0]}
+						alt=""
+						onError={(e) => {
+							e.currentTarget.src =
+								"https://safesendsoftware.com/wp-content/uploads/2016/06/Human-Error.jpg";
+						}}
+					/>
+					<figcaption>
+						<h3>{product?.title}</h3>
+						<p>{product?.price} €</p>
+                        <p>{product?.description}</p>
+						<button
+							onClick={() => {
+								if (product) dispatch(addCartItem(product));
+							}}
+						>
+							<span>Add to cart</span>
+						</button>
+						{isAdminAuthenticated && (
+							<button
+								className="edit-btn"
+								onClick={() =>
+									navigate(
+										`/product/${product?.id}/update-product`
+									)
+								}
+							>
+								<span>Edit</span>
+							</button>
+						)}
+					</figcaption>
+				</figure>
+				<div className="other-imgs">
+					{otherImgs.map((img: any) => img)}
+				</div>
+			</div>
+			<Footer />
 		</div>
 	);
 }
