@@ -10,11 +10,11 @@ import {
 	DropDownClothes,
 	DropDownElectronics,
 	DropDownFurniture,
-	DropDownSearch,
 	DropDownShoes,
 } from "./NavBarDropDowns";
 import { WrappedComponentProp } from "../hoc/withUserAuthenticate";
 import withUserAuthentication from "../hoc/withUserAuthenticate";
+import Search from "./Search/Search";
 
 function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 	const [dropDown, setDropDown] = useState("");
@@ -107,7 +107,7 @@ function NavBar({ isUserAuthenticated }: WrappedComponentProp) {
 				) : dropDown === "Cart" ? (
 					<DropDownCart setDropDown={setDropDown} />
 				) : dropDown === "Search" ? (
-					<DropDownSearch setDropDown={setDropDown} />
+                    <Search setDropDown={setDropDown} />
 				) : null}
 			</section>
 		</>

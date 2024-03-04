@@ -478,6 +478,57 @@ nav .navbar-center img {
   text-align: end;
 }
 
+.navbar-search-dropdown {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.navbar-search-dropdown form {
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0;
+}
+.navbar-search-dropdown form input {
+  width: 90%;
+  height: 3vh;
+  border: none;
+  border-bottom: 1px solid black;
+}
+.navbar-search-dropdown form input:focus {
+  outline: none;
+}
+.navbar-search-dropdown section.search-results {
+  margin: 2vh 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+.navbar-search-dropdown section.search-results * {
+  font-size: 1.5vh;
+  margin: 0 1vw;
+}
+.navbar-search-dropdown button {
+  border: none;
+  background: transparent;
+  padding: 1vh 0;
+}
+.navbar-search-dropdown button span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.navbar-search-dropdown button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: rgba(18, 18, 18, 0.8392156863);
+  display: block;
+  transition: width 0.5s;
+}
+.navbar-search-dropdown button span:hover::after {
+  width: 100%;
+}
+
 article .product-card img {
   width: 100%;
 }

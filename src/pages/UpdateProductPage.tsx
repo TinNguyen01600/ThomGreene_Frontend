@@ -40,7 +40,6 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	} = useForm<InputType>();
 
 	const onSubmit: SubmitHandler<InputType> = (data) => {
-		console.log(data);
 		const updatedProduct: ProductCreateType = {
 			title: data.title,
 			price: data.price,
