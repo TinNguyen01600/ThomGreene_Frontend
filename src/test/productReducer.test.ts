@@ -1,5 +1,7 @@
 import productReducer, {
 	fetchAllProductsAsync,
+	searchForProduct,
+    sortProducts,
 } from "../redux/slices/productSlice";
 import { ProductType } from "../misc/types";
 import { createNewStore } from "../redux/store";
@@ -31,6 +33,18 @@ export const mockProducts: ProductType[] = [
 			image: "img2",
 		},
 	},
+	{
+		id: 3,
+		title: "notProduct 1",
+		price: 3,
+		description: "not product 1",
+		images: ["img1", "img2"],
+		category: {
+			id: 3,
+			name: "category 3",
+			image: "img3",
+		},
+	},
 ];
 
 let store = createNewStore();
@@ -56,7 +70,7 @@ describe("product reducer", () => {
 		searchedProducts: [],
 		sortedProducts: [],
 		filteredProducts: [],
-        singleProduct: null,
+		singleProduct: null,
 		loading: false,
 		error: null,
 	};
@@ -80,7 +94,7 @@ describe("product reducer", () => {
 			searchedProducts: [],
 			sortedProducts: [],
 			filteredProducts: [],
-            singleProduct: null,
+			singleProduct: null,
 			loading: false,
 			error: null,
 		};
@@ -98,7 +112,7 @@ describe("product reducer", () => {
 			searchedProducts: [],
 			sortedProducts: [],
 			filteredProducts: [],
-            singleProduct: null,
+			singleProduct: null,
 			loading: true,
 			error: null,
 		};
@@ -117,7 +131,7 @@ describe("product reducer", () => {
 			searchedProducts: [],
 			sortedProducts: [],
 			filteredProducts: [],
-            singleProduct: null,
+			singleProduct: null,
 			loading: false,
 			error: error.message,
 		};
@@ -133,4 +147,112 @@ describe("product reducer", () => {
 	// 	expect(store.getState().products.allProducts.length).toBe(2);
 	// 	expect(store.getState().products.error).toBeNull();
 	// });
+
+	/*********************************************************************** */
+
+	// test search for multiple products by title query
+	test("should search for multiple products by title query", () => {
+		const received = productReducer(
+			{
+				allProducts: mockProducts,
+				searchedProducts: [],
+				sortedProducts: [],
+				filteredProducts: [],
+				singleProduct: null,
+				loading: false,
+				error: null,
+			},
+			searchForProduct("pro")
+		);
+		const expected = {
+			allProducts: mockProducts,
+			searchedProducts: [mockProducts[0], mockProducts[1]],
+			sortedProducts: [],
+			filteredProducts: [],
+			singleProduct: null,
+			loading: false,
+			error: null,
+		};
+        expect(received).toEqual(expected)
+	});
+
+    // test search for 1 product by title query
+    test("should search for 1 product by title query", () => {
+        const received = productReducer(
+			{
+				allProducts: mockProducts,
+				searchedProducts: [],
+				sortedProducts: [],
+				filteredProducts: [],
+				singleProduct: null,
+				loading: false,
+				error: null,
+			},
+			searchForProduct("product2")
+		);
+		const expected = {
+			allProducts: mockProducts,
+			searchedProducts: [mockProducts[1]],
+			sortedProducts: [],
+			filteredProducts: [],
+			singleProduct: null,
+			loading: false,
+			error: null,
+		};
+        expect(received).toEqual(expected)
+    })
+
+    /*********************************************************************** */
+
+    // test sort products ascending
+    test("should sort products ascending", () => {
+        const received = productReducer(
+			{
+				allProducts: mockProducts,
+				searchedProducts: [],
+				sortedProducts: [],
+				filteredProducts: [],
+				singleProduct: null,
+				loading: false,
+				error: null,
+			},
+			sortProducts("ascending")
+		);
+		const expected = {
+			allProducts: mockProducts,
+			searchedProducts: [],
+			sortedProducts: [mockProducts[0], mockProducts[1], mockProducts[2]],
+			filteredProducts: [],
+			singleProduct: null,
+			loading: false,
+			error: null,
+		};
+        expect(received).toEqual(expected)
+    })
+
+    // test sort products descending
+    test("should sort products descending", () => {
+        const received = productReducer(
+			{
+				allProducts: mockProducts,
+				searchedProducts: [],
+				sortedProducts: [],
+				filteredProducts: [],
+				singleProduct: null,
+				loading: false,
+				error: null,
+			},
+			sortProducts("descending")
+		);
+		const expected = {
+			allProducts: mockProducts,
+			searchedProducts: [],
+			sortedProducts: [mockProducts[2], mockProducts[1], mockProducts[0]],
+			filteredProducts: [],
+			singleProduct: null,
+			loading: false,
+			error: null,
+		};
+        expect(received).toEqual(expected)
+    })
 });
