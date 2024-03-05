@@ -35,11 +35,18 @@
 	}
 	.main {
 		margin-top: 15vh;
+		.already-login {
+			margin: 4vh 7vw;
+		}
 		.forms {
 			display: flex;
 			justify-content: space-evenly;
 			.signin-form {
 				@include formStyles();
+				section.error {
+					color: red;
+					margin-top: 2vh;
+				}
 			}
 			.register-form {
 				@include formStyles();

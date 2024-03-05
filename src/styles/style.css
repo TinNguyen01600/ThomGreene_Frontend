@@ -297,6 +297,9 @@
 .login-page .main {
   margin-top: 15vh;
 }
+.login-page .main .already-login {
+  margin: 4vh 7vw;
+}
 .login-page .main .forms {
   display: flex;
   justify-content: space-evenly;
@@ -323,6 +326,10 @@
 }
 .login-page .main .forms .signin-form form .submit-btn {
   margin-top: 8vh;
+}
+.login-page .main .forms .signin-form section.error {
+  color: red;
+  margin-top: 2vh;
 }
 .login-page .main .forms .register-form {
   border: 1px solid black;
@@ -407,31 +414,39 @@
   display: flex;
   justify-content: space-between;
 }
-.user-profile-page .main article.already-signin section.info table p {
+.user-profile-page .main article.already-signin section.info .container .head {
   text-transform: uppercase;
   margin-bottom: 5vh;
 }
-.user-profile-page .main article.already-signin section.info table tr td {
-  padding: 0 5vw 2px 0;
+.user-profile-page .main article.already-signin section.info .container .body {
+  margin-bottom: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group {
+.user-profile-page .main article.already-signin section.info .container .body .row {
+  display: flex;
+}
+.user-profile-page .main article.already-signin section.info .container .body .row p {
+  width: 12vw;
+}
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group {
   display: flex;
   gap: 2vw;
-  margin-top: 5vh;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.edit-btn {
   color: #525252;
   border: 1px solid #525252;
   background: #fff;
   cursor: pointer;
   padding: 2vh;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn span {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.edit-btn span {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn span::after {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.edit-btn span::after {
   content: "";
   width: 0;
   height: 0.5px;
@@ -439,22 +454,22 @@
   display: block;
   transition: width 0.5s;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.edit-btn span:hover::after {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.edit-btn span:hover::after {
   width: 100%;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.create-btn {
   color: #fff;
   border: 1px solid #fff;
   background: #525252;
   cursor: pointer;
   padding: 2vh;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn span {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.create-btn span {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn span::after {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.create-btn span::after {
   content: "";
   width: 0;
   height: 0.5px;
@@ -462,11 +477,13 @@
   display: block;
   transition: width 0.5s;
 }
-.user-profile-page .main article.already-signin section.info table .btn-group button.create-btn span:hover::after {
+.user-profile-page .main article.already-signin section.info .container .foot .btn-group button.create-btn span:hover::after {
   width: 100%;
 }
 .user-profile-page .main article.already-signin section.info img {
   border-radius: 50%;
+  height: 40vh;
+  width: 40vh;
 }
 .user-profile-page .main article.already-signin section.info .cancel-update-btn {
   color: #525252;
@@ -798,7 +815,7 @@ nav .navbar-right span:hover::after {
 }
 nav .navbar-right .navbar-cart {
   height: 14vh;
-  padding-top: 5.5vh;
+  padding-top: 5.3vh;
   cursor: auto;
 }
 nav .navbar-center {

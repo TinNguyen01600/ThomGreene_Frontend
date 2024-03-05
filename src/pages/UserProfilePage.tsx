@@ -40,46 +40,54 @@ function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 						<section className="info">
 							{!update ? (
 								<>
-									<table>
-										<p>Personal Info</p>
-										<tbody>
-											<tr>
-												<td>Name</td>
-												<td>{user?.name}</td>
-											</tr>
-											<tr>
-												<td>Email address</td>
-												<td>{user?.email}</td>
-											</tr>
-											<tr>
-												<td>Role</td>
-												<td>{user?.role}</td>
-											</tr>
-										</tbody>
-										<div className="btn-group">
-											<button
-												className="edit-btn"
-												onClick={() =>
-													setUpdate(!update)
-												}
-											>
-												<span>Edit</span>
-											</button>
-											<button
-												className="create-btn"
-												onClick={() =>
-													navigate("/create-product")
-												}
-											>
-												<span>Create new product</span>
-											</button>
+									<div className="container">
+										<div className="head">
+											Personal Info
 										</div>
-									</table>
+										<div className="body">
+											<div className="row">
+												<p>Name</p>
+												<p>{user?.name}</p>
+											</div>
+											<div className="row">
+												<p>Email address</p>
+												<p>{user?.email}</p>
+											</div>
+											<div className="row">
+												<p>Role</p>
+												<p>{user?.role}</p>
+											</div>
+										</div>
+										<div className="foot">
+											<div className="btn-group">
+												<button
+													className="edit-btn"
+													onClick={() =>
+														setUpdate(!update)
+													}
+												>
+													<span>Edit</span>
+												</button>
+												<button
+													className="create-btn"
+													onClick={() =>
+														navigate(
+															"/create-product"
+														)
+													}
+												>
+													<span>
+														Create new product
+													</span>
+												</button>
+											</div>
+										</div>
+									</div>
 									<img
 										src={user?.avatar}
 										alt=""
 										onError={(e) => {
-											e.currentTarget.src = `https://robohash.org/${user?.name}`;
+											e.currentTarget.src = `https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxfsxKp3KErM3lZLqJc4wv0KECUCrMHhX0OA&usqp=CAU`;
 										}}
 									/>
 								</>

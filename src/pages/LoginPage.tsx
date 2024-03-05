@@ -15,13 +15,13 @@ function LoginPage({ isUserAuthenticated }: WrappedComponentProp) {
 			</div>
 			<div className="main">
 				{isUserAuthenticated && (
-					<>
+					<div className="already-login">
 						<h4>You're already logged in</h4>
 						<Link to={"/profile"}>
 							<p>Go to profile</p>
 						</Link>
 						<p>Or sign in with another account</p>
-					</>
+					</div>
 				)}
 				<div className="forms">
 					<UserSignInForm />

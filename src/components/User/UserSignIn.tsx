@@ -1,14 +1,16 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
-type UserSignInType = {
+export type UserSignInType = {
 	email: string;
 	password: string;
 };
 
 const UserSignInForm: React.FC = () => {
 	const navigate = useNavigate();
+	const [isError, setIsError] = useState<boolean>(false);
 	const {
 		register,
 		setValue,
@@ -20,12 +22,16 @@ const UserSignInForm: React.FC = () => {
 			.post("https://api.escuelajs.co/api/v1/auth/login", data)
 			.then((response) => {
 				if (response.status === 201) {
+					setIsError(false);
 					localStorage.setItem("token", response.data.access_token);
 					console.log("Sign In success, Token saved");
 					navigate("/");
 				}
 			})
-			.catch((error) => console.log(error));
+			.catch((error) => {
+				setIsError(true);
+				console.log(error);
+			});
 	};
 
 	return (
@@ -34,6 +40,7 @@ const UserSignInForm: React.FC = () => {
 			<form onSubmit={handleSubmit(onSubmit)}>
 				<label htmlFor="email">Email*</label>
 				<input
+					id="email"
 					type="email"
 					placeholder="email"
 					{...register("email")}
@@ -42,13 +49,18 @@ const UserSignInForm: React.FC = () => {
 
 				<label htmlFor="password">Password*</label>
 				<input
+					id="password"
 					type="password"
 					placeholder="password"
 					{...register("password")}
 					required
 				/>
 
-				<input type="submit" value="Sign In" className="submit-btn"/>
+				{isError && (
+					<section className="error">Invalid credentials</section>
+				)}
+
+				<input type="submit" value="Sign In" className="submit-btn" />
 			</form>
 		</main>
 	);

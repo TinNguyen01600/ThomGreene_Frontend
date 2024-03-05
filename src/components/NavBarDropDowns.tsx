@@ -170,7 +170,7 @@ export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
 					</tr>
 				) : (
 					allCartItems.map((item) => (
-						<tr>
+						<tr key={item.id}>
 							<td>
 								<figure>
 									<img
@@ -199,24 +199,27 @@ export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
 					))
 				)}
 				<tr>
-					<Link
-						to={"/cart"}
-						style={{
-							color: "black",
-							textDecoration: "none",
-						}}
-					>
-						<td
+					<td>
+						<Link
+							to={"/cart"}
 							style={{
-								display: "flex",
-								justifyContent: "space-between",
-								padding: "1.5vh 2vw 1.5vh 2vw",
+								color: "black",
+								textDecoration: "none",
 							}}
 						>
-							<span>VIEW CART</span>
-							<p> &gt;</p>
-						</td>
-					</Link>
+							<div
+								style={{
+									display: "flex",
+									justifyContent: "space-between",
+									padding: "1.5vh 2vw 1.5vh 2vw",
+									border: "1px solid #ddd",
+								}}
+							>
+								<span>VIEW CART</span>
+								<p> &gt;</p>
+							</div>
+						</Link>
+					</td>
 				</tr>
 			</tbody>
 		</table>
