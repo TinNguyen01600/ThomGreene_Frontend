@@ -8,6 +8,7 @@ import { fetchSingleProductAsync } from "../redux/slices/productSlice";
 import NavBar from "../components/NavBar";
 import { addCartItem } from "../redux/slices/cartSlice";
 import Footer from "../components/Footer";
+import axios from "axios";
 
 function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	const product = useAppSelector((state) => state.products.singleProduct);
@@ -35,6 +36,18 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 
 	/******************************************************************************************** */
 
+	const deleteProduct = () => {
+		axios
+			.delete(`https://api.escuelajs.co/api/v1/products/${productId}`)
+			.then((response) => {
+				console.log(response);
+				if (response.data === true) navigate("/allproducts");
+			})
+			.catch((error) => console.log(error));
+	};
+
+	/******************************************************************************************** */
+
 	return (
 		<div className="single-product-page">
 			<div className="navbar">
@@ -53,7 +66,7 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 					<figcaption>
 						<h3>{product?.title}</h3>
 						<p>{product?.price} €</p>
-                        <p>{product?.description}</p>
+						<p>{product?.description}</p>
 						<button
 							onClick={() => {
 								if (product) dispatch(addCartItem(product));
@@ -62,16 +75,24 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 							<span>Add to cart</span>
 						</button>
 						{isAdminAuthenticated && (
-							<button
-								className="edit-btn"
-								onClick={() =>
-									navigate(
-										`/product/${product?.id}/update-product`
-									)
-								}
-							>
-								<span>Edit</span>
-							</button>
+							<div className="btn-group">
+								<button
+									className="edit-btn"
+									onClick={() =>
+										navigate(
+											`/product/${product?.id}/update-product`
+										)
+									}
+								>
+									<span>Edit</span>
+								</button>
+								<button
+									className="delete-btn"
+									onClick={deleteProduct}
+								>
+									<span>Delete product</span>
+								</button>
+							</div>
 						)}
 					</figcaption>
 				</figure>

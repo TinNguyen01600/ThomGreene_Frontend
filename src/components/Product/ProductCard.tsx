@@ -26,19 +26,19 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 				<figcaption className="product-card-back">
 					<p>{product.title}</p>
 					<p>{product.price} €</p>
-						<button
-							className="product-detail"
-							onClick={() => {
-                                navigate(`/product/${product.id}`)
-							}}
-						>
-							view detail
-						</button>
+					<button
+						className="product-detail"
+						onClick={() => {
+							navigate(`/product/${product.id}`);
+						}}
+					>
+						<span>view detail</span>
+					</button>
 					<button
 						className="product-add"
 						onClick={() => dispatch(addCartItem(product))}
 					>
-						add to cart
+						<span>add to cart</span>
 					</button>
 				</figcaption>
 			</div>

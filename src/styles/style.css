@@ -13,39 +13,103 @@
   margin-top: 12vh;
   display: flex;
   justify-content: center;
+  align-items: flex-start;
   gap: 3vw;
+}
+.cart-page .main * {
+  font-size: 1.7vh;
+  text-transform: uppercase;
 }
 .cart-page .main .shoppping-bag {
   border: 1px solid #ddd;
-  width: 55vw;
+  width: 60%;
 }
-.cart-page .main .order-summary {
-  width: 25vw;
+.cart-page .main .shoppping-bag .title {
+  border-bottom: 1px solid #ddd;
+  padding: 2vh 1.5vw;
 }
-.cart-page .main .order-summary table,
-.cart-page .main .order-summary td,
-.cart-page .main .order-summary th {
-  border: 1px solid #ddd;
-  text-align: left;
-}
-.cart-page .main .order-summary th,
-.cart-page .main .order-summary td {
-  padding: 1.5vh 2vw;
-  font-size: 2.5vh;
-}
-.cart-page .main .order-summary .checkout-btn {
+.cart-page .main .shoppping-bag .items article.item {
+  border-bottom: 1px solid #ddd;
+  padding: 2vh 1.5vw;
   display: flex;
   justify-content: space-between;
-  background-color: #525252;
-  color: #fff;
-  cursor: pointer;
 }
-.cart-page .main .order-summary .checkout-btn span {
+.cart-page .main .shoppping-bag .items article.item figure {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+.cart-page .main .shoppping-bag .items article.item figure img {
+  height: 20vh;
+}
+.cart-page .main .shoppping-bag .items article.item .price {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+.cart-page .main .shoppping-bag .items article.item .price button {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+}
+.cart-page .main .shoppping-bag .items article.item .price button span {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
 }
-.cart-page .main .order-summary .checkout-btn span::after {
+.cart-page .main .shoppping-bag .items article.item .price button span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.cart-page .main .shoppping-bag .items article.item .price button span:hover::after {
+  width: 100%;
+}
+.cart-page .main .shoppping-bag ul {
+  list-style-type: none;
+  padding: 2vh 1.5vw;
+}
+.cart-page .main .shoppping-bag ul * {
+  text-transform: none;
+}
+.cart-page .main .shoppping-bag ul li:not(:last-child) {
+  margin-bottom: 1vh;
+}
+.cart-page .main .order-summary {
+  width: 20%;
+  border: 1px solid #ddd;
+}
+.cart-page .main .order-summary .summary {
+  border-bottom: 1px solid #ddd;
+  padding: 2vh 1.5vw;
+}
+.cart-page .main .order-summary .subtotal {
+  border-bottom: 1px solid #ddd;
+  padding: 2vh 1.5vw;
+  display: flex;
+  justify-content: space-between;
+}
+.cart-page .main .order-summary button.checkout-btn {
+  color: #fff;
+  border: 1px solid #fff;
+  background: #525252;
+  cursor: pointer;
+  padding: 2vh;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.cart-page .main .order-summary button.checkout-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.cart-page .main .order-summary button.checkout-btn span::after {
   content: "";
   width: 0;
   height: 0.5px;
@@ -53,7 +117,7 @@
   display: block;
   transition: width 0.5s;
 }
-.cart-page .main .order-summary .checkout-btn span:hover::after {
+.cart-page .main .order-summary button.checkout-btn span:hover::after {
   width: 100%;
 }
 
@@ -162,11 +226,11 @@
   width: 30%;
 }
 .single-product-page .main figure figcaption button {
-  border: none;
-  background: transparent;
-  padding: 1.5vh;
   color: #fff;
-  background-color: #525252;
+  border: 1px solid #fff;
+  background: #525252;
+  cursor: pointer;
+  padding: 2vh;
 }
 .single-product-page .main figure figcaption button span {
   text-decoration: none;
@@ -184,18 +248,27 @@
 .single-product-page .main figure figcaption button span:hover::after {
   width: 100%;
 }
-.single-product-page .main figure figcaption button.edit-btn {
-  border: 1px solid #525252;
-  background: transparent;
-  padding: 1.5vh;
-  color: #525252;
+.single-product-page .main figure figcaption .btn-group {
+  display: flex;
+  gap: 1vw;
 }
-.single-product-page .main figure figcaption button.edit-btn span {
+.single-product-page .main figure figcaption .btn-group button.edit-btn,
+.single-product-page .main figure figcaption .btn-group .delete-btn {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+  width: 50%;
+}
+.single-product-page .main figure figcaption .btn-group button.edit-btn span,
+.single-product-page .main figure figcaption .btn-group .delete-btn span {
   text-decoration: none;
   display: inline-block;
   cursor: pointer;
 }
-.single-product-page .main figure figcaption button.edit-btn span::after {
+.single-product-page .main figure figcaption .btn-group button.edit-btn span::after,
+.single-product-page .main figure figcaption .btn-group .delete-btn span::after {
   content: "";
   width: 0;
   height: 0.5px;
@@ -203,7 +276,8 @@
   display: block;
   transition: width 0.5s;
 }
-.single-product-page .main figure figcaption button.edit-btn span:hover::after {
+.single-product-page .main figure figcaption .btn-group button.edit-btn span:hover::after,
+.single-product-page .main figure figcaption .btn-group .delete-btn span:hover::after {
   width: 100%;
 }
 .single-product-page .main .other-imgs img {
@@ -450,6 +524,20 @@
   width: 100%;
 }
 
+.category-page {
+  display: flex;
+  flex-direction: column;
+}
+.category-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+.category-page .main {
+  margin-top: 12vh;
+}
+
 .all-products {
   grid-area: all_products;
 }
@@ -536,6 +624,21 @@
   position: absolute;
   top: 8px;
   left: 16px;
+}
+
+.category-products-grid p.title {
+  margin: 1vh 3vw;
+  padding-top: 1vh;
+  border-top: 1px solid #a8a8a7;
+}
+.category-products-grid .normal-layout-products {
+  display: grid;
+  grid-template-columns: repeat(4, 19vw);
+  row-gap: 4vh;
+  -moz-column-gap: 3vw;
+       column-gap: 3vw;
+  justify-content: space-between;
+  margin: 3vw;
 }
 
 footer {
@@ -1070,16 +1173,51 @@ article .product-card figcaption {
   flex-direction: column;
   justify-content: center;
 }
-article .product-card figcaption button {
+article .product-card figcaption .product-detail {
+  color: #424242;
+  border: 1px solid #424242;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+}
+article .product-card figcaption .product-detail span {
+  text-decoration: none;
+  display: inline-block;
   cursor: pointer;
 }
-article .product-card figcaption .product-detail {
-  background-color: #fff;
-  color: #424242;
+article .product-card figcaption .product-detail span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #424242;
+  display: block;
+  transition: width 0.5s;
+}
+article .product-card figcaption .product-detail span:hover::after {
+  width: 100%;
 }
 article .product-card figcaption .product-add {
-  background-color: #424242;
   color: #fff;
+  border: 1px solid #fff;
+  background: #424242;
+  cursor: pointer;
+  padding: 2vh;
+}
+article .product-card figcaption .product-add span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+article .product-card figcaption .product-add span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+article .product-card figcaption .product-add span:hover::after {
+  width: 100%;
 }
 
 /*************************************************/
@@ -1090,7 +1228,8 @@ article .product-card figcaption .product-add {
   article .product-card figcaption {
     gap: 0.4vh;
   }
-  article .product-card figcaption p, article .product-card figcaption button {
+  article .product-card figcaption p,
+  article .product-card figcaption button {
     font-size: 1.2vh;
   }
 }
@@ -1101,7 +1240,8 @@ article .product-card figcaption .product-add {
   article .product-card figcaption {
     gap: 2vh;
   }
-  article .product-card figcaption p, article .product-card figcaption button {
+  article .product-card figcaption p,
+  article .product-card figcaption button {
     font-size: 3.5vh;
   }
 }
@@ -1112,7 +1252,8 @@ article .product-card figcaption .product-add {
   article .product-card figcaption {
     gap: 0.5vh;
   }
-  article .product-card figcaption p, article .product-card figcaption button {
+  article .product-card figcaption p,
+  article .product-card figcaption button {
     font-size: 1.7vh;
   }
 }
@@ -1123,7 +1264,8 @@ article .product-card figcaption .product-add {
   article .product-card figcaption {
     gap: 1vh;
   }
-  article .product-card figcaption p, article .product-card figcaption button {
+  article .product-card figcaption p,
+  article .product-card figcaption button {
     font-size: 3vh;
   }
 }
@@ -1134,8 +1276,9 @@ article .product-card figcaption .product-add {
   article .product-card figcaption {
     gap: 2vh;
   }
-  article .product-card figcaption p, article .product-card figcaption button {
-    font-size: 4vh;
+  article .product-card figcaption p,
+  article .product-card figcaption button {
+    font-size: 2.5vh;
   }
 }
 /*************************************************/
@@ -1171,7 +1314,7 @@ article .product-card figcaption .product-add {
   margin-top: 12vh;
   display: flex;
   flex-direction: column;
-  gap: 4vh;
+  gap: 6vh;
   /**************************************************************************/
   /**************************************************************************/
   margin: 0 3vw;
@@ -1179,7 +1322,7 @@ article .product-card figcaption .product-add {
 .all-products-container .special-layout-products {
   display: grid;
   grid-template-rows: auto;
-  row-gap: 4vh;
+  row-gap: 6vh;
   -moz-column-gap: 2vw;
        column-gap: 2vw;
   grid-template-areas: "product0 product1 product4 product4" "product2 product3 product4 product4" "product5 product5 product6 product7" "product5 product5 product8 product9";
@@ -1216,10 +1359,10 @@ article .product-card figcaption .product-add {
 }
 .all-products-container .normal-layout-products {
   display: grid;
-  grid-template-columns: repeat(4, 21vw);
+  grid-template-columns: repeat(4, 19vw);
   row-gap: 4vh;
-  -moz-column-gap: 2vw;
-       column-gap: 2vw;
+  -moz-column-gap: 3vw;
+       column-gap: 3vw;
   justify-content: space-between;
 }
 

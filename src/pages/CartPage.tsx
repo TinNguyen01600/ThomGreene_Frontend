@@ -15,16 +15,33 @@ const CartPage: React.FC = () => {
 		subTotal += item.price * item.quantity;
 		for (let i = 0; i < item.quantity; i++) {
 			allCartItems.push(
-				<li key={i}>
-					<span>{item.title}</span>
-					<button
-						onClick={() => {
-							dispatch(removeCartItem(item));
-						}}
-					>
-						Remove
-					</button>
-				</li>
+				<article className="item" key={i}>
+					<figure>
+						<img
+							src={item.images[0]}
+							alt=""
+							onError={(e) => {
+								e.currentTarget.src =
+									"https://safesendsoftware.com/wp-content/uploads/2016/06/Human-Error.jpg";
+							}}
+						/>
+						<figcaption>
+							<p>{item.title}</p>
+							<p>Qty. 1</p>
+						</figcaption>
+					</figure>
+
+					<div className="price">
+						<p>{item.price} €</p>
+						<button
+							onClick={() => {
+								dispatch(removeCartItem(item));
+							}}
+						>
+							<span>Remove</span>
+						</button>
+					</div>
+				</article>
 			);
 		}
 	});
@@ -42,35 +59,43 @@ const CartPage: React.FC = () => {
 				) : (
 					<>
 						<article className="shoppping-bag">
-							{allCartItems.map((item) => item)}
+							<div className="title">
+								Shopping bag. {allCartItems.length} items.
+							</div>
+							<div className="items">
+								{allCartItems.map((item) => item)}
+							</div>
+							<ul className="notes">
+								<li>
+									Free returns are available within 14 days of
+									your online order delivery.
+								</li>
+								<li>
+									Items must be in perfect condition, some
+									exclusions apply.
+								</li>
+								<li>
+									Fragrance items are non-refundable. See our
+									returns page for our full policy.
+								</li>
+							</ul>
 						</article>
-						<table className="order-summary">
-							<tbody>
-								<tr>
-									<th>Order summary</th>
-								</tr>
-								<tr>
-									<td
-										style={{
-											display: "flex",
-											justifyContent: "space-between",
-										}}
-									>
-										<p>Subtotal</p>
-										<p>{subTotal}</p>
-									</td>
-								</tr>
-								<tr>
-									<td
-										className="checkout-btn"
-										onClick={() => navigate("/checkout")}
-									>
-										<span>Proceed to checkout</span>
-										<p> &gt;</p>
-									</td>
-								</tr>
-							</tbody>
-						</table>
+						<div className="order-summary">
+							<div className="summary">
+								<p>Order summary</p>
+							</div>
+							<div className="subtotal">
+								<p>Subtotal</p>
+								<p>{subTotal}</p>
+							</div>
+							<button
+								className="checkout-btn"
+								onClick={() => navigate("/checkout")}
+							>
+								<span>Proceed to checkout</span>
+								<p> &gt;</p>
+							</button>
+						</div>
 					</>
 				)}
 			</div>

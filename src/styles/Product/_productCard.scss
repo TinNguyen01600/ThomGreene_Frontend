@@ -1,4 +1,5 @@
 @use "../responsive";
+@use "../mixins";
 
 article .product-card {
 	img {
@@ -8,16 +9,11 @@ article .product-card {
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		button {
-			cursor: pointer;
-		}
 		.product-detail {
-			background-color: #fff;
-			color: #424242;
+			@include mixins.buttonType1(#424242, #fff);
 		}
 		.product-add {
-			background-color: #424242;
-			color: #fff;
+			@include mixins.buttonType1(#fff, #424242);
 		}
 	}
 }
@@ -29,7 +25,8 @@ article .product-card {
 		height: 10vh;
 		figcaption {
 			gap: 0.4vh;
-			p, button {
+			p,
+			button {
 				font-size: 1.2vh;
 			}
 		}
@@ -41,7 +38,8 @@ article .product-card {
 		height: 45vh;
 		figcaption {
 			gap: 2vh;
-            p, button {
+			p,
+			button {
 				font-size: 3.5vh;
 			}
 		}
@@ -53,7 +51,8 @@ article .product-card {
 		height: 15vh;
 		figcaption {
 			gap: 0.5vh;
-            p, button {
+			p,
+			button {
 				font-size: 1.7vh;
 			}
 		}
@@ -65,7 +64,8 @@ article .product-card {
 		height: 49vh;
 		figcaption {
 			gap: 1vh;
-            p, button {
+			p,
+			button {
 				font-size: 3vh;
 			}
 		}
@@ -77,8 +77,9 @@ article .product-card {
 		height: 47vh;
 		figcaption {
 			gap: 2vh;
-            p, button {
-				font-size: 4vh;
+			p,
+			button {
+				font-size: 2.5vh;
 			}
 		}
 	}

@@ -1,0 +1,13 @@
+.category-page {
+    display: flex;
+    flex-direction: column;
+    .navbar {
+        position: fixed;
+        width: 100%;
+        z-index: 1;
+        background-color: transparent;
+    }
+    .main {
+        margin-top: 12vh;
+    }
+}

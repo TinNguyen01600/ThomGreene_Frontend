@@ -7,40 +7,81 @@
 		position: fixed;
 		width: 100%;
 		z-index: 1;
-        background-color: transparent;
+		background-color: transparent;
 	}
 	.main {
 		margin-top: 12vh;
 		display: flex;
 		justify-content: center;
+		align-items: flex-start;
 		gap: 3vw;
+		* {
+			font-size: 1.7vh;
+			text-transform: uppercase;
+		}
 		.shoppping-bag {
 			border: 1px solid #ddd;
-            width: 55vw;
+			width: 60%;
+			.title {
+				border-bottom: 1px solid #ddd;
+				padding: 2vh 1.5vw;
+			}
+			.items {
+				article.item {
+					border-bottom: 1px solid #ddd;
+					padding: 2vh 1.5vw;
+					display: flex;
+					justify-content: space-between;
+					figure {
+                        display: flex;
+                        align-items: center;
+                        gap: 2vw;
+						img {
+							height: 20vh;
+						}
+					}
+					.price {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: space-around;
+                        button {
+                            @include mixins.buttonType1(#525252, #fff)
+                        }
+					}
+				}
+			}
+			ul {
+				list-style-type: none;
+				padding: 2vh 1.5vw;
+                * {
+                    text-transform: none;
+                }
+				li:not(:last-child) {
+					margin-bottom: 1vh;
+				}
+			}
 		}
 		.order-summary {
-			width: 25vw;
-			table,
-			td,
-			th {
-				border: 1px solid #ddd;
-				text-align: left;
+			width: 20%;
+			border: 1px solid #ddd;
+
+			.summary {
+				border-bottom: 1px solid #ddd;
+				padding: 2vh 1.5vw;
+			}
+			.subtotal {
+				border-bottom: 1px solid #ddd;
+				padding: 2vh 1.5vw;
+				display: flex;
+				justify-content: space-between;
 			}
 
-			th,
-			td {
-				padding: 1.5vh 2vw;
-                font-size: 2.5vh;
+			button.checkout-btn {
+				@include mixins.buttonType1(#fff, #525252);
+				display: flex;
+				justify-content: space-between;
+				width: 100%;
 			}
-
-            .checkout-btn {
-                display: flex;
-                justify-content: space-between;
-                background-color: #525252;
-                color: #fff;
-                cursor: pointer;
-                @include mixins.underline("span", #fff);
-            }
 		}
 	}
 }

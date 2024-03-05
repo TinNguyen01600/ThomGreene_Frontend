@@ -29,21 +29,17 @@
 				gap: 2vh;
 				width: 30%;
 				button {
-					border: none;
-					background: transparent;
-                    padding: 1.5vh;
-					color: #fff;
-					background-color: #525252;
-					@include mixins.underline("span", #fff);
+					@include mixins.buttonType1(#fff, #525252);
 				}
-                button.edit-btn {
-                    border: 1px solid #525252;
-					background: transparent;
-                    padding: 1.5vh;
-					color: #525252;
-					// background-color: #525252;
-					@include mixins.underline("span", #525252);
-                }
+				.btn-group {
+					display: flex;
+					gap: 1vw;
+					button.edit-btn,
+					.delete-btn {
+						@include mixins.buttonType1(#525252, #fff);
+						width: 50%;
+					}
+				}
 			}
 		}
 		.other-imgs {

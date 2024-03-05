@@ -27,3 +27,11 @@
 	padding: 2vh;
 	@include underline("span", $textColor);
 }
+
+@mixin grid() {
+    display: grid;
+	grid-template-columns: repeat(4, 19vw);
+	row-gap: 4vh;
+	column-gap: 3vw;
+	justify-content: space-between;
+}

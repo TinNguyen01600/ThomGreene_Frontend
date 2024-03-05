@@ -1,7 +1,6 @@
 import UserProfilePage from "./pages/UserProfilePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
-import CategoryProducts from "./components/Category/CategoryProducts";
 import AllProducts from "./pages/AllProducts";
 import CartPage from "./pages/CartPage";
 import LoginPage from "./pages/LoginPage";
@@ -14,6 +13,7 @@ import { saveUserInfo } from "./redux/slices/userSlice";
 import UpdateProductPage from "./pages/UpdateProductPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import CheckoutPage from "./pages/CheckoutPage";
+import CategoryPage from "./pages/CategoryPage";
 
 export default function App() {
     const dispatch = useAppDispatch();
@@ -47,7 +47,7 @@ export default function App() {
 					<Route path="/allproducts" element={<AllProducts />} />
 					<Route
 						path="/category/:categoryId"
-						element={<CategoryProducts />}
+						element={<CategoryPage />}
 					/>
                     <Route path="/product/:productId" element={<SingleProductPage />} />
 					<Route path="/cart" element={<CartPage />} />

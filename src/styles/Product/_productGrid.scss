@@ -1,4 +1,6 @@
-$row-gap: 4vh;
+@use "../mixins";
+
+$row-gap: 6vh;
 $col-gap: 2vw;
 
 .all-products-container {
@@ -29,11 +31,7 @@ $col-gap: 2vw;
 	/**************************************************************************/
 
 	.normal-layout-products {
-		display: grid;
-		grid-template-columns: repeat(4, 21vw);
-		row-gap: $row-gap;
-		column-gap: $col-gap;
-		justify-content: space-between;
+        @include mixins.grid();
 	}
 	margin: 0 3vw;
 }
