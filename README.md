@@ -1,50 +1,104 @@
-# Frontend project
+# Thom Greene E-Commerce website
 
-This repository for the Frontend project to build an e-commerce website.
+## General Description
 
-## Requirements
+> The application, using React TS and Redux Toolkit, creates a a fully functional e-commerce store named Thom Greene, a similar version inspired by [Thom Browne](https://www.thombrowne.com/) brand.
 
-### Basic requirements
+Deploy link: [Thom Greene](https://tin-nguyen-thomgreene.netlify.app/)
 
-The Front end project must use TypeScript and Redux toolkit.
+## Table of content
 
-1. Use the API endpoint `https://fakeapi.platzi.com/`.
+[Technologies](#technologies)
 
-2. Create at lease 4 pages (can be more if you want): Page for all products, product page, profile page (only available if user logins), and cart page (cart page could be a page or a modal)
+[Project Structure](#project-structure)
 
-3. Create Redux store for following features:
+[Instruction](#instruction)
 
-   - product reducer: get all products, find a single products, filter products by categories, sort products by price. Create, update and delete a product (enable update & delete features only for admin of the webapp)
-   - user reducer: register and login
-   - cart reducer: add product to cart, remove products, update products's quantity in cart
+[Features](#features)
 
-4. When adding routers to your application, set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.
+[User Interface](#ui)
 
-5. Styling: must have responsive
+## Technology
 
-6. Implement unit testing for the reducers
+-   TypeScript
+-   HTML / CSS / SCSS
+-   React CRA
+-   Routing (react-router-dom)
+-   Redux & Redux-Toolkit
+-   Material UI
+-   Testing with Jest
+<pre>
+Package used
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.15.10",
+    "@reduxjs/toolkit": "^2.2.0",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.80",
+    "@types/react": "^18.2.55",
+    "@types/react-dom": "^18.2.19",
+    "axios": "^1.6.7",
+    "framer-motion": "^11.0.5",
+    "lodash": "^4.17.21",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-hook-form": "^7.50.1",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.0",
+    "react-scripts": "5.0.1",
+    "sass": "^1.70.0",
+    "typescript": "^4.9.5",
+    "web-vitals": "^2.1.4",
+    "msw": "^2.2.1"
+</pre>
 
-7. **Deploy** the application and rewrite README file.
+## Project Structure
 
-### Additional features:
+## Instruction
 
-- Use Context API to switch theme
-- Use pagination when fetching/displaying all the products
-- Implement performance optimization where applicable
+1. Open your terminal and clone the repository with the following command:
 
-## Grading (1-5)
+```
+git clone git@github.com:TinNguyen01600/E-commerce.git
+```
 
-1: Late submission or not complete basic requirements
+2. Install all the packages and dependencies:
 
-2: Basic requirement + Presentation
+```
+npm install
+```
 
-3: Folder structure + follow convention(naming convention ,loading, error) + some additional features
+3. Start the application in your local machine:
 
-4: All additional features + reusable logic + custom hook
+```
+npm start
+```
 
-5: UI-UX (for example: send alert when user add same product) + styling (animation or transition, scroll to top) + advanced feature (google log in)
+\*\* Or simply access the deployed version on Netlify (https://tin-nguyen-thomgreene.netlify.app/).
 
-## Deadline
+## Features
 
-- Presentation: **7/3** and **8/3/ 2024**
-- Submitting Front-end project **10am 8/3/2024**
+<ol>
+<li>Use the API endpoint https://fakeapi.platzi.com/.</li>
+
+<li>Create at lease 4 pages (can be more if you want): Page for all products, product page, profile page (only available if user logins), and cart page (cart page could be a page or a modal)</li>
+
+<li>Create Redux store for following features:</li>
+
+product reducer: get all products, find a single products, filter products by categories, sort products by price. Create, update and delete a product (enable update & delete features only for admin of the webapp)
+user reducer: register and login
+cart reducer: add product to cart, remove products, update products's quantity in cart
+
+<li>When adding routers to your application, set certain routes to be private. For example, route to user profile page should not be accessible if user has not logged in.</li>
+
+<li>Resposive styling.</li>
+
+<li>Implement unit testing for the reducers</li>
+
+<li>Deploy the application and rewrite README file.</li>
+
+</ol>

@@ -6,6 +6,7 @@ import ProductCard from "../components/Product/ProductCard";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import FilterAndSort from "../components/Filter_&_Sort/FilterAndSort";
+import MyPagination from "../components/MyPagination";
 
 const AllProducts: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -22,15 +23,26 @@ const AllProducts: React.FC = () => {
 	}, [dispatch]);
 
 	/*********************************************************************************** */
-	let displayProducts = allProducts;
+	let currentProducts = allProducts;
 
 	if (display === "All") {
-		displayProducts = allProducts;
+		currentProducts = allProducts;
 	} else if (display === "Filter" && filteredProducts.length > 0) {
-		displayProducts = filteredProducts;
+		currentProducts = filteredProducts;
 	} else if (display === "Sort" && sortedProducts.length > 0) {
-		displayProducts = sortedProducts;
+		currentProducts = sortedProducts;
 	}
+
+	/*********************************************************************************** */
+	const [currentPage, setCurrentPage] = useState<number>(1);
+	const prodsPerPage = 4;
+	const indexOfLastProd = currentPage * prodsPerPage;
+	const indexOfFirstProd = indexOfLastProd - prodsPerPage;
+	const displayProducts = currentProducts.slice(
+		indexOfFirstProd,
+		indexOfLastProd
+	);
+
 	/*********************************************************************************** */
 	const specialLayout = [],
 		normalLayout = [];
@@ -61,6 +73,7 @@ const AllProducts: React.FC = () => {
 		}
 	}
 
+	/*********************************************************************************** */
 	return (
 		<div className="all-products-page">
 			<div className="navbar">
@@ -71,13 +84,20 @@ const AllProducts: React.FC = () => {
 			</div>
 			<div className="main">
 				<section className="all-products-container">
-					<section className="special-layout-products">
-						{specialLayout.map((product) => product)}
-					</section>
+					{displayProducts.length >= 10 && (
+						<section className="special-layout-products">
+							{specialLayout.map((product) => product)}
+						</section>
+					)}
 					<section className="normal-layout-products">
 						{normalLayout.map((product) => product)}
 					</section>
 				</section>
+				<MyPagination
+					setPage={setCurrentPage}
+					prodsPerPage={prodsPerPage}
+					currentProducts={currentProducts}
+				/>
 			</div>
 			<Footer />
 		</div>

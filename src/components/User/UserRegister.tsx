@@ -1,12 +1,12 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
-import { useAppDispatch } from "../../redux/hooks";
-import { UserRegister } from "../../misc/types";
 import { useNavigate } from "react-router-dom";
+
+import { UserRegister } from "../../misc/types";
 import { UserSignInType } from "./UserSignIn";
+import { useState } from "react";
 
 const UserRegisterForm: React.FC = () => {
-	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	const {
 		register,
@@ -14,20 +14,40 @@ const UserRegisterForm: React.FC = () => {
 		handleSubmit,
 		formState: { errors },
 	} = useForm<UserRegister>();
+	const [isError, setIsError] = useState<boolean>(false);
 
 	/*********************************************************************************** */
 
 	const onSubmit: SubmitHandler<UserRegister> = (data) => {
-		const data1 = { ...data, avatar: `https://robohash.org/${data.name}` };
 		axios
-			.post("https://api.escuelajs.co/api/v1/users/", data1)
+			.post("https://api.escuelajs.co/api/v1/users/is-available", {
+				email: data.email,
+			})
 			.then((response) => {
-				if (response.status === 201) {
-					signin({
-						email: response.data.email,
-						password: response.data.password,
-					});
-				}
+				if (response.status === 201)
+					if (response.data.isAvailable === true) {
+                        setIsError(false)
+						const data1 = {
+							...data,
+							avatar: `https://robohash.org/${data.name}`,
+						};
+						axios
+							.post(
+								"https://api.escuelajs.co/api/v1/users/",
+								data1
+							)
+							.then((response) => {
+								if (response.status === 201) {
+									signin({
+										email: response.data.email,
+										password: response.data.password,
+									});
+								}
+							})
+							.catch((error) => console.log(error));
+					} else {
+						setIsError(true);
+					}
 			})
 			.catch((error) => console.log(error));
 	};
@@ -68,6 +88,11 @@ const UserRegisterForm: React.FC = () => {
 					{...register("email")}
 					required
 				/>
+				{isError && (
+					<section className="error" style={{ color: "red" }}>
+						The email is aleady registered.
+					</section>
+				)}
 
 				<label htmlFor="password">Password*</label>
 				<input

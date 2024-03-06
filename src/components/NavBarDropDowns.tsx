@@ -205,19 +205,14 @@ export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
 							style={{
 								color: "black",
 								textDecoration: "none",
+								width: "100%",
+								display: "flex",
+								justifyContent: "space-between",
+								padding: "1.5vh 0",
 							}}
 						>
-							<div
-								style={{
-									display: "flex",
-									justifyContent: "space-between",
-									padding: "1.5vh 2vw 1.5vh 2vw",
-									border: "1px solid #ddd",
-								}}
-							>
-								<span>VIEW CART</span>
-								<p> &gt;</p>
-							</div>
+							<span>VIEW CART</span>
+							<p> &gt;</p>
 						</Link>
 					</td>
 				</tr>
