@@ -1,17 +1,17 @@
-import { useCallback, useState } from "react";
-import Box from "@mui/material/Box";
-import Slider from "@mui/material/Slider";
+import { useCallback } from "react";
 
 import { useAppDispatch } from "../../redux/hooks";
 import { fetchFilteredProductsAsync } from "../../redux/slices/productSlice";
+import CustomizedSlider from "./CustomizedSlider";
 
 type Props = {
 	setDropDown: (dropDown: string) => void;
 	setDisplay: (display: string) => void;
+    range: number[];
+    setRange: (range: number[]) => void
 };
 
-const DropDownFilter: React.FC<Props> = ({ setDropDown, setDisplay }) => {
-	const [range, setRange] = useState<number[]>([0, 100]);
+const DropDownFilter: React.FC<Props> = ({ setDropDown, setDisplay, range, setRange }) => {
 	const dispatch = useAppDispatch();
 
 	const handleChange = (event: Event, newRange: number | number[]) => {
@@ -32,25 +32,18 @@ const DropDownFilter: React.FC<Props> = ({ setDropDown, setDisplay }) => {
 	);
 	/***************************************************************************** */
 	const resetFilter = () => {
-        setRange([0, 100]);
+		setRange([0, 100]);
 		setDisplay("All");
 	};
 
 	return (
 		<div className="dropdown-filter">
-			<Box sx={{ width: 600, margin: "0 3vw", color: "grey" }}>
-				<p>Price range</p>
-				<Slider
-					value={range}
-					onChange={handleChange}
-					valueLabelDisplay="auto"
-				/>
-			</Box>
+			<CustomizedSlider range={range} handleChange={handleChange} />
 			<div className="btn-group">
 				<button onClick={resetFilter}>
 					<span>Reset</span>
 				</button>
-                <button onClick={() => setDropDown("")} className="close-btn">
+				<button onClick={() => setDropDown("")} className="close-btn">
 					<span>Close</span>
 				</button>
 			</div>

@@ -10,37 +10,44 @@ import { sortProducts } from "../../redux/slices/productSlice";
 type Props = {
 	setDropDown: (dropDown: string) => void;
 	setDisplay: (display: string) => void;
+	sortValue: string;
+	setSortValue: (sortValue: string) => void;
 };
 
-const DropDownSort: React.FC<Props> = ({ setDropDown, setDisplay }) => {
-	const [value, setValue] = useState("");
+const DropDownSort: React.FC<Props> = ({
+	setDropDown,
+	setDisplay,
+	sortValue,
+	setSortValue,
+}) => {
+	// const [value, setValue] = useState("");
 	const dispatch = useAppDispatch();
 
 	const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-		setValue((event.target as HTMLInputElement).value);
+		setSortValue((event.target as HTMLInputElement).value);
 		dispatch(sortProducts((event.target as HTMLInputElement).value));
 	};
 	const resetSort = () => {
-		setValue("");
+		setSortValue("");
 		setDisplay("All");
 	};
 	return (
 		<div className="dropdown-sort">
-			<FormControl sx={{margin: "0 2.5vw"}}>
+			<FormControl sx={{ margin: "0 2.5vw" }}>
 				<RadioGroup
 					aria-labelledby="demo-radio-buttons-group-label"
 					name="radio-buttons-group"
-					value={value}
+					value={sortValue}
 					onChange={handleChange}
 				>
 					<FormControlLabel
 						value="ascending"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="Price (Low to High)"
 					/>
 					<FormControlLabel
 						value="descending"
-						control={<Radio />}
+						control={<Radio color="default" />}
 						label="Price (High to Low)"
 					/>
 				</RadioGroup>

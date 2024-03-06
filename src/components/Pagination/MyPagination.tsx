@@ -1,5 +1,5 @@
 import { Stack, Pagination } from "@mui/material";
-import { ProductType } from "../misc/types";
+import { ProductType } from "../../misc/types";
 
 type Props = {
 	setPage: (pageNumber: number) => void;

@@ -9,5 +9,10 @@
     }
     .main {
         margin-top: 12vh;
+        p.title {
+            margin: 1vh 0 4vh 3vw;
+            padding-top: 4vh;
+            border-top: 1px solid #a8a8a7;
+        }
     }
 }

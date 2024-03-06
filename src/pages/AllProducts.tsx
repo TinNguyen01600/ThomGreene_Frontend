@@ -6,7 +6,8 @@ import ProductCard from "../components/Product/ProductCard";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import FilterAndSort from "../components/Filter_&_Sort/FilterAndSort";
-import MyPagination from "../components/MyPagination";
+import MyPagination from "../components/Pagination/MyPagination";
+import SelectPerPage from "../components/Pagination/SelectPerPage";
 
 const AllProducts: React.FC = () => {
 	const dispatch = useAppDispatch();
@@ -35,7 +36,7 @@ const AllProducts: React.FC = () => {
 
 	/*********************************************************************************** */
 	const [currentPage, setCurrentPage] = useState<number>(1);
-	const prodsPerPage = 4;
+	const [prodsPerPage, setProdsPerPage] = useState<number>(14);
 	const indexOfLastProd = currentPage * prodsPerPage;
 	const indexOfFirstProd = indexOfLastProd - prodsPerPage;
 	const displayProducts = currentProducts.slice(
@@ -83,6 +84,10 @@ const AllProducts: React.FC = () => {
 				<FilterAndSort setDisplay={setDisplay} />
 			</div>
 			<div className="main">
+				<SelectPerPage
+					numberPerPage={prodsPerPage}
+					setNumberPerPage={setProdsPerPage}
+				/>
 				<section className="all-products-container">
 					{displayProducts.length >= 10 && (
 						<section className="special-layout-products">

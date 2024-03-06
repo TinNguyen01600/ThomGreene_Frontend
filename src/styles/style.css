@@ -280,8 +280,13 @@
 .single-product-page .main figure figcaption .btn-group .delete-btn span:hover::after {
   width: 100%;
 }
+.single-product-page .main .other-imgs {
+  margin-top: 5vh;
+  display: flex;
+  gap: 2vw;
+}
 .single-product-page .main .other-imgs img {
-  height: 20vh;
+  height: 50vh;
 }
 
 .login-page {
@@ -554,6 +559,11 @@
 .category-page .main {
   margin-top: 12vh;
 }
+.category-page .main p.title {
+  margin: 1vh 0 4vh 3vw;
+  padding-top: 4vh;
+  border-top: 1px solid #a8a8a7;
+}
 
 .all-products {
   grid-area: all_products;
@@ -643,11 +653,6 @@
   left: 16px;
 }
 
-.category-products-grid p.title {
-  margin: 1vh 3vw;
-  padding-top: 1vh;
-  border-top: 1px solid #a8a8a7;
-}
 .category-products-grid .normal-layout-products {
   display: grid;
   grid-template-columns: repeat(4, 19vw);

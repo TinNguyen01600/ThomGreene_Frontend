@@ -63,7 +63,7 @@ export default function UserUpdate() {
 
 				<label htmlFor="avatar">Avatar</label>
 				<input
-					type="avatar"
+					type="url"
 					value={avatar}
 					placeholder="Avatar"
 					{...register("avatar")}

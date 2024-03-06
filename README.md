@@ -102,3 +102,11 @@ cart reducer: add product to cart, remove products, update products's quantity i
 <li>Deploy the application and rewrite README file.</li>
 
 </ol>
+
+#### Additional
+
+<ul>
+    <li>Filter products by price range</li>
+    <li>Pagination when fetching/displaying all the products</li>
+    <li>Customized Material UI</li>
+</ul>
