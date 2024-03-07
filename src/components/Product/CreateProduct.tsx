@@ -1,8 +1,9 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { ProductCreateType } from "../../misc/types";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import SelectCategoryId from "../Category/SelectCategoryId";
 
 export type InputType = {
 	title: string;
@@ -22,13 +23,14 @@ const CreateProduct: React.FC = () => {
 		formState: { isSubmitSuccessful },
 	} = useForm<InputType>();
 	const navigate = useNavigate();
+	const [categoryId, setCategoryId] = useState<number>(1);
 
 	const onSubmit: SubmitHandler<InputType> = (data) => {
 		const newCreatedProduct: ProductCreateType = {
 			title: data.title,
 			price: data.price,
 			description: data.description,
-			categoryId: data.categoryId,
+			categoryId: categoryId,
 			images: [data.images],
 		};
 		axios
@@ -80,11 +82,9 @@ const CreateProduct: React.FC = () => {
 						{...register("description")}
 						required
 					/>
-					<input
-						type="number"
-						placeholder="categoryId"
-						{...register("categoryId")}
-						required
+					<SelectCategoryId
+						setCategoryId={setCategoryId}
+						categoryId={categoryId}
 					/>
 					<input
 						type="text"
