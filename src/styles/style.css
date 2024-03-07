@@ -1065,8 +1065,12 @@ nav .navbar-center img {
   gap: 1vh;
 }
 .navbar-search-dropdown section.search-results * {
-  font-size: 1.5vh;
+  font-size: 2.5vh;
   margin: 0 1vw;
+  cursor: pointer;
+}
+.navbar-search-dropdown section.search-results *:hover {
+  font-weight: bold;
 }
 .navbar-search-dropdown button {
   border: none;

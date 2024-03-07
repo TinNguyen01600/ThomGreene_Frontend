@@ -41,13 +41,18 @@ const Search: React.FC<Props> = ({ setDropDown }) => {
 			{searchedProduct.length > 0 && (
 				<section className="search-results">
 					{searchedProduct.map((product) => (
-						<div>{product.title}</div>
+						<div onClick={() => {
+                            navigate(`/product/${product.id}`)
+                            dispatch(searchForProduct(" "));
+                            }}>
+							{product.title}
+						</div>
 					))}
 				</section>
 			)}
 			<button onClick={() => setDropDown("")}>
-                <span>Close</span>
-            </button>
+				<span>Close</span>
+			</button>
 		</div>
 	);
 };
