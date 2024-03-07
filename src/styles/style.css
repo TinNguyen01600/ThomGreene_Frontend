@@ -1180,11 +1180,87 @@ nav .navbar-center img {
   padding: 0.7vw;
   width: 40vw;
 }
+.user-update-form form .img-upload {
+  display: flex;
+  flex-direction: column;
+}
+.user-update-form form .img-upload .btn-group {
+  display: flex;
+  gap: 2vw;
+  margin-top: 2vh;
+}
+.user-update-form form .img-upload .btn-group button {
+  width: 50%;
+}
+.user-update-form form .img-upload .btn-group .upload {
+  color: #fff;
+  border: 1px solid #fff;
+  background: #525252;
+  cursor: pointer;
+  padding: 2vh;
+}
+.user-update-form form .img-upload .btn-group .upload span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-update-form form .img-upload .btn-group .upload span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.user-update-form form .img-upload .btn-group .upload span:hover::after {
+  width: 100%;
+}
+.user-update-form form .img-upload .btn-group .remove {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+}
+.user-update-form form .img-upload .btn-group .remove span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-update-form form .img-upload .btn-group .remove span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.user-update-form form .img-upload .btn-group .remove span:hover::after {
+  width: 100%;
+}
 .user-update-form form .update-btn {
   margin-top: 8vh;
   color: #fff;
-  background-color: #525252;
+  border: 1px solid #fff;
+  background: #525252;
   cursor: pointer;
+  padding: 2vh;
+}
+.user-update-form form .update-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.user-update-form form .update-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.user-update-form form .update-btn span:hover::after {
+  width: 100%;
 }
 
 article .product-card img {
@@ -1429,6 +1505,82 @@ article .product-card figcaption .product-add span:hover::after {
   transition: width 0.5s;
 }
 .create-product button span:hover::after {
+  width: 100%;
+}
+
+.update-product-page {
+  display: flex;
+  flex-direction: column;
+}
+.update-product-page .navbar {
+  position: fixed;
+  width: 100%;
+  z-index: 1;
+  background-color: transparent;
+}
+.update-product-page .main {
+  margin-top: 12vh;
+  display: flex;
+  justify-content: center;
+}
+.update-product-page .main .form h3 {
+  text-align: center;
+  margin: 2vh 0;
+}
+.update-product-page .main .form form {
+  display: flex;
+  flex-direction: column;
+  gap: 3vh;
+  width: 30vw;
+}
+.update-product-page .main .form form * {
+  padding: 1vh;
+}
+.update-product-page .main .form form .update-btn {
+  color: #fff;
+  border: 1px solid #fff;
+  background: #525252;
+  cursor: pointer;
+  padding: 2vh;
+  transition: 0.3s;
+}
+.update-product-page .main .form form .update-btn span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.update-product-page .main .form form .update-btn span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #fff;
+  display: block;
+  transition: width 0.5s;
+}
+.update-product-page .main .form form .update-btn span:hover::after {
+  width: 100%;
+}
+.update-product-page .main .form form .update-btn:hover {
+  color: #525252;
+  border: 1px solid #525252;
+  background: #fff;
+  cursor: pointer;
+  padding: 2vh;
+}
+.update-product-page .main .form form .update-btn:hover span {
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+}
+.update-product-page .main .form form .update-btn:hover span::after {
+  content: "";
+  width: 0;
+  height: 0.5px;
+  background-color: #525252;
+  display: block;
+  transition: width 0.5s;
+}
+.update-product-page .main .form form .update-btn:hover span:hover::after {
   width: 100%;
 }
 

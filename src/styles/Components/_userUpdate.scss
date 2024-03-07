@@ -1,3 +1,5 @@
+@use "../mixins";
+
 .user-update-form {
 	p {
 		text-transform: uppercase;
@@ -15,11 +17,28 @@
 			width: 40vw;
 		}
 
+        .img-upload {
+            display: flex;
+            flex-direction: column;
+            .btn-group {
+                display: flex;
+                gap: 2vw;
+                margin-top: 2vh;
+                button {
+                    width: 50%;
+                }
+                .upload {
+                    @include mixins.buttonType1(#fff, #525252);
+                }
+                .remove {
+                    @include mixins.buttonType1(#525252, #fff);
+                }
+            }
+        }
+
 		.update-btn {
 			margin-top: 8vh;
-            color: #fff;
-			background-color: #525252;
-			cursor: pointer;
+            @include mixins.buttonType1(#fff, #525252)
 		}
 	}
 }

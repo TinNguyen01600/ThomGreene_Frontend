@@ -1,9 +1,10 @@
-import { UserType } from "../../misc/types";
-import { useAppSelector } from "../../redux/hooks";
-
 import { useState } from "react";
 import axios from "axios";
 import { SubmitHandler, useForm } from "react-hook-form";
+
+import { UserType } from "../../misc/types";
+import { useAppSelector } from "../../redux/hooks";
+import ImageUpload from "./ImageUpload";
 
 export default function UserUpdate() {
 	const user = useAppSelector((state) => state.users.user);
@@ -11,6 +12,7 @@ export default function UserUpdate() {
 	const [email, setEmail] = useState(user?.email);
 	const [passwd, setPasswd] = useState(user?.password);
 	const [avatar, setAvatar] = useState(user?.avatar);
+	const [imageLink, setImageLink] = useState<string | null>(null);
 
 	const {
 		register,
@@ -19,8 +21,9 @@ export default function UserUpdate() {
 		formState: { errors },
 	} = useForm<UserType>();
 	const onSubmit: SubmitHandler<UserType> = (data) => {
+		const data1 = { ...data, avatar: avatar };
 		axios
-			.put(`https://api.escuelajs.co/api/v1/users/${user?.id}`, data)
+			.put(`https://api.escuelajs.co/api/v1/users/${user?.id}`, data1)
 			.then((response) => {
 				if (response.status === 200) {
 					console.log("update success");
@@ -66,8 +69,14 @@ export default function UserUpdate() {
 					type="url"
 					value={avatar}
 					placeholder="Avatar"
+					disabled={imageLink ? true : false}
 					{...register("avatar")}
 					onChange={(e) => setAvatar(e.target.value)}
+				/>
+
+				<ImageUpload
+					setAvatar={setAvatar}
+					setImageLink={setImageLink}
 				/>
 
 				<label htmlFor="role">Role</label>
@@ -76,7 +85,7 @@ export default function UserUpdate() {
 					<option value="admin">Admin</option>
 				</select>
 
-				<input type="submit" value="Update" className="update-btn"/>
+				<input type="submit" value="Update" className="update-btn" />
 			</form>
 		</main>
 	);

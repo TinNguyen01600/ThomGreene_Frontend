@@ -23,6 +23,7 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 		product?.images.forEach((img) =>
 			otherImgs.push(
 				<img
+					key={img}
 					src={img}
 					alt=""
 					onError={(e) => {

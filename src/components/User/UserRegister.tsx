@@ -19,35 +19,52 @@ const UserRegisterForm: React.FC = () => {
 	/*********************************************************************************** */
 
 	const onSubmit: SubmitHandler<UserRegister> = (data) => {
+		// axios
+		// 	.post("https://api.escuelajs.co/api/v1/users/is-available", {
+		// 		email: data.email,
+		// 	})
+		// 	.then((response) => {
+		// 		if (response.status === 201)
+		// 			if (response.data.isAvailable === true) {
+		//                 setIsError(false)
+		// 				const data1 = {
+		// 					...data,
+		// 					avatar: `https://robohash.org/${data.name}`,
+		// 				};
+		// 				axios
+		// 					.post(
+		// 						"https://api.escuelajs.co/api/v1/users/",
+		// 						data1
+		// 					)
+		// 					.then((response) => {
+		// 						if (response.status === 201) {
+		// 							signin({
+		// 								email: response.data.email,
+		// 								password: response.data.password,
+		// 							});
+		// 						}
+		// 					})
+		// 					.catch((error) => console.log(error));
+		// 			} else {
+		// 				setIsError(true);
+		// 			}
+		// 	})
+		// 	.catch((error) => console.log(error));
+
+		/********************************************************************************************* */
+		const data1 = {
+			...data,
+			avatar: `https://robohash.org/${data.name}`,
+		};
 		axios
-			.post("https://api.escuelajs.co/api/v1/users/is-available", {
-				email: data.email,
-			})
+			.post("https://api.escuelajs.co/api/v1/users/", data1)
 			.then((response) => {
-				if (response.status === 201)
-					if (response.data.isAvailable === true) {
-                        setIsError(false)
-						const data1 = {
-							...data,
-							avatar: `https://robohash.org/${data.name}`,
-						};
-						axios
-							.post(
-								"https://api.escuelajs.co/api/v1/users/",
-								data1
-							)
-							.then((response) => {
-								if (response.status === 201) {
-									signin({
-										email: response.data.email,
-										password: response.data.password,
-									});
-								}
-							})
-							.catch((error) => console.log(error));
-					} else {
-						setIsError(true);
-					}
+				if (response.status === 201) {
+					signin({
+						email: response.data.email,
+						password: response.data.password,
+					});
+				}
 			})
 			.catch((error) => console.log(error));
 	};
@@ -80,9 +97,9 @@ const UserRegisterForm: React.FC = () => {
 					required
 				/>
 
-				<label htmlFor="email">Email*</label>
+				<label htmlFor="email1">Email*</label>
 				<input
-					id="email"
+					id="email1"
 					type="email"
 					placeholder="Email"
 					{...register("email")}
@@ -94,9 +111,9 @@ const UserRegisterForm: React.FC = () => {
 					</section>
 				)}
 
-				<label htmlFor="password">Password*</label>
+				<label htmlFor="password1">Password*</label>
 				<input
-					id="password"
+					id="password1"
 					type="password"
 					placeholder="Password"
 					{...register("password")}

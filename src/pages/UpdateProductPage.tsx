@@ -10,6 +10,7 @@ import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchSingleProductAsync } from "../redux/slices/productSlice";
 import { InputType } from "../components/Product/CreateProduct";
+import Footer from "../components/Footer";
 
 function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	const product = useAppSelector((state) => state.products.singleProduct);
@@ -63,7 +64,7 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 
 	return (
 		<div className="update-product-page">
-			<div className="nav">
+			<div className="navbar">
 				<NavBar />
 			</div>
 			<div className="main">
@@ -88,7 +89,7 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 								}
 							/>
 							<textarea
-								rows={4}
+								rows={10}
 								placeholder="description"
 								{...register("description")}
 								value={description}
@@ -110,13 +111,14 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 								value={image}
 								onChange={(e) => setImage(e.target.value)}
 							/>
-							<input type="submit" value="Update" />
+							<input type="submit" value="Update" className="update-btn"/>
 						</form>
 					</div>
 				) : (
 					<h3>You are not authenticated to update product</h3>
 				)}
 			</div>
+            <Footer />
 		</div>
 	);
 }
