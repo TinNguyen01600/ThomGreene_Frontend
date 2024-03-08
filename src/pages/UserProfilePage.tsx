@@ -7,6 +7,7 @@ import withUserAuthentication, {
 	WrappedComponentProp,
 } from "../hoc/withUserAuthenticate";
 import Footer from "../components/Footer";
+import ProductListAdmin from "../components/Product/ProductListAdmin";
 
 function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 	const user = useAppSelector((state) => state.users.user);
@@ -112,6 +113,7 @@ function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 						</button>
 					</article>
 				)}
+                <ProductListAdmin />
 			</div>
 			<Footer />
 		</div>
