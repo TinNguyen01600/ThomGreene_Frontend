@@ -1,8 +1,5 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
-import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
 
 import { styled } from "@mui/material/styles";
 import Table from "@mui/material/Table";
@@ -24,26 +21,16 @@ import {
 	fetchSingleProductAsync,
 } from "../../redux/slices/productSlice";
 import { ProductType } from "../../misc/types";
+import DeleteProductPopup from "../DeleteProductPopup";
 
 function ProductListAdmin({ isAdminAuthenticated }: WrappedComponentProp) {
 	const allProds = useAppSelector((state) => state.products.allProducts);
+	const [isPopupOpen, setIsPopupOpen] = useState<boolean>(false);
 	const dispatch = useAppDispatch();
 	const navigate = useNavigate();
 	useEffect(() => {
 		dispatch(fetchAllProductsAsync());
 	}, [dispatch]);
-
-	/******************************************************************************************** */
-
-	const deleteProduct = (productId: number) => {
-		axios
-			.delete(`https://api.escuelajs.co/api/v1/products/${productId}`)
-			.then((response) => {
-				console.log(response);
-				if (response.data === true) dispatch(fetchAllProductsAsync());
-			})
-			.catch((error) => console.log(error));
-	};
 
 	/******************************************************************************************* */
 
@@ -77,79 +64,93 @@ function ProductListAdmin({ isAdminAuthenticated }: WrappedComponentProp) {
 	/******************************************************************************************* */
 	return (
 		<div className="ctn" style={{ margin: "4vh 4vw" }}>
-			{isAdminAuthenticated ? (
-				<TableContainer component={Paper}>
-					<Table aria-label="customized table">
-						<TableHead>
-							<TableRow>
-								<StyledTableCell>Product</StyledTableCell>
-								<StyledTableCell align="right">
-									Price
-								</StyledTableCell>
-								<StyledTableCell align="right">
-									Category
-								</StyledTableCell>
-								<StyledTableCell align="right">
-									Edit
-								</StyledTableCell>
-								<StyledTableCell align="right">
-									Delete
-								</StyledTableCell>
-							</TableRow>
-						</TableHead>
-						<TableBody>
-							{rows.map((row) => (
-								<StyledTableRow key={row.product.id}>
-									<StyledTableCell component="th" scope="row">
-										<Link
-											to={`/product/${row.product.id}`}
-											style={{
-												color: "black",
-												textDecoration: "none",
-											}}
+			{isAdminAuthenticated && (
+				<>
+					<TableContainer component={Paper}>
+						<Table aria-label="customized table">
+							<TableHead>
+								<TableRow>
+									<StyledTableCell>Product</StyledTableCell>
+									<StyledTableCell align="right">
+										Price
+									</StyledTableCell>
+									<StyledTableCell align="right">
+										Category
+									</StyledTableCell>
+									<StyledTableCell align="right">
+										Edit
+									</StyledTableCell>
+									<StyledTableCell align="right">
+										Delete
+									</StyledTableCell>
+								</TableRow>
+							</TableHead>
+							<TableBody>
+								{rows.map((row) => (
+									<StyledTableRow key={row.product.id}>
+										<StyledTableCell
+											component="th"
+											scope="row"
 										>
-											{row.product.title}
-										</Link>
-									</StyledTableCell>
-									<StyledTableCell align="right">
-										{row.product.price} €
-									</StyledTableCell>
-									<StyledTableCell align="right">
-										{row.product.category.name}
-									</StyledTableCell>
-									<StyledTableCell align="right">
-										<div
-											onClick={async () => {
-												await dispatch(
-													fetchSingleProductAsync(
-														row.product.id
-													)
-												);
-												navigate(
-													`/product/${row.product.id}/update-product`
-												);
-											}}
-											style={{ cursor: "pointer" }}
-										>
-											<BorderColorIcon />
-										</div>
-									</StyledTableCell>
-									<StyledTableCell align="right">
-										<div
-											onClick={() =>
-												deleteProduct(row.product.id)
-											}
-											style={{ cursor: "pointer" }}
-										>
-											<DeleteForeverIcon />
-										</div>
-									</StyledTableCell>
-								</StyledTableRow>
-							))}
-						</TableBody>
-					</Table>
-				</TableContainer>
-			) : null}
+											<Link
+												to={`/product/${row.product.id}`}
+												style={{
+													color: "black",
+													textDecoration: "none",
+												}}
+											>
+												{row.product.title}
+											</Link>
+										</StyledTableCell>
+										<StyledTableCell align="right">
+											{row.product.price} €
+										</StyledTableCell>
+										<StyledTableCell align="right">
+											{row.product.category.name}
+										</StyledTableCell>
+										<StyledTableCell align="right">
+											<div
+												onClick={async () => {
+													await dispatch(
+														fetchSingleProductAsync(
+															row.product.id
+														)
+													);
+													navigate(
+														`/product/${row.product.id}/update-product`
+													);
+												}}
+												style={{ cursor: "pointer" }}
+											>
+												<BorderColorIcon />
+											</div>
+										</StyledTableCell>
+										<StyledTableCell align="right">
+											<div
+												onClick={async () => {
+													await dispatch(
+														fetchSingleProductAsync(
+															row.product.id
+														)
+													);
+													setIsPopupOpen(true);
+												}}
+												style={{ cursor: "pointer" }}
+											>
+												<DeleteForeverIcon />
+											</div>
+										</StyledTableCell>
+									</StyledTableRow>
+								))}
+							</TableBody>
+						</Table>
+					</TableContainer>
+					<DeleteProductPopup
+						isPopupOpen={isPopupOpen}
+						setIsPopupOpen={setIsPopupOpen}
+					/>
+				</>
+			)}
 		</div>
 	);
 }
