@@ -1,18 +1,18 @@
 import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import CreateProduct from "../components/Product/CreateProduct";
-import withUserAuthentication, {
+import withAdminAuthentication, {
 	WrappedComponentProp,
-} from "../hoc/withUserAuthenticate";
+} from "../hoc/withAdminAuthenticate";
 
-function CreateProductPage({ isUserAuthenticated }: WrappedComponentProp) {
+function CreateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	return (
 		<div className="create-product-page">
 			<div className="navbar">
 				<NavBar />
 			</div>
 			<div className="main">
-				{isUserAuthenticated ? (
+				{isAdminAuthenticated ? (
 					<CreateProduct />
 				) : (
 					<h3>You are not authenticated to create new product</h3>
@@ -23,4 +23,4 @@ function CreateProductPage({ isUserAuthenticated }: WrappedComponentProp) {
 	);
 }
 
-export default withUserAuthentication(CreateProductPage);
+export default withAdminAuthentication(CreateProductPage);

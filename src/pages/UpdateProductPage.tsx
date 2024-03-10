@@ -1,14 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import NavBar from "../components/NavBar";
 import withAdminAuthentication, {
 	WrappedComponentProp,
 } from "../hoc/withAdminAuthenticate";
-import { ProductCreateType, ProductType } from "../misc/types";
-import { useAppDispatch, useAppSelector } from "../redux/hooks";
+import { ProductType } from "../misc/types";
+import { useAppSelector } from "../redux/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchSingleProductAsync } from "../redux/slices/productSlice";
 import { InputType } from "../components/Product/CreateProduct";
 import Footer from "../components/Footer";
 import SelectCategoryId from "../components/Category/SelectCategoryId";
@@ -25,10 +24,6 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 
 	/******************************************************************************* */
 	const { productId } = useParams();
-	const dispatch = useAppDispatch();
-	useEffect(() => {
-		if (productId) dispatch(fetchSingleProductAsync(parseInt(productId)));
-	});
 	const navigate = useNavigate();
 
 	/******************************************************************************* */

@@ -192,6 +192,9 @@
   justify-content: center;
   align-items: center;
 }
+.create-product-page .main h3 {
+  margin: 8vh 0;
+}
 
 .single-product-page {
   display: flex;
@@ -1586,6 +1589,9 @@ article .product-card figcaption .product-add span:hover::after {
 }
 .update-product-page .main .form form .update-btn:hover span:hover::after {
   width: 100%;
+}
+.update-product-page .main h3 {
+  margin: 8vh 0;
 }
 
 * {
