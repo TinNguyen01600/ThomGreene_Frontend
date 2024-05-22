@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import SelectCategoryId from "../Category/SelectCategoryId";
 
 export type InputType = {
-	title: string;
+	name: string;
 	price: number;
 	description: string;
 	images: string;
@@ -23,15 +23,20 @@ const CreateProduct: React.FC = () => {
 		formState: { isSubmitSuccessful },
 	} = useForm<InputType>();
 	const navigate = useNavigate();
-	const [categoryId, setCategoryId] = useState<number>(1);
+	const [categoryId, setCategoryId] = useState<string>("");
 
 	const onSubmit: SubmitHandler<InputType> = (data) => {
+        const stringToArray = (input: string): string[] => {
+            var result = [];
+            result.push(input);
+            return result;
+        };
 		const newCreatedProduct: ProductCreateType = {
-			title: data.title,
+			name: data.name,
 			price: data.price,
 			description: data.description,
 			categoryId: categoryId,
-			images: [data.images],
+			images: stringToArray(data.images),
 		};
 		axios
 			.post(
@@ -50,7 +55,7 @@ const CreateProduct: React.FC = () => {
 	useEffect(() => {
 		if (formState.isSubmitSuccessful) {
 			reset({
-				title: "",
+				name: "",
 				price: 0,
 				description: "",
 				images: "",
@@ -65,9 +70,9 @@ const CreateProduct: React.FC = () => {
 			<main className="form">
 				<form onSubmit={handleSubmit(onSubmit)}>
 					<input
-						type="title"
-						placeholder="title"
-						{...register("title")}
+						type="name"
+						placeholder="name"
+						{...register("name")}
 						required
 					/>
 					<input

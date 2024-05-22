@@ -23,7 +23,7 @@ const initialState: ProductState = {
 	error: null,
 };
 
-const url = "https://api.escuelajs.co/api/v1/products";
+const url = `${process.env.REACT_APP_API_URL}products`;
 
 export const fetchAllProductsAsync = createAsyncThunk(
 	"fetchAllProductsAsync",
@@ -53,7 +53,7 @@ export const fetchFilteredProductsAsync = createAsyncThunk(
 
 export const fetchSingleProductAsync = createAsyncThunk(
 	"fetchSingleProductAsync",
-	async (productId: number, { rejectWithValue }) => {
+	async (productId: string, { rejectWithValue }) => {
 		try {
 			const res = await axios.get<ProductType>(url + `/${productId}`);
 			return res.data;
@@ -72,7 +72,7 @@ const productSlice = createSlice({
 			if (!query) state.searchedProducts = [];
 			else {
 				state.searchedProducts = state.allProducts.filter((item) =>
-					item.title
+					item.name
 						.split(" ")
 						.some((word) => word.toLowerCase().startsWith(query))
 				);

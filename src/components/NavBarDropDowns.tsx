@@ -174,7 +174,7 @@ export const DropDownCart: React.FC<Props> = ({ setDropDown }) => {
 							<td>
 								<figure>
 									<img
-										src={item.images[0]}
+										src={item.images[0].url}
 										alt=""
 										onError={(e) => {
 											e.currentTarget.src =

@@ -29,7 +29,7 @@ const CategoriesGrid: React.FC = () => {
 
     /********************************************************* */
     const allProductsCategory: CategoryType = {
-        id: 0,
+        id: "0",
         name: 'Fall 2024 Collection',
         image: image
     }

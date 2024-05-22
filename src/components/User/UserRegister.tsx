@@ -54,7 +54,7 @@ const UserRegisterForm: React.FC = () => {
 		/********************************************************************************************* */
 		const data1 = {
 			...data,
-			avatar: `https://robohash.org/${data.name}`,
+			avatar: `https://robohash.org/${data.userName}`,
 		};
 		axios
 			.post("https://api.escuelajs.co/api/v1/users/", data1)
@@ -93,7 +93,7 @@ const UserRegisterForm: React.FC = () => {
 					id="name"
 					type="text"
 					placeholder="Name"
-					{...register("name")}
+					{...register("userName")}
 					required
 				/>
 

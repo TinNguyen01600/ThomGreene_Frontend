@@ -22,7 +22,7 @@ export default function App() {
 			const token1 = localStorage.getItem("token");
 			if (token1) {
 				const user = await axios.get<UserType>(
-					"https://api.escuelajs.co/api/v1/auth/profile",
+					`${process.env.REACT_APP_API_URL}auth/profile`,
 					{
 						headers: {
 							Authorization: `Bearer ${token1}`,

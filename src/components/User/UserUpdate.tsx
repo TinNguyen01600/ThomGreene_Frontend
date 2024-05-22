@@ -8,7 +8,7 @@ import ImageUpload from "./ImageUpload";
 
 export default function UserUpdate() {
 	const user = useAppSelector((state) => state.users.user);
-	const [name, setName] = useState(user?.name);
+	const [name, setName] = useState(user?.userName);
 	const [email, setEmail] = useState(user?.email);
 	const [passwd, setPasswd] = useState(user?.password);
 	const [avatar, setAvatar] = useState(user?.avatar);
@@ -42,7 +42,7 @@ export default function UserUpdate() {
 					type="text"
 					value={name}
 					placeholder="Name"
-					{...register("name")}
+					{...register("userName")}
 					onChange={(e) => setName(e.target.value)}
 				/>
 

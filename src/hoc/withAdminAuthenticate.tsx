@@ -9,7 +9,7 @@ export default function withAdminAuthentication(
 ) {
 	return function () {
 		const user = useAppSelector((state) => state.users.user);
-		const isAdminAuthenticated = user !== null && user.role === "admin";
+		const isAdminAuthenticated = user !== null && user.role === 0;
 		return <WrappedComponent isAdminAuthenticated={isAdminAuthenticated} />;
 	};
 }

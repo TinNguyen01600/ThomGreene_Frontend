@@ -3,8 +3,8 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useAppSelector } from "../../redux/hooks";
 
 type Props = {
-	categoryId: number;
-	setCategoryId: (categoryId: number) => void;
+	categoryId: string;
+	setCategoryId: (categoryId: string) => void;
 };
 
 const SelectCategoryId: React.FC<Props> = ({ categoryId, setCategoryId }) => {
@@ -12,7 +12,7 @@ const SelectCategoryId: React.FC<Props> = ({ categoryId, setCategoryId }) => {
 		(state) => state.categories.allCategories
 	);
 	const handleChange = (event: SelectChangeEvent) => {
-		setCategoryId(parseInt(event.target.value));
+		setCategoryId(event.target.value);
 	};
 
 	/******************************************************************************* */

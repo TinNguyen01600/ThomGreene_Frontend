@@ -18,7 +18,7 @@ const CartPage: React.FC = () => {
 				<article className="item" key={i}>
 					<figure>
 						<img
-							src={item.images[0]}
+							src={item.images[0].url}
 							alt=""
 							onError={(e) => {
 								e.currentTarget.src =
@@ -26,7 +26,7 @@ const CartPage: React.FC = () => {
 							}}
 						/>
 						<figcaption>
-							<p>{item.title}</p>
+							<p>{item.name}</p>
 							<p>Qty. 1</p>
 						</figcaption>
 					</figure>

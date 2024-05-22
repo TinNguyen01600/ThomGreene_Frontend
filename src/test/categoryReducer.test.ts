@@ -17,18 +17,18 @@ describe("category reducer", () => {
 	};
 	const mockCategories: CategoryType[] = [
 		{
-			id: 1,
+			id: "211a4622-305d-497f-9355-4c36906bef0d",
 			name: "category 1",
 			image: "img1",
 		},
 		{
-			id: 2,
+			id: "806a0ee7-5305-4f54-aa35-d1b4f2699762",
 			name: "category 2",
 			image: "img2",
 		},
 	];
 	const mockSelectedCategory: CategoryType = {
-		id: 1,
+		id: "211a4622-305d-497f-9355-4c36906bef0d",
 		name: "category 1",
 		image: "img1",
 	};

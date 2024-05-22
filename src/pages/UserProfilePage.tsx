@@ -48,7 +48,7 @@ function UserProfilePage({ isUserAuthenticated }: WrappedComponentProp) {
 										<div className="body">
 											<div className="row">
 												<p>Name</p>
-												<p>{user?.name}</p>
+												<p>{user?.userName}</p>
 											</div>
 											<div className="row">
 												<p>Email address</p>

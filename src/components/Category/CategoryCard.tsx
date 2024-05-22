@@ -24,7 +24,7 @@ const CategoryCard: React.FC<Props> = ({ category }) => {
 	);
 	return (
 		<>
-			{category.id != 0 ? (
+			{category.id != "0" ? (
 				<>
 					<Link to={`/category/${category.id}`}>{card}</Link>
 				</>

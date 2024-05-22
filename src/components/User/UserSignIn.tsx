@@ -2,6 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { Console } from "console";
 
 export type UserSignInType = {
 	email: string;
@@ -19,11 +20,13 @@ const UserSignInForm: React.FC = () => {
 	} = useForm<UserSignInType>();
 	const onSubmit: SubmitHandler<UserSignInType> = (data) => {
 		axios
-			.post("https://api.escuelajs.co/api/v1/auth/login", data)
+			.post(`${process.env.REACT_APP_API_URL}auth/login`, data)
 			.then((response) => {
-				if (response.status === 201) {
+                console.log(response.status);
+				if (response.status === 200) {
 					setIsError(false);
-					localStorage.setItem("token", response.data.access_token);
+                    console.log(response.data);
+					localStorage.setItem("token", response.data);
 					console.log("Sign In success, Token saved");
 					navigate("/");
 				}

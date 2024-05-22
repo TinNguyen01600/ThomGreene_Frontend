@@ -45,7 +45,7 @@ const Search: React.FC<Props> = ({ setDropDown }) => {
                             navigate(`/product/${product.id}`)
                             dispatch(searchForProduct(" "));
                             }}>
-							{product.title}
+							{product.name}
 						</div>
 					))}
 				</section>

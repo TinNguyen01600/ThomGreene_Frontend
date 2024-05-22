@@ -16,15 +16,15 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	const navigate = useNavigate();
 	const dispatch = useAppDispatch();
 	useEffect(() => {
-		if (productId) dispatch(fetchSingleProductAsync(parseInt(productId)));
+		if (productId) dispatch(fetchSingleProductAsync(productId));
 	});
 	const otherImgs: any = [];
 	if (product?.images.length && product?.images.length > 1) {
 		product?.images.forEach((img) =>
 			otherImgs.push(
 				<img
-					key={img}
-					src={img}
+					key={img.id}
+					src={img.url}
 					alt=""
 					onError={(e) => {
 						e.currentTarget.src =
@@ -57,7 +57,7 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 			<div className="main">
 				<figure>
 					<img
-						src={product?.images[0]}
+						src={product?.images[0].url}
 						alt=""
 						onError={(e) => {
 							e.currentTarget.src =
@@ -65,7 +65,7 @@ function SingleProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 						}}
 					/>
 					<figcaption>
-						<h3>{product?.title}</h3>
+						<h3>{product?.name}</h3>
 						<p>{product?.price} €</p>
 						<p>{product?.description}</p>
 						<button

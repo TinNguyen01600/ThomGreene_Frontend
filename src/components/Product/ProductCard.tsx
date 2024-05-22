@@ -15,7 +15,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 			<div className="product-card-inner">
 				<figure className="product-card-front">
 					<img
-						src={product.images[0]}
+						src={product.images[0].url}
 						alt=""
 						onError={(e) => {
 							e.currentTarget.src =
@@ -24,7 +24,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
 					/>
 				</figure>
 				<figcaption className="product-card-back">
-					<p>{product.title}</p>
+					<p>{product.name}</p>
 					<p>{product.price} €</p>
 					<button
 						className="product-detail"

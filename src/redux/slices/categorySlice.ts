@@ -28,7 +28,7 @@ export const fetchAllCategoriesAsync = createAsyncThunk(
 	async (_, { rejectWithValue }) => {
 		try {
 			const res = await axios.get<CategoryType[]>(
-				`https://api.escuelajs.co/api/v1/categories`
+				`${process.env.REACT_APP_API_URL}categories`
 			);
 			const data = res.data;
 			return data;
@@ -44,7 +44,7 @@ export const fetchSelectedCategoryAsync = createAsyncThunk(
 		try {
 			const id = Number(categoryId);
 			const res = await axios.get<CategoryType>(
-				`https://api.escuelajs.co/api/v1/categories/${id}`
+				`${process.env.REACT_APP_API_URL}categories/${id}`
 			);
 			return res.data;
 		} catch (e) {
@@ -57,9 +57,9 @@ export const fetchSelectedCategoryProductsAsync = createAsyncThunk(
 	"fetchSelectedCategoryProductsAsync",
 	async (categoryId: string | undefined, { rejectWithValue }) => {
 		try {
-			const id = Number(categoryId);
+			const id = (categoryId);
 			const res = await axios.get<ProductType[]>(
-				`https://api.escuelajs.co/api/v1/categories/${id}/products`
+				`${process.env.REACT_APP_API_URL}products/category/${id}`
 			);
 			return res.data;
 		} catch (e) {

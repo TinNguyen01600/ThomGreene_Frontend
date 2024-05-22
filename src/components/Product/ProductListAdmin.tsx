@@ -99,7 +99,7 @@ function ProductListAdmin({ isAdminAuthenticated }: WrappedComponentProp) {
 													textDecoration: "none",
 												}}
 											>
-												{row.product.title}
+												{row.product.name}
 											</Link>
 										</StyledTableCell>
 										<StyledTableCell align="right">

@@ -20,7 +20,7 @@ const DeleteProductPopup: React.FC<Props> = ({
 	const deletedProduct = useAppSelector(
 		(state) => state.products.singleProduct
 	);
-	const deleteProduct = (productId: number) => {
+	const deleteProduct = (productId: string) => {
 		axios
 			.delete(`https://api.escuelajs.co/api/v1/products/${productId}`)
 			.then((response) => {
@@ -49,7 +49,7 @@ const DeleteProductPopup: React.FC<Props> = ({
 					&times;
 				</button>
 				<div>
-					are you sure you want to delete {deletedProduct?.title}
+					are you sure you want to delete {deletedProduct?.name}
 				</div>
 				<div className="btn-group">
 					<button

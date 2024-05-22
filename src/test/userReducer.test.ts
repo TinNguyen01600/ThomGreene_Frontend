@@ -9,12 +9,12 @@ describe("user reducer", () => {
 
 	// mock user
 	const mockUser: UserType = {
-		name: "name 1",
+		userName: "name 1",
 		email: "test@mail.com",
 		password: "changeme",
 		avatar: "www.img.com",
-		role: "customer",
-		id: 1,
+		role: 1,
+		id: "eecf7ef3-4cb4-4a33-abe7-dd995fd78b4e",
 	};
 	/*********************************************************************** */
 

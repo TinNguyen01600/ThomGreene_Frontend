@@ -3,7 +3,7 @@ import NavBar from "../components/NavBar";
 import withAdminAuthentication, {
 	WrappedComponentProp,
 } from "../hoc/withAdminAuthenticate";
-import { ProductType } from "../misc/types";
+import { ProductCreateType, ProductType, ProductUpdateType } from "../misc/types";
 import { useAppSelector } from "../redux/hooks";
 import { SubmitHandler, useForm } from "react-hook-form";
 import axios from "axios";
@@ -14,13 +14,13 @@ import SelectCategoryId from "../components/Category/SelectCategoryId";
 
 function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	const product = useAppSelector((state) => state.products.singleProduct);
-	const [title, setTitle] = useState<string | undefined>(product?.title);
+	const [title, setTitle] = useState<string | undefined>(product?.name);
 	const [price, setPrice] = useState<number | undefined>(product?.price);
 	const [description, setDescription] = useState<string | undefined>(
 		product?.description
 	);
-	const [image, setImage] = useState<string | undefined>(product?.images[0]);
-	const [categoryId, setCategoryId] = useState<number>(1);
+	const [image, setImage] = useState<string | undefined>(product?.images[0].url);
+	const [categoryId, setCategoryId] = useState<string>("");
 
 	/******************************************************************************* */
 	const { productId } = useParams();
@@ -35,12 +35,17 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 	} = useForm<InputType>();
 
 	const onSubmit: SubmitHandler<InputType> = (data) => {
-		const updatedProduct: ProductType = {
-			id: product?.id ? product.id : 0,
-			title: data.title,
+        const stringToArray = (input: string): string[] => {
+            var result = [];
+            result.push(input);
+            return result;
+        };
+		const updatedProduct: ProductUpdateType = {
+			// id: product?.id ? product.id : "",
+			name: data.name,
 			price: data.price,
 			description: data.description,
-			images: [data.images],
+			images: stringToArray(data.images),
 			category: {
 				id: categoryId,
 				name: product?.category.name ? product.category.name : "",
@@ -74,7 +79,7 @@ function UpdateProductPage({ isAdminAuthenticated }: WrappedComponentProp) {
 							<input
 								type="title"
 								placeholder="title"
-								{...register("title")}
+								{...register("name")}
 								value={title}
 								onChange={(e) => setTitle(e.target.value)}
 							/>
