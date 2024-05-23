@@ -3,6 +3,7 @@ import productSlice from "./slices/productSlice";
 import categorySlice from "./slices/categorySlice";
 import userSlice from "./slices/userSlice";
 import cartSlice from "./slices/cartSlice";
+import orderSlice from "./slices/orderSlice";
 import { CartItemType } from "../misc/types";
 
 const preCartReducer: CartItemType[] = JSON.parse(
@@ -15,6 +16,7 @@ export const store = configureStore({
 		categories: categorySlice,
 		users: userSlice,
 		cart: cartSlice,
+        order: orderSlice,
 	},
 	preloadedState: {
 		cart: {

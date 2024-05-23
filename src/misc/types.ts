@@ -52,3 +52,14 @@ export type UserType = UserRegister & {
 	role: 1 | 0;
 	id: string;
 };
+
+export type OrderType = {
+    user: UserType;
+    orderProducts: ProductType[];
+    status: 0 | 1 | 2 | 3 | 4 | 5;
+}
+
+export type OrderCreateType = {
+    orderProducts: ProductType[];
+    status: 5;
+}

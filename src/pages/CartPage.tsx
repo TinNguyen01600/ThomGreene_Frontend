@@ -3,6 +3,8 @@ import Footer from "../components/Footer";
 import NavBar from "../components/NavBar";
 import { removeCartItem } from "../redux/slices/cartSlice";
 import { useNavigate } from "react-router-dom";
+import { OrderCreateType, OrderType } from "../misc/types";
+import axios, { AxiosError } from "axios";
 
 const CartPage: React.FC = () => {
 	const cart = useAppSelector((state) => state.cart.cart);
@@ -45,6 +47,28 @@ const CartPage: React.FC = () => {
 			);
 		}
 	});
+
+	const createOrder = async () => {
+		const newCreatedOrder: OrderCreateType = {
+			orderProducts: cart,
+			status: 5,
+		};
+		const token1 = localStorage.getItem("token");
+		try {
+			await axios.post<OrderType[]>(
+				`${process.env.REACT_APP_API_URL}orders`,
+				{
+					newCreatedOrder,
+					headers: {
+						Authorization: `Bearer ${token1}`,
+					},
+				}
+			);
+		} catch (e) {
+			const error = e as Error;
+			return error.message;
+		}
+	};
 
 	return (
 		<div className="cart-page">
@@ -90,7 +114,10 @@ const CartPage: React.FC = () => {
 							</div>
 							<button
 								className="checkout-btn"
-								onClick={() => navigate("/checkout")}
+								onClick={() => {
+									navigate("/checkout");
+									createOrder();
+								}}
 							>
 								<span>Proceed to checkout</span>
 								<p> &gt;</p>

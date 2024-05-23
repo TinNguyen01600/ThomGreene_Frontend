@@ -42,7 +42,7 @@ export const fetchSelectedCategoryAsync = createAsyncThunk(
 	"fetchSelectedCategoryAsync",
 	async (categoryId: string | undefined, { rejectWithValue }) => {
 		try {
-			const id = Number(categoryId);
+			const id = categoryId;
 			const res = await axios.get<CategoryType>(
 				`${process.env.REACT_APP_API_URL}categories/${id}`
 			);

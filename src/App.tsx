@@ -14,6 +14,7 @@ import UpdateProductPage from "./pages/UpdateProductPage";
 import SingleProductPage from "./pages/SingleProductPage";
 import CheckoutPage from "./pages/CheckoutPage";
 import CategoryPage from "./pages/CategoryPage";
+import OrderPage from "./pages/OrderPage";
 
 export default function App() {
     const dispatch = useAppDispatch();
@@ -54,6 +55,7 @@ export default function App() {
 					<Route path="/create-product" element={<CreateProductPage />} />
                     <Route path="/product/:productId/update-product" element={<UpdateProductPage />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="/orders" element={<OrderPage />} />
 				</Routes>
 			</Router>
 		</div>
